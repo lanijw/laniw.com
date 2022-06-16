@@ -1,6 +1,6 @@
 <script>
 	import StatusForm from "./status-form/StatusForm.svelte";
-	import {allModules} from "../../modules";
+	import {allModules} from "./modules";
 	import {getModuleStatusById} from "./stores";
 	import {Status} from "./constants";
 

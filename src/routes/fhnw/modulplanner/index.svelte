@@ -1,6 +1,6 @@
 <script>
 	import ModuleGroup from "../../../components/modulplanner/ModuleGroup.svelte";
-	import {modules} from "../../../modules";
+	import {modules} from "../../../components/modulplanner/modules";
 	import ModuleGroupContainer
 		from "../../../components/modulplanner/ModuleGroupContainer.svelte";
 	import ModuleChipCollection
