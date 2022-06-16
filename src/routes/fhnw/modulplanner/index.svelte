@@ -1,22 +1,10 @@
 <script>
-	import {
-		ADDITIONAL_MODULES_TITLE,
-		ADVANCED_MODULES_TITLE,
-		BASE_GROUP_1_TITLE,
-		BASE_GROUP_2_TITLE,
-		BASE_GROUP_3_TITLE,
-		BASE_GROUP_4_TITLE,
-		BWL_TITLE,
-		COMM_TITLE,
-		ENGL_TITLE,
-		GSW_TITLE,
-		MAIN_MODULES_TITLE,
-		PROJECT_TITLE
-	} from "../../../components/modulplanner/constants";
 	import ModuleGroup from "../../../components/modulplanner/ModuleGroup.svelte";
 	import {modules} from "../../../modules";
-	import ModuleGroupContainer from "../../../components/modulplanner/ModuleGroupContainer.svelte";
-	import ModuleChipCollection from "../../../components/modulplanner/ModuleChipCollection.svelte";
+	import ModuleGroupContainer
+		from "../../../components/modulplanner/ModuleGroupContainer.svelte";
+	import ModuleChipCollection
+		from "../../../components/modulplanner/ModuleChipCollection.svelte";
 	import {currPage, userData} from "../../../stores.js";
 	import {onDestroy} from "svelte";
 	import {Page} from "../../../constants";
@@ -31,62 +19,66 @@
 <div class="container mx-auto mt-3">
 	<div class="flex flex-row">
 		<div class="basis-1/7">
-			<ModuleGroup title={PROJECT_TITLE}
+			<ModuleGroup title="Projekte"
 			             modules={modules.projects.modules}
 			             {userDataVal}
 			             borderColor="border-2 border-cyan-600"/>
 		</div>
 		<div class="basis-5/7">
 			<ModuleGroupContainer borderColor="border-2 border-blue-700">
-				<span class="text-l font-semibold">{MAIN_MODULES_TITLE}</span>
+				<span class="text-l font-semibold">Fachausbildung</span>
 				<div class="flex flex-row">
 					<div class="basis-4/5">
 						<ModuleGroupContainer borderColor="border-2 border-blue-700">
-							<span class="text-l font-semibold">{ADVANCED_MODULES_TITLE}</span>
+							<span class="text-l font-semibold">Fachvertiefung</span>
 							<div class="flex flex-row">
 								<div class="basis-1/4">
 									<ModuleGroupContainer>
-										<ModuleChipCollection modules={modules.mainModules.advancedModules.ict} {userDataVal}/>
+										<ModuleChipCollection modules={modules.mainModules.advancedModules.ict}
+										                      {userDataVal}/>
 									</ModuleGroupContainer>
 								</div>
 								<div class="basis-1/4">
 									<ModuleGroupContainer>
-										<ModuleChipCollection modules={modules.mainModules.advancedModules.web} {userDataVal}/>
+										<ModuleChipCollection modules={modules.mainModules.advancedModules.web}
+										                      {userDataVal}/>
 									</ModuleGroupContainer>
 								</div>
 								<div class="basis-1/4">
 									<ModuleGroupContainer>
-										<ModuleChipCollection modules={modules.mainModules.advancedModules.dataSci} {userDataVal}/>
+										<ModuleChipCollection modules={modules.mainModules.advancedModules.dataSci}
+										                      {userDataVal}/>
 									</ModuleGroupContainer>
 								</div>
 								<div class="basis-1/4">
 									<ModuleGroupContainer>
-										<ModuleChipCollection modules={modules.mainModules.advancedModules.spatialComp} {userDataVal}/>
+										<ModuleChipCollection modules={modules.mainModules.advancedModules.spatialComp}
+										                      {userDataVal}/>
 									</ModuleGroupContainer>
 								</div>
 							</div>
 						</ModuleGroupContainer>
 						<div class="flex flex-row">
 							<div class="basis-1/4">
-								<ModuleGroup title={BASE_GROUP_1_TITLE}
+								<ModuleGroup title="Programmierung"
 								             modules={modules.mainModules.baseModules.prog.modules}
 								             {userDataVal}
 								             borderColor="border-2 border-blue-700"/>
 							</div>
 							<div class="basis-1/4">
-								<ModuleGroup title={BASE_GROUP_2_TITLE}
+								<ModuleGroup title="Software Engineering"
 								             modules={modules.mainModules.baseModules.swe.modules}
 								             {userDataVal}
 								             borderColor="border-2 border-blue-700"/>
 							</div>
 							<div class="basis-1/4">
-								<ModuleGroup title={BASE_GROUP_3_TITLE}
+								<ModuleGroup title="ICT Systeme"
 								             modules={modules.mainModules.baseModules.ict.modules}
 								             {userDataVal}
 								             borderColor="border-2 border-blue-700"/>
 							</div>
 							<div class="basis-1/4">
-								<ModuleGroup title={BASE_GROUP_4_TITLE}
+								<ModuleGroup title="Mathematik"
 								             modules={modules.mainModules.baseModules.math.modules}
 								             {userDataVal}
 								             borderColor="border-2 border-blue-700"/>
@@ -94,7 +86,7 @@
 						</div>
 					</div>
 					<div class="basis-1/5">
-						<ModuleGroup title={ADDITIONAL_MODULES_TITLE}
+						<ModuleGroup title="Facherg&auml;nzung"
 						             modules={modules.mainModules.additionalModules.modules}
 						             {userDataVal}
 						             borderColor="border-2 border-blue-700"/>
@@ -103,19 +95,19 @@
 			</ModuleGroupContainer>
 		</div>
 		<div class="basis-1/7 grid content-between">
-			<ModuleGroup title={BWL_TITLE}
+			<ModuleGroup title="Betriebswirtschaftslehre"
 			             modules={modules.bwl.modules}
 			             {userDataVal}
 			             borderColor="border-2 border-fuchsia-600"/>
-			<ModuleGroup title={COMM_TITLE}
+			<ModuleGroup title="Kommunikation"
 			             modules={modules.comm.modules}
 			             {userDataVal}
 			             borderColor="border-2 border-fuchsia-600"/>
-			<ModuleGroup title={ENGL_TITLE}
+			<ModuleGroup title="Englisch"
 			             modules={modules.engl.modules}
 			             {userDataVal}
 			             borderColor="border-2 border-fuchsia-600"/>
-			<ModuleGroup title={GSW_TITLE}
+			<ModuleGroup title="GSW"
 			             modules={modules.gsw.modules}
 			             {userDataVal}
 			             borderColor="border-2 border-fuchsia-600"/>
