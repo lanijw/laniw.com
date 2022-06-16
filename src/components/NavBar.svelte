@@ -58,13 +58,13 @@
 			<li><a href="/" class="rounded-lg">Home</a></li>
 			<li tabindex="0">
 				<a class="rounded-lg">
-					<span class:underline={currPageVal === Page.MODULE_PLANNER}>FHNW</span>
+					<span class:font-semibold={currPageVal === Page.MODULE_PLANNER}>FHNW</span>
 					<ChevronDownIcon/>
 				</a>
 				<ul class="p-2 bg-base-100 rounded-lg">
 					<li><a href="/fhnw/modulplanner"
 					       class="rounded-lg"
-					       class:underline={currPageVal === Page.MODULE_PLANNER}>Modulplanner</a>
+					       class:font-semibold={currPageVal === Page.MODULE_PLANNER}>Modulplanner</a>
 					</li>
 				</ul>
 			</li>
