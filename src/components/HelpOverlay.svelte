@@ -19,15 +19,18 @@
 				I try to create the best applications possible with the smallest amount
 				of errors possible, but some bugs still slip through my fingers. If you
 				find a bug that you would like me to fix you can either create a pull
-				request to my <a href="https://github.com/lanijw/laniw.com">GitHub</a>,
-				or create a<a href="https://github.com/lanijw/laniw.com/issues/new">GitHub
+				request to my <a class="d-link d-link-primary"
+				                 href="https://github.com/lanijw/laniw.com">GitHub</a>,
+				or create a <a class="d-link d-link-primary"
+				               href="https://github.com/lanijw/laniw.com/issues/new">GitHub
 				issue</a>.
 			</p>
 			<h3 class="mt-4 text-2xl">Support</h3>
 			<p>
 				If you are interested in helping me improve this website and some of its
 				projects I would be happy to hear from you in a
-				<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull
+				<a class="d-link d-link-primary"
+				   href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull
 					request</a>. ;)
 			</p>
 		</div>
