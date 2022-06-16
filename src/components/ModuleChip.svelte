@@ -68,14 +68,6 @@
 	}
 </script>
 
-<style>
-	.center-everywhere {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-</style>
-
 <label class="d-card d-card-compact bg-slate-50 shadow-md mt-3 mb-3 cursor-pointer w-full rounded hover:shadow-lg"
        class:h-8={module.credits === 2}
        class:h-12={module.credits === 3}
