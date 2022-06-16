@@ -17,12 +17,13 @@
 	onDestroy(() => unsubUserData())
 
 	let files = [];
+	$: uploadFile(files)
 
 	function downloadFileName() {
 		return downloadableFileName("", "Studenthub-Benutzerdaten", new Date())
 	}
 
-	function uploadFile() {
+	function uploadFile(files) {
 		if (!files.length) {
 			return;
 		}
@@ -61,7 +62,9 @@
 					<ChevronDownIcon/>
 				</a>
 				<ul class="p-2 bg-base-100 rounded-lg">
-					<li><a href="/fhnw/modulplanner" class="rounded-lg" class:underline={currPageVal === Page.MODULE_PLANNER}>Modulplanner</a>
+					<li><a href="/fhnw/modulplanner"
+					       class="rounded-lg"
+					       class:underline={currPageVal === Page.MODULE_PLANNER}>Modulplanner</a>
 					</li>
 				</ul>
 			</li>
@@ -69,11 +72,19 @@
 	</div>
 	<div class="d-navbar-end">
 		{#if currPageVal === Page.MODULE_PLANNER}
-			<input type="file" accept=".json" bind:files>
-			<button class="d-btn d-btn-square d-btn-ghost" on:click={uploadFile}>
+			<label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
+				Daten importieren
 				<UploadIcon/>
-			</button>
-			<a href={userDataDownload} download={downloadFileName()} class="d-btn d-btn-square d-btn-ghost">
+			</label>
+			<input type="file"
+			       accept=".json"
+			       id="moduleplanner_file-input"
+			       class="hidden"
+			       bind:files>
+			<a href={userDataDownload}
+			   download={downloadFileName()}
+			   class="d-btn d-btn-ghost">
+				Daten exportieren
 				<DownloadIcon/>
 			</a>
 		{/if}
