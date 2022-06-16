@@ -1,8 +1,8 @@
 <script>
-	import {NAVBAR_PLANING_LABEL} from "../constants";
-	import {userData} from "../stores";
-	import ModuleChip from "../components/ModuleChip.svelte";
-	import {allModules} from "../modules";
+	import {NAVBAR_PLANING_LABEL} from "../../../constants.js";
+	import {userData} from "../../../stores.js";
+	import ModuleChip from "../../../components/ModuleChip.svelte";
+	import {allModules} from "../../../modules.js";
 	import {onDestroy} from "svelte";
 
 	let userDataVal = []

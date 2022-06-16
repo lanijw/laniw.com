@@ -12,12 +12,12 @@
 		GSW_TITLE,
 		MAIN_MODULES_TITLE,
 		PROJECT_TITLE
-	} from "../constants";
-	import ModuleGroup from "../components/ModuleGroup.svelte";
-	import {modules} from "../modules";
-	import ModuleGroupContainer from "../components/ModuleGroupContainer.svelte";
-	import ModuleChipCollection from "../components/ModuleChipCollection.svelte";
-	import {userData} from "../stores.js";
+	} from "../../../constants";
+	import ModuleGroup from "../../../components/ModuleGroup.svelte";
+	import {modules} from "../../../modules";
+	import ModuleGroupContainer from "../../../components/ModuleGroupContainer.svelte";
+	import ModuleChipCollection from "../../../components/ModuleChipCollection.svelte";
+	import {userData} from "../../../stores.js";
 	import {onDestroy} from "svelte";
 
 	let userDataVal;
