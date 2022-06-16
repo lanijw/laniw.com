@@ -5,9 +5,10 @@
 		from "../../../components/modulplanner/ModuleGroupContainer.svelte";
 	import ModuleChipCollection
 		from "../../../components/modulplanner/ModuleChipCollection.svelte";
-	import {currPage, userData} from "../../../stores.js";
+	import {currPage} from "../../../stores.js";
 	import {onDestroy} from "svelte";
 	import {Page} from "../../../constants";
+	import {userData} from "../../../components/modulplanner/stores";
 
 	currPage.set(Page.MODULE_PLANNER);
 

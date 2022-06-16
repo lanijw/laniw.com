@@ -1,6 +1,5 @@
 <script>
 	import "../app.css";
-	import {APPLICATION_NAME} from "../constants";
 	import NavBar from "../components/NavBar.svelte";
 	import {onDestroy} from "svelte";
 	import {currPage} from "../stores";

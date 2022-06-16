@@ -1,6 +1,6 @@
 <script>
 	import DownloadIcon from "./icons/DownloadIcon.svelte";
-	import {userData} from "../stores";
+	import {userData} from "./modulplanner/stores";
 	import {onDestroy} from "svelte";
 	import {downloadableFileName} from "../util";
 	import UploadIcon from "./icons/UploadIcon.svelte";

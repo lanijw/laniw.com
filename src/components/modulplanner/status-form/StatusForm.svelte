@@ -1,8 +1,8 @@
 <script>
 	import {Status} from "../constants";
 	import StatusRadioButton from "./StatusRadioButtonContainer.svelte";
-	import {ModuleStatus, updateModuleStatus} from "../../../stores";
 	import {onMount} from "svelte";
+	import {ModuleStatus, updateModuleStatus} from "../stores";
 
 	export let module;
 	export let id;
