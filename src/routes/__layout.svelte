@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>{APPLICATION_NAME}</title>
+	<title>laniw.com</title>
 </svelte:head>
 
 {#if currPageVal !== Page.HOME}

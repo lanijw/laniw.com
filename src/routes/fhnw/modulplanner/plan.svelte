@@ -1,7 +1,7 @@
 <script>
 	import {NAVBAR_PLANING_LABEL} from "../../../constants.js";
 	import {userData} from "../../../stores.js";
-	import ModuleChip from "../../../components/ModuleChip.svelte";
+	import ModuleChip from "../../../components/modulplanner/ModuleChip.svelte";
 	import {allModules} from "../../../modules.js";
 	import {onDestroy} from "svelte";
 

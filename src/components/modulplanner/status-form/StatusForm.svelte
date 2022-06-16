@@ -16,9 +16,9 @@
 		MODAL_FORM_TITLE, MODAL_MISSING_DEPS_LABEL,
 		MODAL_SOFT_DEP_LABEL,
 		Status
-	} from "../../constants";
-	import StatusRadioButton from "../status-form/StatusRadioButtonContainer.svelte";
-	import {ModuleStatus, updateModuleStatus} from "../../stores";
+	} from "../constants";
+	import StatusRadioButton from "./StatusRadioButtonContainer.svelte";
+	import {ModuleStatus, updateModuleStatus} from "../../../stores";
 	import {onMount} from "svelte";
 
 	export let module;

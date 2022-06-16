@@ -1,5 +1,6 @@
 import {writable} from 'svelte/store'
-import {Page, Status} from "./constants"
+import {Page} from "./constants"
+import {Status} from "./components/modulplanner/constants"
 
 export class ModuleStatus {
   constructor(id, status, grade, sem, fulfilled) {

@@ -10,15 +10,16 @@
 		COMM_TITLE,
 		ENGL_TITLE,
 		GSW_TITLE,
-		MAIN_MODULES_TITLE, Page,
+		MAIN_MODULES_TITLE,
 		PROJECT_TITLE
-	} from "../../../constants";
-	import ModuleGroup from "../../../components/ModuleGroup.svelte";
+	} from "../../../components/modulplanner/constants";
+	import ModuleGroup from "../../../components/modulplanner/ModuleGroup.svelte";
 	import {modules} from "../../../modules";
-	import ModuleGroupContainer from "../../../components/ModuleGroupContainer.svelte";
-	import ModuleChipCollection from "../../../components/ModuleChipCollection.svelte";
+	import ModuleGroupContainer from "../../../components/modulplanner/ModuleGroupContainer.svelte";
+	import ModuleChipCollection from "../../../components/modulplanner/ModuleChipCollection.svelte";
 	import {currPage, userData} from "../../../stores.js";
 	import {onDestroy} from "svelte";
+	import {Page} from "../../../constants";
 
 	currPage.set(Page.MODULE_PLANNER);
 
