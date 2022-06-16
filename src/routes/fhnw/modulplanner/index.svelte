@@ -10,15 +10,17 @@
 		COMM_TITLE,
 		ENGL_TITLE,
 		GSW_TITLE,
-		MAIN_MODULES_TITLE,
+		MAIN_MODULES_TITLE, Page,
 		PROJECT_TITLE
 	} from "../../../constants";
 	import ModuleGroup from "../../../components/ModuleGroup.svelte";
 	import {modules} from "../../../modules";
 	import ModuleGroupContainer from "../../../components/ModuleGroupContainer.svelte";
 	import ModuleChipCollection from "../../../components/ModuleChipCollection.svelte";
-	import {userData} from "../../../stores.js";
+	import {currPage, userData} from "../../../stores.js";
 	import {onDestroy} from "svelte";
+
+	currPage.set(Page.MODULE_PLANNER);
 
 	let userDataVal;
 	let unsubUserData = userData.subscribe(v => userDataVal = v)
@@ -100,10 +102,22 @@
 			</ModuleGroupContainer>
 		</div>
 		<div class="basis-1/7 grid content-between">
-			<ModuleGroup title={BWL_TITLE} modules={modules.bwl.modules} {userDataVal} borderColor="border-2 border-fuchsia-600"/>
-			<ModuleGroup title={COMM_TITLE} modules={modules.comm.modules} {userDataVal} borderColor="border-2 border-fuchsia-600"/>
-			<ModuleGroup title={ENGL_TITLE} modules={modules.engl.modules} {userDataVal} borderColor="border-2 border-fuchsia-600"/>
-			<ModuleGroup title={GSW_TITLE} modules={modules.gsw.modules} {userDataVal} borderColor="border-2 border-fuchsia-600"/>
+			<ModuleGroup title={BWL_TITLE}
+			             modules={modules.bwl.modules}
+			             {userDataVal}
+			             borderColor="border-2 border-fuchsia-600"/>
+			<ModuleGroup title={COMM_TITLE}
+			             modules={modules.comm.modules}
+			             {userDataVal}
+			             borderColor="border-2 border-fuchsia-600"/>
+			<ModuleGroup title={ENGL_TITLE}
+			             modules={modules.engl.modules}
+			             {userDataVal}
+			             borderColor="border-2 border-fuchsia-600"/>
+			<ModuleGroup title={GSW_TITLE}
+			             modules={modules.gsw.modules}
+			             {userDataVal}
+			             borderColor="border-2 border-fuchsia-600"/>
 		</div>
 	</div>
 </div>

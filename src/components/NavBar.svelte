@@ -1,14 +1,15 @@
 <script>
-	import FhnwIconNoText from "./icons/FhnwIconNoText.svelte";
 	import DownloadIcon from "./icons/DownloadIcon.svelte";
 	import {userData} from "../stores";
 	import {onDestroy} from "svelte";
 	import {downloadableFileName} from "../util";
 	import UploadIcon from "./icons/UploadIcon.svelte";
-	import {NAVBAR_PLANING_LABEL, NAVBAR_STATISTICS_LABEL} from "../constants";
+	import LaniwIcon from "./icons/LaniwIcon.svelte";
+	import ChevronDownIcon from "./icons/ChevronDownIcon.svelte";
+	import GitHubIcon from "./icons/GitHubIcon.svelte";
+	import {Page} from "../constants.js";
 
 	export let currPageVal;
-	// TODO(laniw): Implement use of this.
 
 	let userDataDownload;
 	const unsubUserData = userData.subscribe(v => userDataDownload =
@@ -22,7 +23,9 @@
 	}
 
 	function uploadFile() {
-		if (!files.length) return;
+		if (!files.length) {
+			return;
+		}
 
 		let fileContent = "";
 		const reader = new FileReader();
@@ -35,32 +38,50 @@
 	}
 </script>
 
-<div class="d-navbar bg-base-200">
-	<div class="flex-none">
-		<a href="/">
-			<button class="d-btn d-btn-square d-btn-ghost">
-				<FhnwIconNoText/>
-			</button>
+<style>
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+</style>
+
+<div class="d-navbar bg-base-100 shadow-lg sticky z-50">
+	<div class="d-navbar-start">
+		<a href="/" class="h-12 rounded-lg hover:bg-base-200 p-1">
+			<LaniwIcon/>
 		</a>
 	</div>
-	<div class="flex-none">
-		<span class="ml-2 text-xl font-semibold">Studenthub</span>
-	</div>
-	<div class="flex-1 ml-3">
+	<div class="d-navbar-center hidden lg:flex">
 		<ul class="d-menu d-menu-horizontal p-0">
-			<li class="rounded-lg"><a href="stats">{@html NAVBAR_STATISTICS_LABEL}</a></li>
-			<li class="rounded-lg"><a href="plan">{@html NAVBAR_PLANING_LABEL}</a></li>
+			<li><a href="/" class="rounded-lg">Home</a></li>
+			<li tabindex="0">
+				<a class="rounded-lg">
+					<span class:underline={currPageVal === Page.MODULE_PLANNER}>FHNW</span>
+					<ChevronDownIcon/>
+				</a>
+				<ul class="p-2 bg-base-100 rounded-lg">
+					<li><a href="/fhnw/modulplanner" class="rounded-lg" class:underline={currPageVal === Page.MODULE_PLANNER}>Modulplanner</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</div>
-	<div class="flex-none">
-		<input type="file" accept=".json" bind:files>
-		<button class="d-btn d-btn-square d-btn-ghost" on:click={uploadFile}>
-			<UploadIcon/>
-		</button>
-		<a href={userDataDownload} download={downloadFileName()}>
-			<button class="d-btn d-btn-square d-btn-ghost">
-				<DownloadIcon/>
+	<div class="d-navbar-end">
+		{#if currPageVal === Page.MODULE_PLANNER}
+			<input type="file" accept=".json" bind:files>
+			<button class="d-btn d-btn-square d-btn-ghost" on:click={uploadFile}>
+				<UploadIcon/>
 			</button>
+			<a href={userDataDownload} download={downloadFileName()} class="d-btn d-btn-square d-btn-ghost">
+				<DownloadIcon/>
+			</a>
+		{/if}
+
+		<a class="h-12 rounded-lg hover:bg-base-200 p-1"
+		   href="https://github.com/lanijw/laniw.com"
+		   title="GitHub repository of this website">
+			<GitHubIcon/>
 		</a>
 	</div>
 </div>

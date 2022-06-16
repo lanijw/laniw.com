@@ -41,5 +41,5 @@ export function getModuleStatusById(storeValue, id) {
   return ModuleStatus.defaultInstance(id);
 }
 
-export const currPage = writable(Page.HOME)
+export const currPage = writable(Page.UNKNOWN)
 export const userData = writable([])

@@ -4,6 +4,7 @@
 	import NavBar from "../components/NavBar.svelte";
 	import {onDestroy} from "svelte";
 	import {currPage} from "../stores";
+	import {Page} from "../constants.js";
 
 	let currPageVal;
 	const unsubCurrPage = currPage.subscribe(v => currPageVal = v);
@@ -14,6 +15,10 @@
 	<title>{APPLICATION_NAME}</title>
 </svelte:head>
 
-<NavBar {currPageVal}/>
+{#if currPageVal !== Page.HOME}
+	<NavBar {currPageVal}/>
+{/if}
 
-<slot/>
+<div class="pt-20">
+	<slot/>
+</div>

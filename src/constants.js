@@ -45,4 +45,4 @@ export const Status = {
   FAILED: 4,
 }
 
-export const Page = {HOME: 0, STATUS: 1, PLAN: 2};
+export const Page = {UNKNOWN: 0, HOME: 1, MODULE_PLANNER: 2};
