@@ -1,8 +1,8 @@
 <script>
 	import {get} from "svelte/store";
-	import {userData} from "../../../stores.js";
-	import {allModules} from "../../../components/modulplanner/modules.js";
-	import {Status} from "../../../constants.js";
+	import {userData} from "./stores.js";
+	import {allModules} from "./modules.js";
+	import {Status} from "./constants.js";
 
 	const userDataValue = get(userData)
 	const totalCredits = userDataValue.filter(s => s.status ===
