@@ -27,24 +27,22 @@
 	let currentSection = Section.OVERVIEW;
 </script>
 
-<div class="flex items-center justify-center mt-10">
-	<div class="d-tabs">
-		<button class="d-tab d-tab-lg d-tab-lifted font-bold"
-		        class:d-tab-active={currentSection === Section.OVERVIEW}
-		        on:click={() => currentSection = Section.OVERVIEW}>
-			&Uuml;bersicht
-		</button>
-		<button class="d-tab d-tab-lg d-tab-lifted font-bold"
-		        class:d-tab-active={currentSection === Section.STATISTICS}
-		        on:click={() => currentSection = Section.STATISTICS}>
-			Statistiken
-		</button>
-		<button class="d-tab d-tab-lg d-tab-lifted font-bold"
-		        class:d-tab-active={currentSection === Section.PLAN}
-		        on:click={() => currentSection = Section.PLAN}>
-			Planung
-		</button>
-	</div>
+<div class="d-tabs flex justify-center mt-10">
+	<button class="d-tab d-tab-lg d-tab-lifted font-bold"
+	        class:d-tab-active={currentSection === Section.OVERVIEW}
+	        on:click={() => currentSection = Section.OVERVIEW}>
+		&Uuml;bersicht
+	</button>
+	<button class="d-tab d-tab-lg d-tab-lifted font-bold"
+	        class:d-tab-active={currentSection === Section.STATISTICS}
+	        on:click={() => currentSection = Section.STATISTICS}>
+		Statistiken
+	</button>
+	<button class="d-tab d-tab-lg d-tab-lifted font-bold"
+	        class:d-tab-active={currentSection === Section.PLAN}
+	        on:click={() => currentSection = Section.PLAN}>
+		Planung
+	</button>
 </div>
 
 
