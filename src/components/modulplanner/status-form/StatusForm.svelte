@@ -29,31 +29,15 @@
 		<label for="edit-modal-{module.name}"
 		       class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label>
 		<h3 class="text-xl font-bold">{module.name}</h3>
-		<div class="grid grid-cols-1 gap-y-1 divide-y mt-1">
-			<div class="grid grid-cols-4">
-				<div class="col-span-3">ECTS</div>
-				<div class="col-span-1">{@html module.credits}</div>
-			</div>
-			<div class="grid grid-cols-4">
-				<div class="col-span-3">Abh&auml;ngigkeiten</div>
-				<div class="col-span-1">{@html module.hardDeps}</div>
-			</div>
-			<div class="grid grid-cols-4">
-				<div class="col-span-3">Abh&auml;ngigkeiten (gleiches Sem.)</div>
-				<div class="col-span-1">{@html module.softDeps}</div>
-			</div>
-			<div class="grid grid-cols-4">
-				<div class="col-span-3">Assessmentmodul</div>
-				<div class="col-span-1">{@html module.assessment}</div>
-			</div>
-			<div class="grid grid-cols-4">
-				<div class="col-span-3">Assessmentphase erlaubt</div>
-				<div class="col-span-1">{@html module.assessmentSpecial}</div>
-			</div>
-			<div class="grid grid-cols-4">
-				<div class="col-span-3">Fehlende Abh&auml;ngigkeitsmodule</div>
-				<div class="col-span-1">{@html missingDeps}</div>
-			</div>
+		<div class="overflow-x-auto mt-4">
+			<table class="d-table d-table-compact w-full divide-y">
+				<tr><td>ECTS</td><td>{@html module.credits}</td></tr>
+				<tr><td>Abh&auml;ngigkeiten</td><td>{@html module.hardDeps}</td></tr>
+				<tr><td>Abh&auml;ngigkeiten (gleiches Sem.)</td><td>{@html module.softDeps}</td></tr>
+				<tr><td>Assessmentmodul</td><td>{@html module.assessment}</td></tr>
+				<tr><td>Assessmentphase erlaubt</td><td>{@html module.assessmentSpecial}</td></tr>
+				<tr><td>Fehlende Abh&auml;ngigkeitsmodule</td><td>{@html missingDeps}</td></tr>
+			</table>
 		</div>
 		<h4 class="text-lg font-bold mt-4">Modulstatus</h4>
 
