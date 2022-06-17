@@ -29,7 +29,7 @@
 		<label for="edit-modal-{module.name}"
 		       class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label>
 		<h3 class="text-xl font-bold">{module.name}</h3>
-		<div class="overflow-x-auto mt-4">
+		<div class="overflow-x-auto mt-2">
 			<table class="d-table d-table-compact w-full divide-y">
 				<tr><td>ECTS</td><td>{@html module.credits}</td></tr>
 				<tr><td>Abh&auml;ngigkeiten</td><td>{@html module.hardDeps}</td></tr>
@@ -39,8 +39,8 @@
 				<tr><td>Fehlende Abh&auml;ngigkeitsmodule</td><td>{@html missingDeps}</td></tr>
 			</table>
 		</div>
-		<h4 class="text-lg font-bold mt-4">Modulstatus</h4>
 
+		<h4 class="text-lg font-bold mt-4 mb-2">Modulstatus</h4>
 		<div class="grid grid-cols-2 gap-1">
 			<StatusRadioButton label="Nicht belegt">
 				<input type="radio"
