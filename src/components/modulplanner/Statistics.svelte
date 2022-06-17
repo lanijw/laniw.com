@@ -6,9 +6,7 @@
 
 	const userDataValue = get(userData)
 	const totalCredits = userDataValue.filter(s => s.status ===
-			Status.COMPLETED1 ||
-			s.status ===
-			Status.COMPLETED2 ||
+			Status.COMPLETED ||
 			s.fulfilled)
 			.map(s => allModules.find(m => m.name === s.id).credits)
 			.reduce((a, b) => a + b, 0)

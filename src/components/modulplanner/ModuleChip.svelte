@@ -46,9 +46,7 @@
 					depStatus ===
 					Status.MARKED ||
 					depStatus ===
-					Status.COMPLETED1 ||
-					depStatus ===
-					Status.COMPLETED2
+					Status.COMPLETED
 		})
 	}
 
@@ -74,8 +72,7 @@
        class:h-48={module.credits === 12}
        class:bg-amber-400={moduleStatus.status === Status.MARKED}
        class:bg-indigo-300={moduleStatus.status === Status.CURRENT}
-       class:bg-green-400={moduleStatus.status === Status.COMPLETED1}
-       class:bg-lime-400={moduleStatus.status === Status.COMPLETED2}
+       class:bg-green-400={moduleStatus.status === Status.COMPLETED}
        class:bg-red-400={moduleStatus.status === Status.FAILED}
        class:d-card-bordered={depsMissing}
        class:border-2={depsMissing}

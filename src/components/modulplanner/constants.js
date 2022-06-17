@@ -5,7 +5,6 @@ export const Status = {
   NOT_TAKEN: 0,
   CURRENT: 5,
   MARKED: 1,
-  COMPLETED1: 2,
-  COMPLETED2: 3,
+  COMPLETED: 2,
   FAILED: 4,
 }

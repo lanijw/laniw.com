@@ -31,12 +31,30 @@
 		<h3 class="text-xl font-bold">{module.name}</h3>
 		<div class="overflow-x-auto mt-2">
 			<table class="d-table d-table-compact w-full divide-y">
-				<tr><td>ECTS</td><td>{@html module.credits}</td></tr>
-				<tr><td>Abh&auml;ngigkeiten</td><td>{@html module.hardDeps}</td></tr>
-				<tr><td>Abh&auml;ngigkeiten (gleiches Sem.)</td><td>{@html module.softDeps}</td></tr>
-				<tr><td>Assessmentmodul</td><td>{@html module.assessment}</td></tr>
-				<tr><td>Assessmentphase erlaubt</td><td>{@html module.assessmentSpecial}</td></tr>
-				<tr><td>Fehlende Abh&auml;ngigkeitsmodule</td><td>{@html missingDeps}</td></tr>
+				<tr>
+					<td>ECTS</td>
+					<td>{@html module.credits}</td>
+				</tr>
+				<tr>
+					<td>Abh&auml;ngigkeiten</td>
+					<td>{@html module.hardDeps}</td>
+				</tr>
+				<tr>
+					<td>Abh&auml;ngigkeiten (gleiches Sem.)</td>
+					<td>{@html module.softDeps}</td>
+				</tr>
+				<tr>
+					<td>Assessmentmodul</td>
+					<td>{@html module.assessment}</td>
+				</tr>
+				<tr>
+					<td>Assessmentphase erlaubt</td>
+					<td>{@html module.assessmentSpecial}</td>
+				</tr>
+				<tr>
+					<td>Fehlende Abh&auml;ngigkeitsmodule</td>
+					<td>{@html missingDeps}</td>
+				</tr>
 			</table>
 		</div>
 
@@ -60,27 +78,21 @@
 				       value={Status.MARKED}
 				       class="d-radio checked:bg-amber-400 ml-3"/>
 			</StatusRadioButton>
-			<StatusRadioButton label="1. Mal bestanden">
+			<StatusRadioButton label="Bestanden">
 				<input type="radio"
 				       bind:group={status}
-				       value={Status.COMPLETED1}
+				       value={Status.COMPLETED}
 				       class="d-radio checked:bg-green-700 ml-3"/>
 			</StatusRadioButton>
-			<StatusRadioButton label="2. Mal bestanden">
-				<input type="radio"
-				       bind:group={status}
-				       value={Status.COMPLETED2}
-				       class="d-radio checked:bg-lime-700 ml-3"/>
-			</StatusRadioButton>
-			<StatusRadioButton label="2. Mal durchgefallen">
+			<StatusRadioButton label="Nicht bestanden">
 				<input type="radio"
 				       bind:group={status}
 				       value={Status.FAILED}
 				       class="d-radio checked:bg-red-700 ml-3"/>
 			</StatusRadioButton>
 		</div>
-
-		{#if status === Status.COMPLETED1 || status === Status.COMPLETED2}
+		
+		{#if status === Status.COMPLETED}
 			<div class="flex flex-row">
 				<div class="d-form-control w-full max-w-xs inline-block flex-none">
 					<label for="grade-range" class="d-label d-label-text">
@@ -113,9 +125,7 @@
 			</div>
 		{/if}
 		{#if status ===
-		Status.COMPLETED1 ||
-		status ===
-		Status.COMPLETED2 ||
+		Status.COMPLETED ||
 		status ===
 		Status.MARKED ||
 		status ===
