@@ -13,12 +13,19 @@
 	export let missingDeps
 
 	let mounted = false;
-
 	onMount(() => mounted = true)
-
 	$: {
 		if (mounted) {
 			updateModuleStatus(new ModuleStatus(id, status, grade, sem, fulfilled))
+		}
+	}
+
+	let semesterIndication = false;
+	$: clearSemesterIndication(semesterIndication)
+
+	function clearSemesterIndication(semesterIndication) {
+		if (semesterIndication) {
+			sem = undefined;
 		}
 	}
 </script>
@@ -59,7 +66,7 @@
 		</div>
 
 		<h4 class="text-lg font-bold mt-4 mb-2">Modulstatus</h4>
-		<div class="grid grid-cols-2 gap-1">
+		<div class="grid grid-cols-2 gap-1 mb-2">
 			<StatusRadioButton label="Nicht belegt">
 				<input type="radio"
 				       bind:group={status}
@@ -91,7 +98,34 @@
 				       class="d-radio checked:bg-red-700 ml-3"/>
 			</StatusRadioButton>
 		</div>
-		
+
+		{#if status === Status.CURRENT || status === Status.MARKED || status === Status.COMPLETED}
+			<div class="flex">
+				<div class="flex-initial d-form-control pb-2">
+					<label class="d-label d-label-text cursor-pointer" for="sem-indication-toggle">Semesterangabe</label>
+					<input id="sem-indication-toggle" type="checkbox" class="d-toggle" bind:checked={semesterIndication}/>
+				</div>
+				{#if semesterIndication}
+					<div class="flex-auto d-form-control w-full max-w-xs">
+						<label for="sem-range" class="d-label d-label-text">
+							Semester
+						</label>
+						<input type="range"
+						       min="1"
+						       max="12"
+						       bind:value={sem}
+						       class="d-range d-range-sm"
+						       step="1"
+						       id="sem-range"/>
+						<div class="w-full grid grid-cols-12 text-xs gap-2 pl-2">
+							{#each Array.from(Array(12).keys()).map(v => 1 + v) as semester}
+								<span>{semester}</span>
+							{/each}
+						</div>
+					</div>
+				{/if}
+			</div>
+		{/if}
 		{#if status === Status.COMPLETED}
 			<div class="flex flex-row">
 				<div class="d-form-control w-full max-w-xs inline-block flex-none">
@@ -121,30 +155,6 @@
 					       bind:checked={fulfilled}
 					       class="d-toggle"
 					       id="fulfilled-toggle"/>
-				</div>
-			</div>
-		{/if}
-		{#if status ===
-		Status.COMPLETED ||
-		status ===
-		Status.MARKED ||
-		status ===
-		Status.CURRENT}
-			<div class="d-form-control w-full max-w-xs">
-				<label for="sem-range" class="d-label d-label-text">
-					Semester
-				</label>
-				<input type="range"
-				       min="1"
-				       max="12"
-				       bind:value={sem}
-				       class="d-range d-range-sm"
-				       step="1"
-				       id="sem-range"/>
-				<div class="w-full flex justify-between text-xs px-2">
-					{#each Array.from(Array(12).keys()).map(v => 1 + v) as semester}
-						<span>{semester}</span>
-					{/each}
 				</div>
 			</div>
 		{/if}
