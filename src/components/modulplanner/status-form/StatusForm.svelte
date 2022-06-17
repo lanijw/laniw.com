@@ -90,12 +90,15 @@
 				       bind:group={status}
 				       value={Status.COMPLETED}
 				       class="d-radio checked:bg-green-700 ml-3"/>
+				<!-- TODO(laniw): Update form to ask whether completed in one or two attempts. -->
+				<!-- TOOD(laniw): Update form to clear grade when only passed. -->
 			</StatusRadioButton>
 			<StatusRadioButton label="Nicht bestanden">
 				<input type="radio"
 				       bind:group={status}
 				       value={Status.FAILED}
 				       class="d-radio checked:bg-red-700 ml-3"/>
+				<!-- TODO(laniw): Update form to ask whether failed in one or two attempts. -->
 			</StatusRadioButton>
 		</div>
 
