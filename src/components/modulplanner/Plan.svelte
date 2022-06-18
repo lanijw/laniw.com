@@ -21,13 +21,15 @@
 <div class="container mx-auto mt-3">
 	<h1 class="text-4xl font-bold">Studiumsplanung</h1>
 	{#each semesters as semester}
-		<h2 class="text-3xl font-semibold">Semester {semester.n}</h2>
-		<div class="mb-5 grid grid-cols-12 gap-4">
-			{#each semester.modules as module}
-				<div>
-					<ModuleChip module={module.module} {userDataVal} fromPlan={true}/>
-				</div>
-			{/each}
-		</div>
+		{#if semester.modules.length}
+			<h2 class="text-3xl font-semibold">Semester {semester.n}</h2>
+			<div class="mb-5 grid grid-cols-12 gap-4">
+				{#each semester.modules as module}
+					<div>
+						<ModuleChip module={module.module} {userDataVal} fromPlan={true}/>
+					</div>
+				{/each}
+			</div>
+		{/if}
 	{/each}
 </div>
