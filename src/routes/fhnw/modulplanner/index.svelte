@@ -39,7 +39,9 @@
 	        on:click={() => currentSection = Section.STATISTICS}>
 		Statistiken
 	</button>
-	{#if userDataVal.s.filter(s => s.status !== Status.NOT_TAKEN).length}
+	{#if userDataVal.s.filter(s => s.status !==
+			Status.NOT_TAKEN &&
+			!(s.sem === undefined || s.sem === null)).length}
 		<button class="d-tab d-tab-lg d-tab-lifted font-bold"
 		        class:d-tab-active={currentSection === Section.PLAN}
 		        on:click={() => currentSection = Section.PLAN}>
