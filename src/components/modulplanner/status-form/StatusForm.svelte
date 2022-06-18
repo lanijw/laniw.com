@@ -101,7 +101,6 @@
 				       bind:group={status}
 				       value={Status.COMPLETED}
 				       class="d-radio checked:bg-green-700 ml-3"/>
-				<!-- TOOD(laniw): Update form to clear grade when only passed. -->
 			</StatusRadioButton>
 			<StatusRadioButton label="Nicht bestanden">
 				<input type="radio"
