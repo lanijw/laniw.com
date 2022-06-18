@@ -16,17 +16,6 @@
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
-	const advancedIds = [
-		...modules.mainModules.advancedModules.ict,
-		...modules.mainModules.advancedModules.web,
-		...modules.mainModules.advancedModules.dataSci,
-		...modules.mainModules.advancedModules.spatialComp,
-	].map(m => m.id)
-	const advancedCredits = userDataValue
-			.filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
-			.map(moduleStatusToCredits)
-			.reduce(sum, 0)
-
 	const progIds = modules.mainModules.baseModules.prog.modules.map(m => m.id)
 	const progCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, progIds))
@@ -48,6 +37,17 @@
 	const mathIds = modules.mainModules.baseModules.math.modules.map(m => m.id)
 	const mathCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, mathIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const advancedIds = [
+		...modules.mainModules.advancedModules.ict,
+		...modules.mainModules.advancedModules.web,
+		...modules.mainModules.advancedModules.dataSci,
+		...modules.mainModules.advancedModules.spatialComp,
+	].map(m => m.id)
+	const advancedCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
