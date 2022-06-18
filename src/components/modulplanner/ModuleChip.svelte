@@ -9,18 +9,18 @@
 	export let fromPlan = false;
 
 	let moduleStatus
-	$: moduleStatus = getModuleStatusById(userDataVal, module.name);
+	$: moduleStatus = getModuleStatusById(userDataVal, module.id);
 
 	let depsMissing;
 	let missingDeps;
 	$: {
 		depsMissing =
-				!hasPlannedDepModules(userDataVal, module.name) &&
-				depsMatter(userDataVal, module.name)
-		let deps = depModules(module.name)
+				!hasPlannedDepModules(userDataVal, module.id) &&
+				depsMatter(userDataVal, module.id)
+		let deps = depModules(module.id)
 		missingDeps =
 				depsMissing ?
-						depModules(module.name)
+						depModules(module.id)
 								.filter(d => !plannedDeps(userDataVal, deps).includes(d)) :
 						[]
 	}
@@ -56,7 +56,7 @@
 		let currentDeps = [id];
 		for (let i = 0; i < 5; i++) {
 			currentDeps = currentDeps.flatMap(d => {
-				const currentModule = allModules.find(m => m.name === d)
+				const currentModule = allModules.find(m => m.id === d)
 				return [...currentModule.hardDeps, ...currentModule.softDeps]
 			});
 			finalDeps = [...finalDeps, ...currentDeps]
@@ -77,13 +77,13 @@
        class:d-card-bordered={depsMissing}
        class:border-2={depsMissing}
        class:border-red-500={depsMissing}
-       for="edit-modal-{module.name}">
+       for="edit-modal-{module.id}">
 	<div class="align-text-middle center-everywhere"
 	     class:h-8={module.credits === 2}
 	     class:h-12={module.credits === 3}
 	     class:h-24={module.credits === 6}
 	     class:h-48={module.credits === 12}>
-		{module.name}
+		{module.id}
 	</div>
 </label>
 

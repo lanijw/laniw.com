@@ -1,11 +1,11 @@
-function generateModule(name,
+function generateModule(id,
                         credits,
                         hardDeps,
                         softDeps = [],
                         assessment = false,
                         assessmentSpecial = false) {
   return {
-    name,
+    id,
     credits,
     hardDeps,
     softDeps,
@@ -197,6 +197,7 @@ function generateAdditionalModules() {
 }
 
 export const modules = {
+  minCredits: 180,
   projects: {
     minCredits: 42,
     modules: generateProjectModules()

@@ -41,12 +41,12 @@
 	}
 </script>
 
-<input type="checkbox" id="edit-modal-{module.name}" class="d-modal-toggle"/>
-<label for="edit-modal-{module.name}" class="d-modal">
+<input type="checkbox" id="edit-modal-{module.id}" class="d-modal-toggle"/>
+<label for="edit-modal-{module.id}" class="d-modal">
 	<label class="d-modal-box relative" for="">
-		<label for="edit-modal-{module.name}"
+		<label for="edit-modal-{module.id}"
 		       class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label>
-		<h3 class="text-xl font-bold">{module.name}</h3>
+		<h3 class="text-xl font-bold">{module.id}</h3>
 		<div class="overflow-x-auto mt-2">
 			<table class="d-table d-table-compact w-full divide-y">
 				<tr>
