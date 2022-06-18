@@ -7,6 +7,7 @@
 	export let module;
 	export let id;
 	export let status;
+	export let secondTry = false;
 	export let grade;
 	export let fulfilled;
 	export let sem;
@@ -90,7 +91,6 @@
 				       bind:group={status}
 				       value={Status.COMPLETED}
 				       class="d-radio checked:bg-green-700 ml-3"/>
-				<!-- TODO(laniw): Update form to ask whether completed in one or two attempts. -->
 				<!-- TOOD(laniw): Update form to clear grade when only passed. -->
 			</StatusRadioButton>
 			<StatusRadioButton label="Nicht bestanden">
@@ -98,15 +98,41 @@
 				       bind:group={status}
 				       value={Status.FAILED}
 				       class="d-radio checked:bg-red-700 ml-3"/>
-				<!-- TODO(laniw): Update form to ask whether failed in one or two attempts. -->
 			</StatusRadioButton>
 		</div>
 
-		{#if status === Status.CURRENT || status === Status.MARKED || status === Status.COMPLETED}
-			<div class="flex">
-				<div class="flex-initial d-form-control pb-2">
-					<label class="d-label d-label-text cursor-pointer" for="sem-indication-toggle">Semesterangabe</label>
-					<input id="sem-indication-toggle" type="checkbox" class="d-toggle" bind:checked={semesterIndication}/>
+		{#if status === Status.COMPLETED || status === Status.FAILED}
+			<div class="d-form-control pb-2">
+				<label class="d-label cursor-pointer inline">
+					<div class="flex gap-x-2">
+						<span class="d-label-text flex-none">1 Versuch</span>
+						<input type="checkbox"
+						       class="d-toggle flex-none"
+						       class:bg-green-700={status === Status.COMPLETED}
+						       class:bg-red-700={status === Status.FAILED}
+						       bind:checked={secondTry}/>
+						<span class="d-label-tex flex-none">2 Versuche</span>
+						<span class="flex-auto text-right">
+							aufgewandte Credits: {module.credits * (secondTry ? 2 : 1)}
+						</span>
+					</div>
+				</label>
+			</div>
+		{/if}
+		{#if status ===
+		Status.CURRENT ||
+		status ===
+		Status.MARKED ||
+		status ===
+		Status.COMPLETED}
+			<div class="flex gap-x-2">
+				<div class="flex-initial d-form-control pb-3">
+					<label class="d-label d-label-text cursor-pointer"
+					       for="sem-indication-toggle">Semesterangabe</label>
+					<input id="sem-indication-toggle"
+					       type="checkbox"
+					       class="d-toggle"
+					       bind:checked={semesterIndication}/>
 				</div>
 				{#if semesterIndication}
 					<div class="flex-auto d-form-control w-full max-w-xs">
