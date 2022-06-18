@@ -4,6 +4,7 @@
 	import {onMount} from "svelte";
 	import {ModuleStatus, updateModuleStatus} from "../stores";
 
+	// TODO(laniw): Pass status object instead of destructuring to avoid overwriting state repeatedly.
 	export let module;
 	export let id;
 	export let status;
@@ -23,7 +24,7 @@
 		}
 	}
 
-	let semesterIndication = sem !== undefined;
+	let semesterIndication = !(sem === undefined || sem === null);
 	$: {
 		if (semesterIndication) {
 			sem = 1
@@ -130,9 +131,9 @@
 				</div>
 			{/if}
 			{#if (status === Status.CURRENT ||
-			status === Status.MARKED ||
-			status === Status.COMPLETED ||
-			status === Status.FAILED) && !fromPlan}
+					status === Status.MARKED ||
+					status === Status.COMPLETED ||
+					status === Status.FAILED) && !fromPlan}
 				<div class="flex gap-x-2">
 					<div class="flex-initial d-form-control pb-3">
 						<label class="d-label d-label-text cursor-pointer"
