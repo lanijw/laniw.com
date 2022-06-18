@@ -5,8 +5,9 @@
 	import {Status} from "./constants";
 
 	export let module;
-
 	export let userDataVal;
+	export let fromPlan = false;
+
 	let moduleStatus
 	$: moduleStatus = getModuleStatusById(userDataVal, module.name);
 
@@ -56,7 +57,6 @@
 		for (let i = 0; i < 5; i++) {
 			currentDeps = currentDeps.flatMap(d => {
 				const currentModule = allModules.find(m => m.name === d)
-				// TODO(laniw): Deal with soft and hard deps separately for more precise user message
 				return [...currentModule.hardDeps, ...currentModule.softDeps]
 			});
 			finalDeps = [...finalDeps, ...currentDeps]
@@ -87,4 +87,4 @@
 	</div>
 </label>
 
-<StatusForm {module} {...moduleStatus} {missingDeps}/>
+<StatusForm {module} {...moduleStatus} {missingDeps} {fromPlan}/>

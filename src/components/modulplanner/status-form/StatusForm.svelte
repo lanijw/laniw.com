@@ -13,6 +13,8 @@
 	export let sem;
 	export let missingDeps
 
+	export let fromPlan;
+
 	let mounted = false;
 	onMount(() => mounted = true)
 	$: {
@@ -21,10 +23,22 @@
 		}
 	}
 
-	let semesterIndication = false;
-	$: if (semesterIndication) sem = undefined
+	let semesterIndication = sem !== undefined;
+	$: {
+		if (semesterIndication) {
+			sem = 1
+		} else {
+			sem = undefined
+		}
+	}
 
-	$: if (fulfilled) grade = undefined
+	$: {
+		if (fulfilled) {
+			grade = undefined
+		} else {
+			grade = 4
+		}
+	}
 </script>
 
 <input type="checkbox" id="edit-modal-{module.name}" class="d-modal-toggle"/>
@@ -116,12 +130,10 @@
 					</label>
 				</div>
 			{/if}
-			{#if status ===
-			Status.CURRENT ||
-			status ===
-			Status.MARKED ||
-			status ===
-			Status.COMPLETED}
+			{#if (status === Status.CURRENT ||
+			status === Status.MARKED ||
+			status === Status.COMPLETED ||
+			status === Status.FAILED) && !fromPlan}
 				<div class="flex gap-x-2">
 					<div class="flex-initial d-form-control pb-3">
 						<label class="d-label d-label-text cursor-pointer"

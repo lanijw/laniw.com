@@ -25,7 +25,7 @@
 		<div class="mb-5 grid grid-cols-12 gap-4">
 			{#each semester.modules as module}
 				<div>
-					<ModuleChip module={module.module}/>
+					<ModuleChip module={module.module} {userDataVal} fromPlan={true}/>
 				</div>
 			{/each}
 		</div>
