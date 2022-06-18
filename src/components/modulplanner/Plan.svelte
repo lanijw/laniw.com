@@ -11,7 +11,8 @@
 	let semesters
 	$: semesters = Array.from(Array(12).keys()).map(v => 1 + v).map(n => {
 		return {
-			n: n, modules: userDataVal.filter(s => s.sem === n).map(s => {
+			n: n,
+			modules: userDataVal.filter(s => s.sem === n).map(s => {
 				return {status: s, module: allModules.find(m => m.id === s.id)}
 			})
 		}

@@ -4,6 +4,8 @@
 	import {getModuleStatusById} from "./stores";
 	import {Status} from "./constants";
 
+	// TODO(laniw): Show that module chip is part of profile group when filter is selected.
+
 	export let module;
 	export let userDataVal;
 	export let fromPlan = false;

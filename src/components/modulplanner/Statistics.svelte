@@ -1,8 +1,10 @@
 <script>
 	import {get} from "svelte/store";
 	import {userData} from "./stores.js";
-	import {allModules, modules} from "./modules.js";
+	import {allModules, modules, Profile} from "./modules.js";
 	import {Status} from "./constants.js";
+	import CheckIcon from "../icons/CheckIcon.svelte";
+	import CloseIcon from "../icons/CloseIcon.svelte";
 
 	const userDataValue = get(userData)
 
@@ -66,10 +68,10 @@
 			.reduce(sum, 0)
 
 	const advancedIds = [
-		...modules.mainModules.advancedModules.ict,
-		...modules.mainModules.advancedModules.web,
-		...modules.mainModules.advancedModules.dataSci,
-		...modules.mainModules.advancedModules.spatialComp,
+		...modules.mainModules.advancedModules.ict.modules,
+		...modules.mainModules.advancedModules.web.modules,
+		...modules.mainModules.advancedModules.dataSci.modules,
+		...modules.mainModules.advancedModules.spatialComp.modules,
 	].map(m => m.id)
 	const advancedCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
@@ -199,6 +201,66 @@
 		},
 	]
 
+	const dataSciProfileIds = allModules.filter(m => m.relevantProfile ===
+			Profile.DATA_SCI)
+	const completedDataSciProfileCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, dataSciProfileIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const ictProfileIds = allModules.filter(m => m.relevantProfile ===
+			Profile.ICT)
+	const completedIctProfileCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, ictProfileIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const spatialCompProfileIds = allModules.filter(m => m.relevantProfile ===
+			Profile.SPATIAL_COMP)
+	const completedSpatialCompProfileCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, spatialCompProfileIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const webProfileIds = allModules.filter(m => m.relevantProfile ===
+			Profile.WEB)
+	const completedWebProfileCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, webProfileIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const profileCredits = [
+		{
+			title: "Data Science",
+			credits: completedDataSciProfileCredits,
+			minCredits: modules.mainModules.advancedModules.dataSci.minModules * 3,
+			workshopId: modules.mainModules.advancedModules.dataSci.requiredModule,
+			workshopCompleted: isModuleCompleted(modules.mainModules.advancedModules.dataSci.requiredModule)
+		},
+		{
+			title: "ICT",
+			credits: completedIctProfileCredits,
+			minCredits: modules.mainModules.advancedModules.ict.minModules * 3,
+			workshopId: modules.mainModules.advancedModules.ict.requiredModule,
+			workshopCompleted: isModuleCompleted(modules.mainModules.advancedModules.ict.requiredModule)
+		},
+		{
+			title: "Spatial Computing",
+			credits: completedSpatialCompProfileCredits,
+			minCredits: modules.mainModules.advancedModules.spatialComp.minModules *
+					3,
+			workshopId: modules.mainModules.advancedModules.spatialComp.requiredModule,
+			workshopCompleted: isModuleCompleted(modules.mainModules.advancedModules.spatialComp.requiredModule)
+		},
+		{
+			title: "Web",
+			credits: completedWebProfileCredits,
+			minCredits: modules.mainModules.advancedModules.web.minModules * 3,
+			workshopId: modules.mainModules.advancedModules.web.requiredModule,
+			workshopCompleted: isModuleCompleted(modules.mainModules.advancedModules.web.requiredModule)
+		},
+	]
+
 	function sum(a, b) {
 		return a + b
 	}
@@ -219,6 +281,11 @@
 	function formatCreditPercentage(credits, minCredits) {
 		const result = Math.round(10 * 100 * (credits / minCredits)) / 10
 		return minCredits === 0 ? "&infin;" : result
+	}
+
+	function isModuleCompleted(id) {
+		const status = userDataValue.find(s => s.id === id);
+		return status.status === Status.COMPLETED || status.fulfilled;
 	}
 </script>
 
@@ -271,6 +338,45 @@
 		{/each}
 	</div>
 
+	<h3 class="text-2xl font-semibold mt-5">Profilabsolvierung</h3>
+
+	<div class="grid grid-cols-2">
+		{#each profileCredits as p}
+			<div>
+				<h4 class="text-xl font-semibold mt-5">{p.title}</h4>
+
+				<div class="d-stats shadow m-4">
+					<div class="d-stat">
+						<div class="d-stat-title">Credits</div>
+						<div class="d-stat-value">
+							{@html formatCreditPercentage(p.credits, p.minCredits)}%
+						</div>
+						<div class="d-stat-desc">
+							{p.credits}/{p.minCredits} Credits absolviert
+						</div>
+					</div>
+					<div class="d-stat">
+						<div class="d-stat-title">Workshop</div>
+						<div class="d-stat-value h-9">
+							{#if p.workshopCompleted}
+								<CheckIcon/>
+							{:else}
+								<CloseIcon/>
+							{/if}
+						</div>
+						<div class="d-stat-desc">
+							{p.workshopId}
+							{#if !p.workshopCompleted}
+								nicht
+							{/if}
+							absolviert
+						</div>
+					</div>
+				</div>
+			</div>
+		{/each}
+	</div>
+
 	<h2 class="text-3xl font-semibold mt-5">Studiumplanung</h2>
 
 	<div class="d-stats shadow m-4">
@@ -282,7 +388,8 @@
 							completedStat.minCredits)}%
 				</div>
 				<div class="d-stat-desc">
-					{completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+					{completedStat.credits}/{completedStat.minCredits} Credits
+					geplant/absolviert
 				</div>
 			</div>
 		{/each}
@@ -297,7 +404,8 @@
 							completedStat.minCredits)}%
 				</div>
 				<div class="d-stat-desc">
-					{completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+					{completedStat.credits}/{completedStat.minCredits} Credits
+					geplant/absolviert
 				</div>
 			</div>
 		{/each}
@@ -312,7 +420,8 @@
 							completedStat.minCredits)}%
 				</div>
 				<div class="d-stat-desc">
-					{completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+					{completedStat.credits}/{completedStat.minCredits} Credits
+					geplant/absolviert
 				</div>
 			</div>
 		{/each}

@@ -1,18 +1,29 @@
+// TODO(laniw): Verify this using reference material.
+
+export const Profile = {
+  NONE: 0,
+  ICT: 1,
+  WEB: 2,
+  DATA_SCI: 3,
+  SPATIAL_COMP: 4
+}
+
 function generateModule(id,
                         credits,
                         hardDeps,
                         softDeps = [],
                         assessment = false,
-                        assessmentSpecial = false) {
+                        assessmentSpecial = false,
+                        relevantProfile = Profile.NONE) {
   return {
     id,
     credits,
     hardDeps,
     softDeps,
     assessment,
-    assessmentSpecial
+    assessmentSpecial,
+    relevantProfile
   }
-  // TODO(laniw): Add marker for profiles.
 }
 
 function generateProjectModules() {
@@ -79,12 +90,12 @@ function generateProgModules() {
 function generateSweModules() {
   const req = generateModule("req", 3, [], [], true)
   const edbs = generateModule("edbs", 3, [], [], true)
-  const swc = generateModule("swc", 3, [], [], true)
+  const swc = generateModule("swc", 3, ["oop1"], [], true)
   const uuid = generateModule("uuid", 3, [], [], false, true)
   const depa = generateModule("depa", 3, ["oop2"])
   const sepC = generateModule("sepC", 3, ["req"])
   const swa = generateModule("swa", 3, ["depa", "req"])
-  const vesys = generateModule("vesys", 3, ["oop2"])
+  const vesys = generateModule("vesys", 3, ["oop2"], [], false, false, Profile.WEB)
   return [req, edbs, swc, uuid, depa, sepC, swa, vesys]
 }
 
@@ -107,7 +118,7 @@ function generateMathModules() {
   const mada = generateModule("mada", 3, ["mgli"], [], false, true)
   const dist = generateModule("dist", 3, ["mgli", "lag", "eana"])
   const vana = generateModule("vana", 3, ["mgli", "lag", "eana"])
-  const kry = generateModule("kry", 3, ["mgli", "mada"])
+  const kry = generateModule("kry", 3, ["mada"])
   const eti = generateModule("eti", 3, ["mgli"])
   return [mgli, lag, eana, mada, dist, vana, kry, eti]
 }
@@ -134,65 +145,90 @@ function generateBaseModules() {
 }
 
 function generateAdvancedIctModules() {
-  const pcls = generateModule("pcls", 3, [])
-  const cysL = generateModule("cysL", 3, ["netsi", "bsys"])
-  const cpnet = generateModule("cpnet", 3, ["dnet2"])
-  const netsi = generateModule("netsi", 3, ["kry", "dnet2"])
-  const itfs = generateModule("itfs", 3, ["pcls"])
-  const wosm = generateModule("wosm", 3, ["cpnet", "netsi", "itfs"])
-  return [pcls, cysL, cpnet, netsi, itfs, wosm]
+  const pcls = generateModule("pcls", 3, ["cloud", "dnet2"], [], false, false, Profile.ICT)
+  const cysL = generateModule("cysL", 3, ["netsi", "bsys"], [], false, false, Profile.ICT)
+  const cpnet = generateModule("cpnet", 3, ["dnet2"], [], false, false, Profile.ICT)
+  const netsi = generateModule("netsi", 3, ["kry", "dnet2"], [], false, false, Profile.ICT)
+  const itfs = generateModule("itfs", 3, ["pcls"], [], false, false, Profile.ICT)
+  const wosm = generateModule("wosm", 3, ["itfs", "cysL"], [], false, false, Profile.ICT)
+  return {
+    requiredModule: "wosm",
+    minModules: 6,
+    modules: [pcls, cysL, cpnet, netsi, itfs, wosm]
+  }
 }
 
 function generateAdvancedWebModules() {
-  const webcl = generateModule("webcl", 3, ["webpr"])
-  const webfr = generateModule("webfr", 3, ["depa", "vesys"])
-  const eaf = generateModule("eaf", 3, ["depa", "vesys", "oop2"])
-  const apm = generateModule("apm", 3, ["algd2", "vesys", "bsys"])
-  const apsi = generateModule("apsi", 3, ["webfr", "syspr", "kry", "infsec"])
-  const ddm = generateModule("ddm", 3, ["dbarc"])
+  const webcl = generateModule("webcl", 3, ["webpr"], [], false, false, Profile.WEB)
+  const webfr = generateModule("webfr", 3, ["depa", "vesys"], [], false, false, Profile.WEB)
+  const eaf = generateModule("eaf", 3, ["depa", "vesys", "dbarc"], [], false, false, Profile.WEB)
+  const apm = generateModule("apm", 3, ["algd2", "vesys", "bsys"], [], false, false, Profile.WEB)
+  const apsi = generateModule("apsi", 3, ["infsec", "syspr", "kry", "infsec"], [], false, false, Profile.WEB)
+  const ddm = generateModule("ddm", 3, ["dbarc"], [], false, false, Profile.WEB)
   const woweb = generateModule("woweb",
     3,
-    ["webpr", "apsi", "webeC", "webfr", "webcl", "eaf"])
-  return [webcl, webfr, eaf, apm, apsi, ddm, woweb]
+    ["apsi", "webfr", "eaf", "apm", "webcl"], [], false, false, Profile.WEB)
+  return {
+    requiredModule: "woweb",
+    minModules: 10,
+    modules: [webcl, webfr, eaf, apm, apsi, ddm, woweb]
+  }
 }
 
 function generateAdvancedDataSciModules() {
-  const nlp = generateModule("nlp", 3, ["dawr", "dist"])
-  const efalg = generateModule("efalg", 3, [])
-  const bverI = generateModule("bverI", 3, ["ml", "magb"])
-  const pac = generateModule("pac", 3, ["syspr"])
-  const ml = generateModule("ml", 3, ["dsp", "dist", "vana"])
-  const wods = generateModule("wods", 3, ["ml", "efalg", "nlp", "bverI"])
-  return [nlp, efalg, bverI, pac, ml, wods]
+  const nlp = generateModule("nlp", 3, ["oop2", "dist"], [], false, false, Profile.DATA_SCI)
+  const efalg = generateModule("efalg", 3, ["mada", "eana", "algd2"], [], false, false, Profile.DATA_SCI)
+  const bverI = generateModule("bverI", 3, ["vana", "magb", "algd1"], [], false, false, Profile.DATA_SCI)
+  const pac = generateModule("pac", 3, ["syspr"], [], false, false, Profile.DATA_SCI)
+  const ml = generateModule("ml", 3, ["dsp", "dist", "vana"], [], false, false, Profile.DATA_SCI)
+  const wods = generateModule("wods", 3, ["ml", "efalg", "nlp", "bverI"], [], false, false, Profile.DATA_SCI)
+  return {
+    requiredModule: "wods",
+    minModules: 8,
+    modules: [nlp, efalg, bverI, pac, ml, wods]
+  }
 }
 
 function generateAdvancedSpatialCompModules() {
-  const comgr = generateModule("comgr", 3, ["lag", "magb"])
-  const efalg = generateModule("efalg", 3, [])
-  const bverI = generateModule("bverI", 3, ["ml", "magb"])
-  const exr = generateModule("exr", 3, [])
-  const simag = generateModule("simag", 3, [])
-  const wosc = generateModule("wosc", 3, ["efalg", "comgr", "bverI", "simag"])
-  return [comgr, efalg, bverI, exr, simag, wosc]
+  const comgr = generateModule("comgr", 3, ["oop2", "magb"], [], false, false, Profile.SPATIAL_COMP)
+  const efalg = generateModule("efalg", 3, ["mada", "eana", "algd2"], [], false, false, Profile.SPATIAL_COMP)
+  const bverI = generateModule("bverI", 3, ["vana", "magb"], [], false, false, Profile.SPATIAL_COMP)
+  const exr = generateModule("exr", 3, ["comgr", "ecnf", "uied"], [], false, false, Profile.SPATIAL_COMP)
+  const simag = generateModule("simag", 3, ["algd2"], [], false, false, Profile.SPATIAL_COMP)
+  const wosc = generateModule("wosc", 3, ["efalg", "bverI"], ["simag", "exr", "sdent"], false, false, Profile.SPATIAL_COMP)
+  // TODO(laniw): soft deps of wosc are actually an OR relationship. Find a beter solution for this. Conflicht arises in nested dependency calculation.
+  return {
+    requiredModule: "wosc",
+    minModules: 7,
+    modules: [comgr, efalg, bverI, exr, simag, wosc]
+  }
 }
 
 function generateAdditionalModules() {
   const noDepModules = [
-    "adxd", "blch", "cose", "cuie", "dawr", "dbarc", "dnead", "dsp", "dtpC",
-    "ebssd", "ecnf", "emoba", "esol", "fprod", "gict", "iot", "ism", "ivis",
-    "magb", "mpm", "ios", "pct1", "pct2", "pefu", "sna", "witec"
+    "adxd", "blch", "cose", "cuie", "dnead", "dtpC",
+    "ebssd", "ecnf", "emoba", "esol", "gict", "iot", "ism",
+    "magb", "mpm", "ios", "pct1", "pct2", "pefu", "witec"
   ].map(n => generateModule(n, 3, []))
+  const sna = generateModule("sna", 3, ["algd2"], [], false, false, Profile.DATA_SCI)
+  const dsp = generateModule("dsp", 3, ["oop2", "eana"], [], false, false, Profile.DATA_SCI)
+  const ivis = generateModule("ivis", 3, ["lag", "dtpC", "oop2"], [], false, false, Profile.DATA_SCI)
+  const dawr = generateModule("dawr", 3, ["dsp"], [], false, false, Profile.DATA_SCI)
+  const stads = generateModule("stads", 3, ["lag", "mgli"], [], false, false, Profile.DATA_SCI)
+  const fprod = generateModule("fprod", 3, ["fprog"], ["eipr"], false, false, Profile.WEB)
+  const dbarc = generateModule("dbarc", 3, ["edbs"], )
+
   const eipr = generateModule("eipr", 3, [], [], false, true)
   const perl = generateModule("perl", 3, ["oop2"])
   const pfcs = generateModule("pfcs", 3, ["lag", "eana"])
   const qpmC = generateModule("qpmC", 3, ["sepC"])
-  const sdent = generateModule("sdent", 3, ["comgr", "pfcs", "oop2", "ecnf"])
-  const stqm = generateModule("stqm", 3, ["swc"])
-  const uied = generateModule("uied", 3, ["dtpC", "ecnf"])
-  const webeC = generateModule("webeC", 3, ["oop2"], [], false, true)
-  const webpr = generateModule("webpr", 3, ["algd1", "oop2", "webeC"])
+  const sdent = generateModule("sdent", 3, ["comgr", "pfcs", "ecnf"], [], false, false, Profile.SPATIAL_COMP)
+  const stqm = generateModule("stqm", 3, ["swc"], [], false, false, Profile.WEB)
+  const uied = generateModule("uied", 3, ["dtpC"], [], false, false, Profile.SPATIAL_COMP)
+  const webeC = generateModule("webeC", 3, ["oop2", "edbs"], [], false, true, Profile.WEB)
+  const webpr = generateModule("webpr", 3, ["oop2"], ["algd1", "webeC"], false, false, Profile.WEB)
   return [
-    ...noDepModules, eipr, perl, pfcs, qpmC, sdent, stqm, uied, webeC, webpr
+    ...noDepModules, eipr, perl, pfcs, qpmC, sdent, stqm, uied, webeC, webpr, sna, dsp, ivis, dawr, stads, fprod, dbarc
   ]
 }
 
@@ -240,10 +276,10 @@ export const allModules = [
   ...modules.mainModules.baseModules.swe.modules,
   ...modules.mainModules.baseModules.ict.modules,
   ...modules.mainModules.baseModules.math.modules,
-  ...modules.mainModules.advancedModules.ict,
-  ...modules.mainModules.advancedModules.web,
-  ...modules.mainModules.advancedModules.dataSci,
-  ...modules.mainModules.advancedModules.spatialComp,
+  ...modules.mainModules.advancedModules.ict.modules,
+  ...modules.mainModules.advancedModules.web.modules,
+  ...modules.mainModules.advancedModules.dataSci.modules,
+  ...modules.mainModules.advancedModules.spatialComp.modules,
   ...modules.mainModules.additionalModules.modules, ...modules.bwl.modules,
   ...modules.comm.modules, ...modules.engl.modules, ...modules.gsw.modules
 ]

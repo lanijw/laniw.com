@@ -11,6 +11,7 @@
 	import {userData} from "../../../components/modulplanner/stores";
 	import Statistics from "../../../components/modulplanner/Statistics.svelte";
 	import Plan from "../../../components/modulplanner/Plan.svelte";
+	import {Status} from "../../../components/modulplanner/constants";
 
 	currPage.set(Page.MODULE_PLANNER);
 
@@ -38,11 +39,13 @@
 	        on:click={() => currentSection = Section.STATISTICS}>
 		Statistiken
 	</button>
-	<button class="d-tab d-tab-lg d-tab-lifted font-bold"
-	        class:d-tab-active={currentSection === Section.PLAN}
-	        on:click={() => currentSection = Section.PLAN}>
-		Planung
-	</button>
+	{#if userDataVal.filter(s => s.status !== Status.NOT_TAKEN).length}
+		<button class="d-tab d-tab-lg d-tab-lifted font-bold"
+		        class:d-tab-active={currentSection === Section.PLAN}
+		        on:click={() => currentSection = Section.PLAN}>
+			Planung
+		</button>
+	{/if}
 </div>
 
 
@@ -65,25 +68,25 @@
 								<div class="flex flex-row">
 									<div class="basis-1/4">
 										<ModuleGroupContainer>
-											<ModuleChipCollection modules={modules.mainModules.advancedModules.ict}
+											<ModuleChipCollection modules={modules.mainModules.advancedModules.ict.modules}
 											                      {userDataVal}/>
 										</ModuleGroupContainer>
 									</div>
 									<div class="basis-1/4">
 										<ModuleGroupContainer>
-											<ModuleChipCollection modules={modules.mainModules.advancedModules.web}
+											<ModuleChipCollection modules={modules.mainModules.advancedModules.web.modules}
 											                      {userDataVal}/>
 										</ModuleGroupContainer>
 									</div>
 									<div class="basis-1/4">
 										<ModuleGroupContainer>
-											<ModuleChipCollection modules={modules.mainModules.advancedModules.dataSci}
+											<ModuleChipCollection modules={modules.mainModules.advancedModules.dataSci.modules}
 											                      {userDataVal}/>
 										</ModuleGroupContainer>
 									</div>
 									<div class="basis-1/4">
 										<ModuleGroupContainer>
-											<ModuleChipCollection modules={modules.mainModules.advancedModules.spatialComp}
+											<ModuleChipCollection modules={modules.mainModules.advancedModules.spatialComp.modules}
 											                      {userDataVal}/>
 										</ModuleGroupContainer>
 									</div>
