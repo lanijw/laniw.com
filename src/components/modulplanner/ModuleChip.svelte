@@ -28,7 +28,7 @@
 	}
 
 	function depsMatter(userDataVal, id) {
-		const currModuleStatus = userDataVal.find(s => s.id === id)
+		const currModuleStatus = userDataVal.s.find(s => s.id === id)
 		return currModuleStatus ? currModuleStatus.status === Status.MARKED : false
 	}
 
@@ -39,11 +39,11 @@
 	}
 
 	function plannedDeps(userDataVal, deps) {
-		if (!userDataVal.length) {
+		if (!userDataVal.s.length) {
 			return []
 		}
 		return deps.filter(d => {
-			const depStatus = userDataVal.find(s => s.id === d).status;
+			const depStatus = userDataVal.s.find(s => s.id === d).status;
 			return depStatus ===
 					Status.CURRENT ||
 					depStatus ===

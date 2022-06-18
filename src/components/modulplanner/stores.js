@@ -19,19 +19,19 @@ export async function updateModuleStatus(status) {
   userData.update(v => {
     if (!v) return;
 
-    const otherModules = v.filter(m => m.id !== status.id)
-    if (otherModules.length < v.length - 1) {
+    const otherModules = v.s.filter(m => m.id !== status.id)
+    if (otherModules.length < v.s.length - 1) {
       console.warn(`Expected 0 or 1 matches but found ${v.length -
       otherModules.length} matches. Discarding additional matches.`)
     }
-    return [...otherModules, status]
+    return {...v, s: [...otherModules, status]}
   })
 }
 
 export function getModuleStatusById(storeValue, id) {
   if (!id) return;
 
-  const matchingModules = storeValue.filter(m => m.id === id)
+  const matchingModules = storeValue.s.filter(m => m.id === id)
   if (matchingModules.length) {
     if (matchingModules.length > 1) {
       console.warn(`Expected 0 or 1 matches but found ${matchingModules.length} matches. Proceeding with first match.`)
@@ -42,4 +42,7 @@ export function getModuleStatusById(storeValue, id) {
 }
 
 // TODO(laniw): Add tag for API version to ensure backwards compatibility.
-export const userData = writable([])
+export const userData = writable({
+  v: "1.0.0",
+  s: []
+})
