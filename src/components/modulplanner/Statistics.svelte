@@ -16,17 +16,51 @@
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
-	const mainIds = [
-		...modules.mainModules.baseModules.prog.modules,
-		...modules.mainModules.baseModules.swe.modules,
-		...modules.mainModules.baseModules.ict.modules,
-		...modules.mainModules.baseModules.math.modules,
+	const advancedIds = [
 		...modules.mainModules.advancedModules.ict,
 		...modules.mainModules.advancedModules.web,
 		...modules.mainModules.advancedModules.dataSci,
 		...modules.mainModules.advancedModules.spatialComp,
-		...modules.mainModules.additionalModules.modules
 	].map(m => m.id)
+	const advancedCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const progIds = modules.mainModules.baseModules.prog.modules.map(m => m.id)
+	const progCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, progIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const sweIds = modules.mainModules.baseModules.swe.modules.map(m => m.id)
+	const sweCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, sweIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const ictIds = modules.mainModules.baseModules.ict.modules.map(m => m.id)
+	const ictCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, ictIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const mathIds = modules.mainModules.baseModules.math.modules.map(m => m.id)
+	const mathCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, mathIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const additionalIds = modules.mainModules.additionalModules.modules.map(m => m.id)
+	const additionalCredits = userDataValue
+			.filter(s => isModuleStatusCompletedInGroup(s, additionalIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+
+	const mainIds = [
+		...advancedIds, ...progIds, ...sweIds, ...ictIds, ...mathIds,
+		...additionalIds
+	]
 	const mainCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, mainIds))
 			.map(moduleStatusToCredits)
@@ -47,6 +81,36 @@
 			title: "Fachausbildungscredits",
 			credits: mainCredits,
 			minCredits: modules.mainModules.minCredits
+		},
+		{
+			title: "Programmiercredits",
+			credits: progCredits,
+			minCredits: modules.mainModules.baseModules.prog.minCredits
+		},
+		{
+			title: "SWE Credits",
+			credits: sweCredits,
+			minCredits: modules.mainModules.baseModules.swe.minCredits
+		},
+		{
+			title: "ICT Credits",
+			credits: ictCredits,
+			minCredits: modules.mainModules.baseModules.ict.minCredits
+		},
+		{
+			title: "Mathematikcredits",
+			credits: mathCredits,
+			minCredits: modules.mainModules.baseModules.math.minCredits
+		},
+		{
+			title: "Fachvertiefungscredits",
+			credits: advancedCredits,
+			minCredits: modules.mainModules.advancedModules.minCredits
+		},
+		{
+			title: "Fachergänzungscredits",
+			credits: additionalCredits,
+			minCredits: modules.mainModules.additionalModules.minCredits
 		},
 	]
 
@@ -69,7 +133,8 @@
 	}
 
 	function formatCreditPercentage(credits, minCredits) {
-		return Math.round(10 * 100 * (credits / minCredits)) / 10
+		const result = Math.round(10 * 100 * (credits / minCredits)) / 10
+		return minCredits === 0 ? "&infin;" : result
 	}
 </script>
 
@@ -77,12 +142,42 @@
 	<h1 class="text-4xl font-bold">Statistiken</h1>
 	<h2 class="text-3xl font-semibold mt-5">Studiumsfortschritt</h2>
 
-	<div class="d-stats shadow">
-		{#each completedCredits as completedStat}
+	<div class="d-stats shadow m-4">
+		{#each completedCredits.slice(1, 3) as completedStat}
 			<div class="d-stat">
 				<div class="d-stat-title">{completedStat.title}</div>
 				<div class="d-stat-value">
-					{formatCreditPercentage(completedStat.credits,
+					{@html formatCreditPercentage(completedStat.credits,
+							completedStat.minCredits)}%
+				</div>
+				<div class="d-stat-desc">
+					{completedStat.credits}/{completedStat.minCredits} Credits absolviert
+				</div>
+			</div>
+		{/each}
+	</div>
+
+	<div class="d-stats shadow m-4">
+		{#each completedCredits.slice(3, 7) as completedStat}
+			<div class="d-stat">
+				<div class="d-stat-title">{completedStat.title}</div>
+				<div class="d-stat-value">
+					{@html formatCreditPercentage(completedStat.credits,
+							completedStat.minCredits)}%
+				</div>
+				<div class="d-stat-desc">
+					{completedStat.credits}/{completedStat.minCredits} Credits absolviert
+				</div>
+			</div>
+		{/each}
+	</div>
+
+	<div class="d-stats shadow m-4">
+		{#each completedCredits.slice(7, 9) as completedStat}
+			<div class="d-stat">
+				<div class="d-stat-title">{completedStat.title}</div>
+				<div class="d-stat-value">
+					{@html formatCreditPercentage(completedStat.credits,
 							completedStat.minCredits)}%
 				</div>
 				<div class="d-stat-desc">
