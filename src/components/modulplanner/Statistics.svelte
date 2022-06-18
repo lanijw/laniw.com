@@ -1,16 +1,16 @@
 <script>
 	import {get} from "svelte/store";
 	import {userData} from "./stores.js";
-	import {modules, allModules} from "./modules.js";
+	import {allModules, modules} from "./modules.js";
 	import {Status} from "./constants.js";
 
 	const userDataValue = get(userData)
-	
+
 	const totalCredits = userDataValue
 			.filter(s => s.status === Status.COMPLETED || s.fulfilled)
 			.map(s => allModules.find(m => m.id === s.id).credits)
 			.reduce(sum, 0)
-	const plannedCredits = userDataValue.filter(s => s.status !==
+	const plannedTotalCredits = userDataValue.filter(s => s.status !==
 			Status.NOT_TAKEN)
 			.map(moduleStatusToCredits)
 			.reduce((a, b) => a + b, 0)
@@ -20,10 +20,18 @@
 			.filter(s => isModuleStatusCompletedInGroup(s, projectIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
+	const plannedProjectCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, projectIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
 
 	const progIds = modules.mainModules.baseModules.prog.modules.map(m => m.id)
 	const progCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, progIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+	const plannedProgCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, progIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
@@ -32,16 +40,28 @@
 			.filter(s => isModuleStatusCompletedInGroup(s, sweIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
+	const plannedSweCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, sweIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
 
 	const ictIds = modules.mainModules.baseModules.ict.modules.map(m => m.id)
 	const ictCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, ictIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
+	const plannedIctCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, ictIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
 
 	const mathIds = modules.mainModules.baseModules.math.modules.map(m => m.id)
 	const mathCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, mathIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+	const plannedMathCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, mathIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
@@ -55,10 +75,18 @@
 			.filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
+	const plannedAdvancedCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, advancedIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
 
 	const additionalIds = modules.mainModules.additionalModules.modules.map(m => m.id)
 	const additionalCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, additionalIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+	const plannedAdditionalCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, additionalIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
@@ -68,6 +96,10 @@
 	]
 	const mainCredits = userDataValue
 			.filter(s => isModuleStatusCompletedInGroup(s, mainIds))
+			.map(moduleStatusToCredits)
+			.reduce(sum, 0)
+	const plannedMainCredits = userDataValue
+			.filter(s => isModuleStatusPlannedInGroup(s, mainIds))
 			.map(moduleStatusToCredits)
 			.reduce(sum, 0)
 
@@ -119,6 +151,54 @@
 		},
 	]
 
+	const plannedCredits = [
+		{
+			title: "Credits",
+			credits: plannedTotalCredits,
+			minCredits: modules.minCredits
+		},
+		{
+			title: "Projektcredits",
+			credits: plannedProjectCredits,
+			minCredits: modules.projects.minCredits
+		},
+		{
+			title: "Fachausbildungscredits",
+			credits: plannedMainCredits,
+			minCredits: modules.mainModules.minCredits
+		},
+		{
+			title: "Programmiercredits",
+			credits: plannedProgCredits,
+			minCredits: modules.mainModules.baseModules.prog.minCredits
+		},
+		{
+			title: "SWE Credits",
+			credits: plannedSweCredits,
+			minCredits: modules.mainModules.baseModules.swe.minCredits
+		},
+		{
+			title: "ICT Credits",
+			credits: plannedIctCredits,
+			minCredits: modules.mainModules.baseModules.ict.minCredits
+		},
+		{
+			title: "Mathematikcredits",
+			credits: plannedMathCredits,
+			minCredits: modules.mainModules.baseModules.math.minCredits
+		},
+		{
+			title: "Fachvertiefungscredits",
+			credits: plannedAdvancedCredits,
+			minCredits: modules.mainModules.advancedModules.minCredits
+		},
+		{
+			title: "Fachergänzungscredits",
+			credits: plannedAdditionalCredits,
+			minCredits: modules.mainModules.additionalModules.minCredits
+		},
+	]
+
 	function sum(a, b) {
 		return a + b
 	}
@@ -126,6 +206,10 @@
 	function isModuleStatusCompletedInGroup(s, ids) {
 		return (s.status === Status.COMPLETED || s.fulfilled) &&
 				ids.includes(s.id)
+	}
+
+	function isModuleStatusPlannedInGroup(s, ids) {
+		return s.status !== Status.NOT_TAKEN && ids.includes(s.id)
 	}
 
 	function moduleStatusToCredits(s) {
@@ -187,11 +271,51 @@
 		{/each}
 	</div>
 
-	<h2 class="text-3xl font-semibold mt-5">Studiumsplan</h2>
-	<!-- TODO(laniw): Add indicator of credits over max -->
-	geplante Credits: {plannedCredits}/180
-	<progress class="d-progress d-progress-primary w-56"
-	          value={plannedCredits}
-	          max="180"></progress>
+	<h2 class="text-3xl font-semibold mt-5">Studiumplanung</h2>
+
+	<div class="d-stats shadow m-4">
+		{#each plannedCredits.slice(1, 3) as completedStat}
+			<div class="d-stat">
+				<div class="d-stat-title">Geplante {completedStat.title}</div>
+				<div class="d-stat-value">
+					{@html formatCreditPercentage(completedStat.credits,
+							completedStat.minCredits)}%
+				</div>
+				<div class="d-stat-desc">
+					{completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+				</div>
+			</div>
+		{/each}
+	</div>
+
+	<div class="d-stats shadow m-4">
+		{#each plannedCredits.slice(3, 7) as completedStat}
+			<div class="d-stat">
+				<div class="d-stat-title">Geplante {completedStat.title}</div>
+				<div class="d-stat-value">
+					{@html formatCreditPercentage(completedStat.credits,
+							completedStat.minCredits)}%
+				</div>
+				<div class="d-stat-desc">
+					{completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+				</div>
+			</div>
+		{/each}
+	</div>
+
+	<div class="d-stats shadow m-4">
+		{#each plannedCredits.slice(7, 9) as completedStat}
+			<div class="d-stat">
+				<div class="d-stat-title">Geplante {completedStat.title}</div>
+				<div class="d-stat-value">
+					{@html formatCreditPercentage(completedStat.credits,
+							completedStat.minCredits)}%
+				</div>
+				<div class="d-stat-desc">
+					{completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+				</div>
+			</div>
+		{/each}
+	</div>
 
 </div>
