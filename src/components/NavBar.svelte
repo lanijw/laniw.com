@@ -33,7 +33,14 @@
 		reader.addEventListener("load", () => {
 			files = [];
 			fileContent = reader.result;
-			userData.update(_ => JSON.parse(fileContent))
+			const importedUserData = JSON.parse(fileContent);
+			if ("v" in importedUserData) {
+				userData.update(_ => importedUserData)
+			} else {
+				// TODO(laniw): Use a modal instead of an alert box.
+				alert(
+						"Your data was exported too early in this product's development. Please reenter your data by hand.")
+			}
 		}, false)
 		reader.readAsText(files[0])
 	}
