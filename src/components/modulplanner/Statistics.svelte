@@ -5,10 +5,15 @@
 	import {Status} from "./constants.js";
 
 	const userDataValue = get(userData)
+	
 	const totalCredits = userDataValue
 			.filter(s => s.status === Status.COMPLETED || s.fulfilled)
 			.map(s => allModules.find(m => m.id === s.id).credits)
 			.reduce(sum, 0)
+	const plannedCredits = userDataValue.filter(s => s.status !==
+			Status.NOT_TAKEN)
+			.map(moduleStatusToCredits)
+			.reduce((a, b) => a + b, 0)
 
 	const projectIds = modules.projects.modules.map(m => m.id)
 	const projectCredits = userDataValue
@@ -113,11 +118,6 @@
 			minCredits: modules.mainModules.additionalModules.minCredits
 		},
 	]
-
-	const plannedCredits = userDataValue.filter(s => s.status !==
-			Status.NOT_TAKEN)
-			.map(moduleStatusToCredits)
-			.reduce((a, b) => a + b, 0)
 
 	function sum(a, b) {
 		return a + b
