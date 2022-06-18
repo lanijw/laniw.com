@@ -9,7 +9,7 @@
 	export let status;
 	export let secondTry = false;
 	export let grade;
-	export let fulfilled;
+	export let fulfilled = false;
 	export let sem;
 	export let missingDeps
 
@@ -22,13 +22,9 @@
 	}
 
 	let semesterIndication = false;
-	$: clearSemesterIndication(semesterIndication)
+	$: if (semesterIndication) sem = undefined
 
-	function clearSemesterIndication(semesterIndication) {
-		if (semesterIndication) {
-			sem = undefined;
-		}
-	}
+	$: if (fulfilled) grade = undefined
 </script>
 
 <input type="checkbox" id="edit-modal-{module.name}" class="d-modal-toggle"/>
@@ -101,91 +97,95 @@
 			</StatusRadioButton>
 		</div>
 
-		{#if status === Status.COMPLETED || status === Status.FAILED}
-			<div class="d-form-control pb-2">
-				<label class="d-label cursor-pointer inline">
-					<div class="flex gap-x-2">
-						<span class="d-label-text flex-none">1 Versuch</span>
-						<input type="checkbox"
-						       class="d-toggle flex-none"
-						       class:bg-green-700={status === Status.COMPLETED}
-						       class:bg-red-700={status === Status.FAILED}
-						       bind:checked={secondTry}/>
-						<span class="d-label-tex flex-none">2 Versuche</span>
-						<span class="flex-auto text-right">
+		<div class="h-48">
+			{#if status === Status.COMPLETED || status === Status.FAILED}
+				<div class="d-form-control pb-2">
+					<label class="d-label cursor-pointer inline">
+						<div class="flex gap-x-2">
+							<span class="d-label-text flex-none">1 Versuch</span>
+							<input type="checkbox"
+							       class="d-toggle flex-none"
+							       class:bg-green-700={status === Status.COMPLETED}
+							       class:bg-red-700={status === Status.FAILED}
+							       bind:checked={secondTry}/>
+							<span class="d-label-tex flex-none">2 Versuche</span>
+							<span class="flex-auto text-right">
 							aufgewandte Credits: {module.credits * (secondTry ? 2 : 1)}
 						</span>
-					</div>
-				</label>
-			</div>
-		{/if}
-		{#if status ===
-		Status.CURRENT ||
-		status ===
-		Status.MARKED ||
-		status ===
-		Status.COMPLETED}
-			<div class="flex gap-x-2">
-				<div class="flex-initial d-form-control pb-3">
-					<label class="d-label d-label-text cursor-pointer"
-					       for="sem-indication-toggle">Semesterangabe</label>
-					<input id="sem-indication-toggle"
-					       type="checkbox"
-					       class="d-toggle"
-					       bind:checked={semesterIndication}/>
-				</div>
-				{#if semesterIndication}
-					<div class="flex-auto d-form-control w-full max-w-xs">
-						<label for="sem-range" class="d-label d-label-text">
-							Semester
-						</label>
-						<input type="range"
-						       min="1"
-						       max="12"
-						       bind:value={sem}
-						       class="d-range d-range-sm"
-						       step="1"
-						       id="sem-range"/>
-						<div class="w-full grid grid-cols-12 text-xs gap-2 pl-2">
-							{#each Array.from(Array(12).keys()).map(v => 1 + v) as semester}
-								<span>{semester}</span>
-							{/each}
 						</div>
-					</div>
-				{/if}
-			</div>
-		{/if}
-		{#if status === Status.COMPLETED}
-			<div class="flex flex-row">
-				<div class="d-form-control w-full max-w-xs inline-block flex-none">
-					<label for="grade-range" class="d-label d-label-text">
-						Note
 					</label>
-					<input type="range"
-					       min="4"
-					       max="6"
-					       bind:value={grade}
-					       class="d-range d-range-sm"
-					       step=".5"
-					       id="grade-range"
-					       disabled={fulfilled}/>
-					<div class="w-full flex justify-between text-xs px-2">
-						{#each Array.from(Array(5).keys()).map(v => 4 + v * .5) as grade}
-							<span>{grade}</span>
-						{/each}
+				</div>
+			{/if}
+			{#if status ===
+			Status.CURRENT ||
+			status ===
+			Status.MARKED ||
+			status ===
+			Status.COMPLETED}
+				<div class="flex gap-x-2">
+					<div class="flex-initial d-form-control pb-3">
+						<label class="d-label d-label-text cursor-pointer"
+						       for="sem-indication-toggle">Semesterangabe</label>
+						<input id="sem-indication-toggle"
+						       type="checkbox"
+						       class="d-toggle"
+						       bind:checked={semesterIndication}/>
 					</div>
+					{#if semesterIndication}
+						<div class="flex-auto d-form-control w-full max-w-xs">
+							<label for="sem-range" class="d-label d-label-text">
+								Semester
+							</label>
+							<input type="range"
+							       min="1"
+							       max="12"
+							       bind:value={sem}
+							       class="d-range d-range-sm"
+							       step="1"
+							       id="sem-range"/>
+							<div class="w-full grid grid-cols-12 text-xs gap-2 pl-2">
+								{#each Array.from(Array(12).keys()).map(v => 1 + v) as semester}
+									<span>{semester}</span>
+								{/each}
+							</div>
+						</div>
+					{/if}
 				</div>
-				<div class="d-form-control flex-none ml-5">
-					<label class="d-label d-label-text cursor-pointer"
-					       for="fulfilled-toggle">
-						Erf&uuml;llt
-					</label>
-					<input type="checkbox"
-					       bind:checked={fulfilled}
-					       class="d-toggle"
-					       id="fulfilled-toggle"/>
+			{/if}
+			{#if status === Status.COMPLETED}
+				<div class="flex gap-x-2">
+					<div class="d-form-control flex-none">
+						<label class="d-label d-label-text cursor-pointer"
+						       for="fulfilled-toggle">
+							Erf&uuml;llt
+						</label>
+						<input type="checkbox"
+						       bind:checked={fulfilled}
+						       class="d-toggle"
+						       id="fulfilled-toggle"/>
+					</div>
+					{#if !fulfilled}
+						<div class="d-form-control w-full max-w-xs inline-block flex-none">
+							<label for="grade-range" class="d-label d-label-text">
+								Note
+							</label>
+							<input type="range"
+							       min="4"
+							       max="6"
+							       bind:value={grade}
+							       class="d-range d-range-sm"
+							       step=".5"
+							       id="grade-range"/>
+							<div class="w-full flex justify-between text-xs px-2">
+								{#each Array.from(Array(5).keys())
+										.map(v => 4 + v * .5) as grade}
+									<span>{grade}</span>
+								{/each}
+							</div>
+						</div>
+					{/if}
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
 	</label>
 </label>
