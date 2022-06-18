@@ -25,7 +25,7 @@
 	}
 
 	let semesterIndication = !(sem === undefined || sem === null);
-	$: {
+	function updateSem() {
 		if (semesterIndication) {
 			sem = 1
 		} else {
@@ -141,7 +141,8 @@
 						<input id="sem-indication-toggle"
 						       type="checkbox"
 						       class="d-toggle"
-						       bind:checked={semesterIndication}/>
+						       bind:checked={semesterIndication}
+						on:change={updateSem}/>
 					</div>
 					{#if semesterIndication}
 						<div class="flex-auto d-form-control w-full max-w-xs">
