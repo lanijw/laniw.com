@@ -19,8 +19,8 @@
 				I try to create the best applications possible with the smallest amount
 				of errors possible, but some bugs still slip through my fingers. If you
 				find a bug that you would like me to fix you can either create a pull
-				request to my <a class="d-link d-link-primary"
-				                 href="https://github.com/lanijw/laniw.com">GitHub</a>,
+				request to <a class="d-link d-link-primary"
+				              href="https://github.com/lanijw/laniw.com">my GitHub</a>,
 				or create a <a class="d-link d-link-primary"
 				               href="https://github.com/lanijw/laniw.com/issues/new">GitHub
 				issue</a>.
@@ -31,7 +31,10 @@
 				projects I would be happy to hear from you in a
 				<a class="d-link d-link-primary"
 				   href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull
-					request</a>. ;)
+					request</a>. I tend to list all current features/bugs I'm working on
+				in <a href="https://github.com/lanijw/laniw.com/issues">my issues</a>.
+				If there aren't any issues just create an issue and I'm sure I can find
+				you something to do.
 			</p>
 		</div>
 	</div>
