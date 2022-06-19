@@ -6,7 +6,7 @@
 	<input id="help-drawer" type="checkbox" class="d-drawer-toggle"/>
 	<div class="d-drawer-content">
 		<label for="help-drawer"
-		       class="drawer-button btn btn-primary fixed top-28 right-16 w-10 z-50 bg-slate-200 hover:bg-slate-900 shadow-md rounded-full cursor-pointer">
+		       class="drawer-button btn btn-primary fixed lg:top-28 top-20 lg:right-16 right-4 w-10 z-50 bg-slate-200 hover:bg-slate-900 shadow-md rounded-full cursor-pointer">
 			<HelpIcon/>
 		</label>
 		<slot/>
