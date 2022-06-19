@@ -8,6 +8,8 @@
 	import ChevronDownIcon from "./icons/ChevronDownIcon.svelte";
 	import GitHubIcon from "./icons/GitHubIcon.svelte";
 	import {Page} from "../constants.js";
+	import MenuIcon from "./icons/MenuIcon.svelte";
+	import ChevronRightIcon from "./icons/ChevronRightIcon.svelte";
 
 	export let currPageVal;
 
@@ -55,6 +57,46 @@
 
 <div class="d-navbar bg-base-100 shadow-lg sticky z-50">
 	<div class="d-navbar-start">
+		<div class="d-dropdown">
+			<label tabindex="0" class="d-btn d-btn-ghost lg:hidden">
+				<MenuIcon/>
+			</label>
+			<ul tabindex="0"
+			    class="d-menu d-menu-compact d-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+				<li><a href="/">Home</a></li>
+				<li tabindex="0">
+					<a class="justify-between">
+						<span class:font-semibold={currPageVal === Page.MODULE_PLANNER}>
+							FHNW
+						</span>
+						<ChevronRightIcon/>
+					</a>
+					<ul class="p-2 shadow bg-base-100 rounded-box">
+						<li>
+							<a href="/fhnw/modulplanner"
+							   class:font-semibold={currPageVal === Page.MODULE_PLANNER}>
+								Modulplanner
+							</a>
+						</li>
+					</ul>
+				</li>
+
+				{#if currPageVal === Page.MODULE_PLANNER}
+					<li class="mt-10">
+						<label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
+							Daten importieren
+						</label>
+					</li>
+					<li>
+						<a href={userDataDownload}
+						   download={downloadFileName()}
+						   class="d-btn d-btn-ghost">
+							Daten exportieren
+						</a>
+					</li>
+				{/if}
+			</ul>
+		</div>
 		<a href="/" class="h-12 rounded-lg hover:bg-base-200 p-1">
 			<LaniwIcon/>
 		</a>
@@ -78,21 +120,23 @@
 	</div>
 	<div class="d-navbar-end">
 		{#if currPageVal === Page.MODULE_PLANNER}
-			<label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
-				Daten importieren
-				<UploadIcon/>
-			</label>
-			<input type="file"
-			       accept=".json"
-			       id="moduleplanner_file-input"
-			       class="hidden"
-			       bind:files>
-			<a href={userDataDownload}
-			   download={downloadFileName()}
-			   class="d-btn d-btn-ghost">
-				Daten exportieren
-				<DownloadIcon/>
-			</a>
+			<div class="hidden lg:flex">
+				<label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
+					Daten importieren
+					<UploadIcon/>
+				</label>
+				<input type="file"
+				       accept=".json"
+				       id="moduleplanner_file-input"
+				       class="hidden"
+				       bind:files>
+				<a href={userDataDownload}
+				   download={downloadFileName()}
+				   class="d-btn d-btn-ghost">
+					Daten exportieren
+					<DownloadIcon/>
+				</a>
+			</div>
 		{/if}
 
 		<a class="h-12 rounded-lg hover:bg-base-200 p-1"
