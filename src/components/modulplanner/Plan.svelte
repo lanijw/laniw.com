@@ -1,4 +1,5 @@
 <script>
+	import {fade} from 'svelte/transition';
 	import {onDestroy} from "svelte";
 	import ModuleChip from "./ModuleChip.svelte";
 	import {allModules} from "./modules.js";
@@ -19,7 +20,7 @@
 	})
 </script>
 
-<div class="container mx-auto mt-3">
+<div class="container mx-auto mt-3" transition:fade={{duration: 200}}>
 	<h1 class="text-4xl font-bold">Studiumsplanung</h1>
 	{#each semesters as semester}
 		{#if semester.modules.length}
