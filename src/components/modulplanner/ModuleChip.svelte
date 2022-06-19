@@ -4,8 +4,6 @@
 	import {getModuleStatusById} from "./stores";
 	import {Status} from "./constants";
 
-	// TODO(laniw): Show that module chip is part of profile group when filter is selected.
-
 	export let module;
 	export let userDataVal;
 	export let fromPlan = false;
@@ -35,7 +33,6 @@
 	function hasPlannedDepModules(userDataVal, id) {
 		const deps = depModules(id)
 		return deps.length === plannedDeps(userDataVal, deps).length
-		// TODO(laniw): Add check for right order of dependencies in semesters.
 	}
 
 	function plannedDeps(userDataVal, deps) {

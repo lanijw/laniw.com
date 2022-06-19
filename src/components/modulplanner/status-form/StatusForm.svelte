@@ -4,7 +4,6 @@
 	import {onMount} from "svelte";
 	import {ModuleStatus, updateModuleStatus} from "../stores";
 
-	// TODO(laniw): Pass status object instead of destructuring to avoid overwriting state repeatedly.
 	export let module;
 	export let id;
 	export let status;

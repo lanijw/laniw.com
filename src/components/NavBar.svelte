@@ -37,7 +37,6 @@
 			if ("v" in importedUserData) {
 				userData.update(_ => importedUserData)
 			} else {
-				// TODO(laniw): Use a modal instead of an alert box.
 				alert(
 						"Your data was exported too early in this product's development. Please reenter your data by hand.")
 			}

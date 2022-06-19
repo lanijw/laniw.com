@@ -1,5 +1,3 @@
-// TODO(laniw): Verify this using reference material.
-
 export const Profile = {
   NONE: 0,
   ICT: 1,
@@ -196,7 +194,6 @@ function generateAdvancedSpatialCompModules() {
   const exr = generateModule("exr", 3, ["comgr", "ecnf", "uied"], [], false, false, Profile.SPATIAL_COMP)
   const simag = generateModule("simag", 3, ["algd2"], [], false, false, Profile.SPATIAL_COMP)
   const wosc = generateModule("wosc", 3, ["efalg", "bverI"], ["simag", "exr", "sdent"], false, false, Profile.SPATIAL_COMP)
-  // TODO(laniw): soft deps of wosc are actually an OR relationship. Find a beter solution for this. Conflicht arises in nested dependency calculation.
   return {
     requiredModule: "wosc",
     minModules: 7,

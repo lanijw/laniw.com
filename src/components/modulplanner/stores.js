@@ -41,7 +41,6 @@ export function getModuleStatusById(storeValue, id) {
   return ModuleStatus.defaultInstance(id);
 }
 
-// TODO(laniw): Add tag for API version to ensure backwards compatibility.
 export const userData = writable({
   v: "1.0.0",
   s: []
