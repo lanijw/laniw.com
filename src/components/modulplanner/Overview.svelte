@@ -8,7 +8,7 @@
 	export let userDataVal;
 </script>
 
-<div class="container mx-auto mt-5" transition:fade={{duration: 200}}>
+<div class="container mx-auto mt-5">
 	<div class="flex flex-row">
 		<div class="basis-1/7">
 			<ModuleGroup title="Projekte"

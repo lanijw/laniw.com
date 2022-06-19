@@ -6,7 +6,8 @@
 	import Statistics from "../../../components/modulplanner/Statistics.svelte";
 	import Plan from "../../../components/modulplanner/Plan.svelte";
 	import {Status} from "../../../components/modulplanner/constants";
-	import Overview from "../../../components/modulplanner/Overview.svelte";
+	import Loader from "../../../components/Loader.svelte";
+	import {Jellyfish} from "svelte-loading-spinners";
 
 	currPage.set(Page.MODULE_PLANNER);
 
@@ -21,6 +22,10 @@
 	}
 
 	let currentSection = Section.OVERVIEW;
+
+	function importOverview() {
+		return import ("../../../components/modulplanner/Overview.svelte");
+	}
 </script>
 
 <div class="d-tabs flex justify-center mt-10">
@@ -45,12 +50,12 @@
 	{/if}
 </div>
 
-<!--<p slot="fallback">
-	loading...
-</p>-->
-
 {#if currentSection === Section.OVERVIEW}
-	<Overview {userDataVal}/>
+	<Loader this={importOverview} {userDataVal}>
+		<div slot="fallback" class="h-96 center-everywhere">
+			<Jellyfish size="200" color="#41D6A9" unit="px" duration="1.5s"/>
+		</div>
+	</Loader>
 {:else if currentSection === Section.STATISTICS}
 	<Statistics/>
 {:else if currentSection === Section.PLAN}

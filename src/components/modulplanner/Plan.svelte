@@ -20,7 +20,7 @@
 	})
 </script>
 
-<div class="container mx-auto mt-3" transition:fade={{duration: 200}}>
+<div class="container mx-auto mt-3">
 	<h1 class="text-4xl font-bold">Studiumsplanung</h1>
 	{#each semesters as semester}
 		{#if semester.modules.length}
