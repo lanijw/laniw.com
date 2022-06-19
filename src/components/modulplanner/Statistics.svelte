@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition';
 	import {get} from "svelte/store";
 	import {userData} from "./stores.js";
 	import {allModules, modules, Profile} from "./modules.js";
@@ -289,7 +290,7 @@
 	}
 </script>
 
-<div class="container mx-auto mt-8">
+<div class="container mx-auto mt-8" transition:fade={{duration: 200}}>
 	<h1 class="text-4xl font-bold">Statistiken</h1>
 	<h2 class="text-3xl font-semibold mt-5">Studiumsfortschritt</h2>
 

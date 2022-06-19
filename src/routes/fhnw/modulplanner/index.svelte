@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition';
 	import ModuleGroup from "../../../components/modulplanner/ModuleGroup.svelte";
 	import {modules} from "../../../components/modulplanner/modules";
 	import ModuleGroupContainer
@@ -52,7 +53,7 @@
 
 
 {#if currentSection === Section.OVERVIEW}
-	<div class="container mx-auto mt-5">
+	<div class="container mx-auto mt-5" transition:fade={{duration: 200}}>
 		<div class="flex flex-row">
 			<div class="basis-1/7">
 				<ModuleGroup title="Projekte"
