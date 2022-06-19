@@ -23,7 +23,8 @@
 	<h1 class="text-4xl font-bold">Studiumsplanung</h1>
 	{#each semesters as semester}
 		{#if semester.modules.length}
-			<h2 class="text-3xl font-semibold">Semester {semester.n}</h2>
+			<h2 class="text-3xl font-semibold inline">Semester {semester.n}</h2>
+			<span>{semester.modules.map(m => m.module.credits).reduce((a,b) => a+b, 0)} Credits</span>
 			<div class="mb-5 grid grid-cols-12 gap-4">
 				{#each semester.modules as module}
 					<div>
