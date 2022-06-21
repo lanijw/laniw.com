@@ -25,8 +25,8 @@
           <div class="col-span-5 lg:col-span-4">
             <ModuleGroupContainer borderColor="border-2 border-blue-700">
               <span class="text-l font-semibold">Fachvertiefung</span>
-              <div class="grid grid-cols-4">
-                <div class="col-span-2 lg:col-span-1">
+              <div class="grid grid-cols-2 lg:grid-cols-4">
+                <div>
                   <ModuleGroupContainer>
                     <span class="lg:hidden">ICT</span>
                     <ModuleChipCollection
@@ -34,7 +34,7 @@
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div class="col-span-2 lg:col-span-1">
+                <div>
                   <ModuleGroupContainer>
                     <span class="lg:hidden">Data Science</span>
                     <ModuleChipCollection
@@ -43,7 +43,7 @@
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div class="col-span-2 lg:col-span-1">
+                <div>
                   <ModuleGroupContainer>
                     <span class="lg:hidden">Spatial Computing</span>
                     <ModuleChipCollection
@@ -52,7 +52,7 @@
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div class="col-span-2 lg:col-span-1">
+                <div>
                   <ModuleGroupContainer>
                     <span class="lg:hidden">Web</span>
                     <ModuleChipCollection
