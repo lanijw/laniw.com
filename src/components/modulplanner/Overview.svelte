@@ -10,37 +10,37 @@
 </script>
 
 <div class="container mx-auto mt-5">
-  <div class="flex flex-row">
-    <div class="basis-1/7">
+  <div class="grid grid-cols-7">
+    <div class="col-span-7 lg:col-span-1 order-2 lg:order-1">
       <ModuleGroup
         title="Projekte"
         modules={modules.projects.modules}
         {userDataVal}
         borderColor="border-2 border-cyan-600" />
     </div>
-    <div class="basis-5/7">
+    <div class="col-span-7 lg:col-span-5 order-1">
       <ModuleGroupContainer borderColor="border-2 border-blue-700">
         <span class="text-l font-semibold">Fachausbildung</span>
-        <div class="flex flex-row">
-          <div class="basis-4/5">
+        <div class="grid grid-cols-5">
+          <div class="col-span-5 lg:col-span-4">
             <ModuleGroupContainer borderColor="border-2 border-blue-700">
               <span class="text-l font-semibold">Fachvertiefung</span>
-              <div class="flex flex-row">
-                <div class="basis-1/4">
+              <div class="grid grid-cols-4">
+                <div>
                   <ModuleGroupContainer>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.ict.modules}
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div class="basis-1/4">
+                <div>
                   <ModuleGroupContainer>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.web.modules}
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div class="basis-1/4">
+                <div>
                   <ModuleGroupContainer>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.dataSci
@@ -48,7 +48,7 @@
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div class="basis-1/4">
+                <div>
                   <ModuleGroupContainer>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.spatialComp
@@ -58,29 +58,29 @@
                 </div>
               </div>
             </ModuleGroupContainer>
-            <div class="flex flex-row">
-              <div class="basis-1/4">
+            <div class="grid grid-cols-4">
+              <div>
                 <ModuleGroup
                   title="Programmierung"
                   modules={modules.mainModules.baseModules.prog.modules}
                   {userDataVal}
                   borderColor="border-2 border-blue-700" />
               </div>
-              <div class="basis-1/4">
+              <div>
                 <ModuleGroup
                   title="Software Engineering"
                   modules={modules.mainModules.baseModules.swe.modules}
                   {userDataVal}
                   borderColor="border-2 border-blue-700" />
               </div>
-              <div class="basis-1/4">
+              <div>
                 <ModuleGroup
                   title="ICT Systeme"
                   modules={modules.mainModules.baseModules.ict.modules}
                   {userDataVal}
                   borderColor="border-2 border-blue-700" />
               </div>
-              <div class="basis-1/4">
+              <div>
                 <ModuleGroup
                   title="Mathematik"
                   modules={modules.mainModules.baseModules.math.modules}
@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-          <div class="basis-1/5">
+          <div class="col-span-5 lg:col-span-1">
             <ModuleGroup
               title="Facherg&auml;nzung"
               modules={modules.mainModules.additionalModules.modules}
@@ -99,7 +99,7 @@
         </div>
       </ModuleGroupContainer>
     </div>
-    <div class="basis-1/7 grid content-between">
+    <div class="col-span-7 lg:col-span-1 grid content-between order-2">
       <ModuleGroup
         title="Betriebswirtschaftslehre"
         modules={modules.bwl.modules}
