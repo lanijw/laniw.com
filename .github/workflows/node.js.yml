@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  pull_request_target:
+    branches: [ "main" ]
 
 jobs:
   build-app:
@@ -13,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [ 16.x ]
 
     steps:
       - name: Check Out Repository
@@ -34,7 +36,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [ 16.x ]
 
     steps:
       - name: Check Out Repository
@@ -57,6 +59,15 @@ jobs:
     steps:
       - name: Check Out Repository
         uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+          cache: 'npm'
+
+      - name: Clean Install Node.js Dependencies
+        run: npm ci
 
       - name: Run Linters
         uses: wearerequired/lint-action@v2
