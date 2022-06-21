@@ -27,5 +27,13 @@
     "@sveltejs/adapter-node": "^1.0.0-next.78",
     "@tailwindcss/typography": "^0.5.2",
     "daisyui": "^2.15.2"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": false,
+    "semi": true,
+    "bracketSpacing": false,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
   }
 }
