@@ -18,7 +18,7 @@
   const Section = {
     OVERVIEW: 0,
     STATISTICS: 1,
-    PLAN: 2,
+    PLAN: 2
   };
 
   let currentSection = Section.OVERVIEW;

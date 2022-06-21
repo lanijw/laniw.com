@@ -1,5 +1,4 @@
 <script>
-  import {fade} from "svelte/transition";
   import {onDestroy} from "svelte";
   import ModuleChip from "./ModuleChip.svelte";
   import {allModules} from "./modules.js";
@@ -19,7 +18,7 @@
           .filter(s => s.sem === n)
           .map(s => {
             return {status: s, module: allModules.find(m => m.id === s.id)};
-          }),
+          })
       };
     });
 </script>

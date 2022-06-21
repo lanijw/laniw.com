@@ -48,5 +48,5 @@ export function getModuleStatusById(storeValue, id) {
 
 export const userData = writable({
   v: "1.0.0",
-  s: [],
+  s: []
 });

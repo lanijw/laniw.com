@@ -5,5 +5,5 @@ export const Status = {
   CURRENT: 5,
   MARKED: 1,
   COMPLETED: 2,
-  FAILED: 4,
+  FAILED: 4
 };

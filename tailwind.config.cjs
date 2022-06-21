@@ -9,17 +9,17 @@ const config = {
         "3/7": "42.8571429%",
         "4/7": "57.1428571%",
         "5/7": "71.4285714%",
-        "6/7": "85.7142857%",
-      },
-    },
+        "6/7": "85.7142857%"
+      }
+    }
   },
 
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
 
   daisyui: {
     prefix: "d-",
-    themes: ["emerald", "dark"],
-  },
+    themes: ["emerald", "dark"]
+  }
 };
 
 module.exports = config;

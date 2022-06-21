@@ -6,16 +6,16 @@ const config = {
   kit: {
     adapter: adapter(),
     prerender: {
-      default: true,
+      default: true
     },
-    trailingSlash: "always",
+    trailingSlash: "always"
   },
 
   preprocess: [
     preprocess({
-      postcss: true,
-    }),
-  ],
+      postcss: true
+    })
+  ]
 };
 
 export default config;

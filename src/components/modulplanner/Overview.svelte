@@ -1,5 +1,4 @@
 <script>
-  import {fade} from "svelte/transition";
   import {modules} from "./modules";
   import ModuleGroupContainer from "./ModuleGroupContainer.svelte";
   import ModuleChipCollection from "./ModuleChipCollection.svelte";

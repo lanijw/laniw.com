@@ -3,7 +3,7 @@ export const Profile = {
   ICT: 1,
   WEB: 2,
   DATA_SCI: 3,
-  SPATIAL_COMP: 4,
+  SPATIAL_COMP: 4
 };
 
 function generateModule(
@@ -22,7 +22,7 @@ function generateModule(
     softDeps,
     assessment,
     assessmentSpecial,
-    relevantProfile,
+    relevantProfile
   };
 }
 
@@ -36,7 +36,7 @@ function generateProjectModules() {
     "pro2I",
     "pro3I",
     "pro4I",
-    "pro5I",
+    "pro5I"
   ]);
   return [...starterProjectModules, finalProject];
 }
@@ -84,7 +84,7 @@ function generateEnglModules() {
     "ekn2",
     "emm",
     "edd",
-    "etmm",
+    "etmm"
   ];
   return englModules.map(n => generateModule(n, 2, []));
 }
@@ -119,7 +119,7 @@ function generateGswModules() {
     "krko",
     "phil",
     "veth",
-    "teg",
+    "teg"
   ];
   const societyEconomyRights = [
     "apsy",
@@ -140,7 +140,7 @@ function generateGswModules() {
     "wiwaB",
     "imchB",
     "lean",
-    "gef",
+    "gef"
   ];
   const ethicsEcologySustainabilityModules = [
     "enstr",
@@ -152,12 +152,12 @@ function generateGswModules() {
     "tet",
     "uwe",
     "ffup",
-    "nww",
+    "nww"
   ];
   return [
     ...cultureHistoryModules,
     ...societyEconomyRights,
-    ...ethicsEcologySustainabilityModules,
+    ...ethicsEcologySustainabilityModules
   ].map(n => generateModule(n, 2, []));
 }
 
@@ -221,20 +221,20 @@ function generateBaseModules() {
   return {
     prog: {
       minCredits: 18,
-      modules: generateProgModules(),
+      modules: generateProgModules()
     },
     swe: {
       minCredits: 18,
-      modules: generateSweModules(),
+      modules: generateSweModules()
     },
     ict: {
       minCredits: 18,
-      modules: generateIctModules(),
+      modules: generateIctModules()
     },
     math: {
       minCredits: 18,
-      modules: generateMathModules(),
-    },
+      modules: generateMathModules()
+    }
   };
 }
 
@@ -296,7 +296,7 @@ function generateAdvancedIctModules() {
   return {
     requiredModule: "wosm",
     minModules: 6,
-    modules: [pcls, cysL, cpnet, netsi, itfs, wosm],
+    modules: [pcls, cysL, cpnet, netsi, itfs, wosm]
   };
 }
 
@@ -367,7 +367,7 @@ function generateAdvancedWebModules() {
   return {
     requiredModule: "woweb",
     minModules: 10,
-    modules: [webcl, webfr, eaf, apm, apsi, ddm, woweb],
+    modules: [webcl, webfr, eaf, apm, apsi, ddm, woweb]
   };
 }
 
@@ -429,7 +429,7 @@ function generateAdvancedDataSciModules() {
   return {
     requiredModule: "wods",
     minModules: 8,
-    modules: [nlp, efalg, bverI, pac, ml, wods],
+    modules: [nlp, efalg, bverI, pac, ml, wods]
   };
 }
 
@@ -491,7 +491,7 @@ function generateAdvancedSpatialCompModules() {
   return {
     requiredModule: "wosc",
     minModules: 7,
-    modules: [comgr, efalg, bverI, exr, simag, wosc],
+    modules: [comgr, efalg, bverI, exr, simag, wosc]
   };
 }
 
@@ -516,7 +516,7 @@ function generateAdditionalModules() {
     "pct1",
     "pct2",
     "pefu",
-    "witec",
+    "witec"
   ].map(n => generateModule(n, 3, []));
   const sna = generateModule(
     "sna",
@@ -640,7 +640,7 @@ function generateAdditionalModules() {
     dawr,
     stads,
     fprod,
-    dbarc,
+    dbarc
   ];
 }
 
@@ -648,7 +648,7 @@ export const modules = {
   minCredits: 180,
   projects: {
     minCredits: 42,
-    modules: generateProjectModules(),
+    modules: generateProjectModules()
   },
   mainModules: {
     minCredits: 111,
@@ -658,29 +658,29 @@ export const modules = {
       ict: generateAdvancedIctModules(),
       web: generateAdvancedWebModules(),
       dataSci: generateAdvancedDataSciModules(),
-      spatialComp: generateAdvancedSpatialCompModules(),
+      spatialComp: generateAdvancedSpatialCompModules()
     },
     additionalModules: {
       minCredits: 0,
-      modules: generateAdditionalModules(),
-    },
+      modules: generateAdditionalModules()
+    }
   },
   bwl: {
     minCredits: 4,
-    modules: generateBwlModules(),
+    modules: generateBwlModules()
   },
   comm: {
     minCredits: 4,
-    modules: generateCommModules(),
+    modules: generateCommModules()
   },
   engl: {
     minCredits: 8,
-    modules: generateEnglModules(),
+    modules: generateEnglModules()
   },
   gsw: {
     minCredits: 6,
-    modules: generateGswModules(),
-  },
+    modules: generateGswModules()
+  }
 };
 
 export const allModules = [
@@ -697,5 +697,5 @@ export const allModules = [
   ...modules.bwl.modules,
   ...modules.comm.modules,
   ...modules.engl.modules,
-  ...modules.gsw.modules,
+  ...modules.gsw.modules
 ];

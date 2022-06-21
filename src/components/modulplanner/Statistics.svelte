@@ -1,5 +1,4 @@
 <script>
-  import {fade} from "svelte/transition";
   import {get} from "svelte/store";
   import {userData} from "./stores.js";
   import {allModules, modules, Profile} from "./modules.js";
@@ -72,7 +71,7 @@
     ...modules.mainModules.advancedModules.ict.modules,
     ...modules.mainModules.advancedModules.web.modules,
     ...modules.mainModules.advancedModules.dataSci.modules,
-    ...modules.mainModules.advancedModules.spatialComp.modules,
+    ...modules.mainModules.advancedModules.spatialComp.modules
   ].map(m => m.id);
   const advancedCredits = userDataValue.s
     .filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
@@ -101,7 +100,7 @@
     ...sweIds,
     ...ictIds,
     ...mathIds,
-    ...additionalIds,
+    ...additionalIds
   ];
   const mainCredits = userDataValue.s
     .filter(s => isModuleStatusCompletedInGroup(s, mainIds))
@@ -116,96 +115,96 @@
     {
       title: "Credits",
       credits: totalCredits,
-      minCredits: modules.minCredits,
+      minCredits: modules.minCredits
     },
     {
       title: "Projektcredits",
       credits: projectCredits,
-      minCredits: modules.projects.minCredits,
+      minCredits: modules.projects.minCredits
     },
     {
       title: "Fachausbildungscredits",
       credits: mainCredits,
-      minCredits: modules.mainModules.minCredits,
+      minCredits: modules.mainModules.minCredits
     },
     {
       title: "Programmiercredits",
       credits: progCredits,
-      minCredits: modules.mainModules.baseModules.prog.minCredits,
+      minCredits: modules.mainModules.baseModules.prog.minCredits
     },
     {
       title: "SWE Credits",
       credits: sweCredits,
-      minCredits: modules.mainModules.baseModules.swe.minCredits,
+      minCredits: modules.mainModules.baseModules.swe.minCredits
     },
     {
       title: "ICT Credits",
       credits: ictCredits,
-      minCredits: modules.mainModules.baseModules.ict.minCredits,
+      minCredits: modules.mainModules.baseModules.ict.minCredits
     },
     {
       title: "Mathematikcredits",
       credits: mathCredits,
-      minCredits: modules.mainModules.baseModules.math.minCredits,
+      minCredits: modules.mainModules.baseModules.math.minCredits
     },
     {
       title: "Fachvertiefungscredits",
       credits: advancedCredits,
-      minCredits: modules.mainModules.advancedModules.minCredits,
+      minCredits: modules.mainModules.advancedModules.minCredits
     },
     {
       title: "Fachergänzungscredits",
       credits: additionalCredits,
-      minCredits: modules.mainModules.additionalModules.minCredits,
-    },
+      minCredits: modules.mainModules.additionalModules.minCredits
+    }
   ];
 
   const plannedCredits = [
     {
       title: "Credits",
       credits: plannedTotalCredits,
-      minCredits: modules.minCredits,
+      minCredits: modules.minCredits
     },
     {
       title: "Projektcredits",
       credits: plannedProjectCredits,
-      minCredits: modules.projects.minCredits,
+      minCredits: modules.projects.minCredits
     },
     {
       title: "Fachausbildungscredits",
       credits: plannedMainCredits,
-      minCredits: modules.mainModules.minCredits,
+      minCredits: modules.mainModules.minCredits
     },
     {
       title: "Programmiercredits",
       credits: plannedProgCredits,
-      minCredits: modules.mainModules.baseModules.prog.minCredits,
+      minCredits: modules.mainModules.baseModules.prog.minCredits
     },
     {
       title: "SWE Credits",
       credits: plannedSweCredits,
-      minCredits: modules.mainModules.baseModules.swe.minCredits,
+      minCredits: modules.mainModules.baseModules.swe.minCredits
     },
     {
       title: "ICT Credits",
       credits: plannedIctCredits,
-      minCredits: modules.mainModules.baseModules.ict.minCredits,
+      minCredits: modules.mainModules.baseModules.ict.minCredits
     },
     {
       title: "Mathematikcredits",
       credits: plannedMathCredits,
-      minCredits: modules.mainModules.baseModules.math.minCredits,
+      minCredits: modules.mainModules.baseModules.math.minCredits
     },
     {
       title: "Fachvertiefungscredits",
       credits: plannedAdvancedCredits,
-      minCredits: modules.mainModules.advancedModules.minCredits,
+      minCredits: modules.mainModules.advancedModules.minCredits
     },
     {
       title: "Fachergänzungscredits",
       credits: plannedAdditionalCredits,
-      minCredits: modules.mainModules.additionalModules.minCredits,
-    },
+      minCredits: modules.mainModules.additionalModules.minCredits
+    }
   ];
 
   const dataSciProfileIds = allModules.filter(
@@ -248,7 +247,7 @@
       workshopId: modules.mainModules.advancedModules.dataSci.requiredModule,
       workshopCompleted: isModuleCompleted(
         modules.mainModules.advancedModules.dataSci.requiredModule
-      ),
+      )
     },
     {
       title: "ICT",
@@ -257,7 +256,7 @@
       workshopId: modules.mainModules.advancedModules.ict.requiredModule,
       workshopCompleted: isModuleCompleted(
         modules.mainModules.advancedModules.ict.requiredModule
-      ),
+      )
     },
     {
       title: "Spatial Computing",
@@ -265,10 +264,10 @@
       minCredits:
         modules.mainModules.advancedModules.spatialComp.minModules * 3,
       workshopId:
-        modules.mainModules.advancedModules.spatialComp.requiredModule,
+      modules.mainModules.advancedModules.spatialComp.requiredModule,
       workshopCompleted: isModuleCompleted(
         modules.mainModules.advancedModules.spatialComp.requiredModule
-      ),
+      )
     },
     {
       title: "Web",
@@ -277,8 +276,8 @@
       workshopId: modules.mainModules.advancedModules.web.requiredModule,
       workshopCompleted: isModuleCompleted(
         modules.mainModules.advancedModules.web.requiredModule
-      ),
-    },
+      )
+    }
   ];
 
   function sum(a, b) {
@@ -415,7 +414,8 @@
           )}%
         </div>
         <div class="d-stat-desc">
-          {completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+          {completedStat.credits}/{completedStat.minCredits} Credits
+          geplant/absolviert
         </div>
       </div>
     {/each}
@@ -432,7 +432,8 @@
           )}%
         </div>
         <div class="d-stat-desc">
-          {completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+          {completedStat.credits}/{completedStat.minCredits} Credits
+          geplant/absolviert
         </div>
       </div>
     {/each}
@@ -449,7 +450,8 @@
           )}%
         </div>
         <div class="d-stat-desc">
-          {completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
+          {completedStat.credits}/{completedStat.minCredits} Credits
+          geplant/absolviert
         </div>
       </div>
     {/each}
