@@ -20,5 +20,5 @@ jobs:
       - name: Run Prettier
         uses: creyD/prettier_action@v4.2
         with:
-          prettier_options: -c "**/**.!(pdf|png|svg|afdesign)"
+          prettier_options: -c **/**.!(pdf|png|svg|afdesign)
           prettier_plugins: prettier-plugin-svelte
