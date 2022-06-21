@@ -2,7 +2,7 @@
   import {currPage} from "../../../stores.js";
   import {onDestroy} from "svelte";
   import {Page} from "../../../constants";
-  import {userData} from "../../../components/modulplanner/stores";
+  import {major, userData} from "../../../components/modulplanner/stores";
   import Statistics from "../../../components/modulplanner/Statistics.svelte";
   import Plan from "../../../components/modulplanner/Plan.svelte";
   import {Status} from "../../../components/modulplanner/constants";
@@ -12,8 +12,15 @@
   currPage.set(Page.MODULE_PLANNER);
 
   let userDataVal;
-  let unsubUserData = userData.subscribe(v => (userDataVal = v));
-  onDestroy(() => unsubUserData());
+  const unsubUserData = userData.subscribe(v => (userDataVal = v));
+
+  let majorVal;
+  const unsubMajor = major.subscribe(v => (majorVal = v));
+
+  onDestroy(() => {
+    unsubUserData();
+    unsubMajor();
+  });
 
   const Section = {
     OVERVIEW: 0,
@@ -52,13 +59,13 @@
 </div>
 
 {#if currentSection === Section.OVERVIEW}
-  <Loader this={importOverview} {userDataVal}>
+  <Loader this={importOverview} {userDataVal} {majorVal}>
     <div slot="fallback" class="h-96 center-everywhere">
       <Jellyfish size="200" color="#41D6A9" unit="px" duration="1.5s" />
     </div>
   </Loader>
 {:else if currentSection === Section.STATISTICS}
-  <Statistics />
+  <Statistics {userDataVal} {majorVal}/>
 {:else if currentSection === Section.PLAN}
   <Plan />
 {/if}

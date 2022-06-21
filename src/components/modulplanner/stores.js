@@ -46,7 +46,15 @@ export function getModuleStatusById(storeValue, id) {
   return ModuleStatus.defaultInstance(id);
 }
 
-export const userData = writable({
+export const USER_DATA_DEFAULT_VAL = {
   v: "1.0.0",
   s: []
-});
+};
+export const userData = writable(USER_DATA_DEFAULT_VAL);
+
+export const Major = {
+  INFORMATIK: 0,
+  ICOMPETENCE: 1
+};
+
+export const major = writable(Major.INFORMATIK);

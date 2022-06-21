@@ -1,10 +1,12 @@
 <script>
-  import {modules} from "./modules";
+  import {modules} from "./informatik/modules";
   import ModuleGroupContainer from "./ModuleGroupContainer.svelte";
   import ModuleChipCollection from "./ModuleChipCollection.svelte";
   import ModuleGroup from "./ModuleGroup.svelte";
 
   export let userDataVal;
+  export let majorVal;
+  // TODO(#21): Implement use of major.
 </script>
 
 <div class="container mx-auto mt-5">

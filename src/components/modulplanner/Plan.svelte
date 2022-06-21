@@ -1,7 +1,7 @@
 <script>
   import {onDestroy} from "svelte";
   import ModuleChip from "./ModuleChip.svelte";
-  import {allModules} from "./modules.js";
+  import {allModules} from "./informatik/modules.js";
   import {userData} from "./stores";
 
   let userDataVal = [];

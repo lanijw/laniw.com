@@ -1,6 +1,6 @@
 <script>
   import DownloadIcon from "./icons/DownloadIcon.svelte";
-  import {userData} from "./modulplanner/stores";
+  import {major, Major, userData} from "./modulplanner/stores";
   import {onDestroy} from "svelte";
   import {downloadableFileName} from "../util";
   import UploadIcon from "./icons/UploadIcon.svelte";
@@ -10,6 +10,8 @@
   import {Page} from "../constants.js";
   import MenuIcon from "./icons/MenuIcon.svelte";
   import ChevronRightIcon from "./icons/ChevronRightIcon.svelte";
+  import {EXTRA_MAJORS_PROD} from "../flags";
+  import {dev} from "$app/env";
 
   export let currPageVal;
 
@@ -19,7 +21,21 @@
       (userDataDownload =
         "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(v)))
   );
-  onDestroy(() => unsubUserData());
+
+  let majorVal;
+  const unsubMajor = major.subscribe(v => {
+    majorVal = v;
+    // TODO(#21): Download user data if not equal to default store value.
+    // TODO(#21): Replace user data with iCompetence default.
+  });
+
+  onDestroy(() => {
+    unsubUserData();
+    unsubMajor();
+  });
+
+  let selectedMajor = Major.INFORMATIK;
+  $: major.update(_ => selectedMajor);
 
   let files = [];
   $: uploadFile(files);
@@ -135,9 +151,16 @@
   </div>
   <div class="d-navbar-end">
     {#if currPageVal === Page.MODULE_PLANNER}
+      {#if EXTRA_MAJORS_PROD || dev}
+        <select
+          bind:value={selectedMajor}
+          class="d-select d-select-ghost hover:bg-base-200">
+          <option value={Major.INFORMATIK} selected>Informatik</option>
+          <option value={Major.ICOMPETENCE}>iCompetence</option>
+        </select>
+      {/if}
       <div class="hidden lg:flex">
         <label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
-          Daten importieren
           <UploadIcon />
         </label>
         <input
@@ -150,7 +173,6 @@
           href={userDataDownload}
           download={downloadFileName()}
           class="d-btn d-btn-ghost">
-          Daten exportieren
           <DownloadIcon />
         </a>
       </div>

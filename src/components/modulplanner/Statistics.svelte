@@ -1,12 +1,12 @@
 <script>
-  import {get} from "svelte/store";
-  import {userData} from "./stores.js";
-  import {allModules, modules, Profile} from "./modules.js";
+  import {allModules, modules, Profile} from "./informatik/modules.js";
   import {Status} from "./constants.js";
   import CheckIcon from "../icons/CheckIcon.svelte";
   import CloseIcon from "../icons/CloseIcon.svelte";
 
-  const userDataValue = get(userData);
+  export let userDataVal;
+  export let majorVal;
+  // TODO(#21): Implement use of major.
 
   const totalCredits = userDataValue.s
     .filter(s => s.status === Status.COMPLETED || s.fulfilled)
