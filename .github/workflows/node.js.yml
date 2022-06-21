@@ -73,3 +73,4 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           prettier: true
+          continue_on_error: false
