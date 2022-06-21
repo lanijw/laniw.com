@@ -3,6 +3,7 @@
   import ModuleGroupContainer from "./ModuleGroupContainer.svelte";
   import ModuleChipCollection from "./ModuleChipCollection.svelte";
   import ModuleGroup from "./ModuleGroup.svelte";
+  import {ModuleGroupSource} from "./constants";
 
   export let userDataVal;
   export let majorVal;
@@ -16,6 +17,7 @@
         title="Projekte"
         modules={modules.projects.modules}
         {userDataVal}
+        source={ModuleGroupSource.PROJECTS}
         borderColor="border-2 border-cyan-600" />
     </div>
     <div class="col-span-7 lg:col-span-5 order-1">
@@ -62,18 +64,11 @@
                 </div>
               </div>
             </ModuleGroupContainer>
-            <div class="grid grid-cols-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4">
               <div>
                 <ModuleGroup
                   title="Programmierung"
                   modules={modules.mainModules.baseModules.prog.modules}
-                  {userDataVal}
-                  borderColor="border-2 border-blue-700" />
-              </div>
-              <div>
-                <ModuleGroup
-                  title="Software Engineering"
-                  modules={modules.mainModules.baseModules.swe.modules}
                   {userDataVal}
                   borderColor="border-2 border-blue-700" />
               </div>
@@ -91,12 +86,20 @@
                   {userDataVal}
                   borderColor="border-2 border-blue-700" />
               </div>
+              <div>
+                <ModuleGroup
+                  title="Software Engineering"
+                  modules={modules.mainModules.baseModules.swe.modules}
+                  {userDataVal}
+                  borderColor="border-2 border-blue-700" />
+              </div>
             </div>
           </div>
           <div class="col-span-5 lg:col-span-1">
             <ModuleGroup
               title="Facherg&auml;nzung"
               modules={modules.mainModules.additionalModules.modules}
+              source={ModuleGroupSource.ADDITIONAL_MODULES}
               {userDataVal}
               borderColor="border-2 border-blue-700" />
           </div>
@@ -108,21 +111,25 @@
         title="Betriebswirtschaftslehre"
         modules={modules.bwl.modules}
         {userDataVal}
+        source={ModuleGroupSource.CONTEXT}
         borderColor="border-2 border-fuchsia-600" />
       <ModuleGroup
         title="Kommunikation"
         modules={modules.comm.modules}
         {userDataVal}
+        source={ModuleGroupSource.CONTEXT}
         borderColor="border-2 border-fuchsia-600" />
       <ModuleGroup
         title="Englisch"
         modules={modules.engl.modules}
         {userDataVal}
+        source={ModuleGroupSource.CONTEXT}
         borderColor="border-2 border-fuchsia-600" />
       <ModuleGroup
         title="GSW"
         modules={modules.gsw.modules}
         {userDataVal}
+        source={ModuleGroupSource.CONTEXT}
         borderColor="border-2 border-fuchsia-600" />
     </div>
   </div>

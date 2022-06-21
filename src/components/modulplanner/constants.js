@@ -8,3 +8,10 @@ export const Status = {
   COMPLETED: 2,
   FAILED: 4
 };
+
+export const ModuleGroupSource = {
+  UNKNOWN: 0,
+  ADDITIONAL_MODULES: 1,
+  PROJECTS: 2,
+  CONTEXT: 3
+};

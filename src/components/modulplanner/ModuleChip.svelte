@@ -64,7 +64,7 @@
 </script>
 
 <label
-  class="d-card d-card-compact bg-slate-50 shadow-md mt-3 mb-3 cursor-pointer w-full rounded hover:shadow-lg"
+  class="d-card d-card-compact bg-slate-50 shadow-md cursor-pointer w-full rounded hover:shadow-lg"
   class:h-8={module.credits === 2}
   class:h-12={module.credits === 3}
   class:h-24={module.credits === 6}
