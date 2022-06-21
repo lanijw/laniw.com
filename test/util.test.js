@@ -1,4 +1,4 @@
-import {downloadableFileName} from "../util";
+import {downloadableFileName} from "../src/util";
 
 test("downloadableFileName leadGiven leadInFilename", () => {
   const date = new Date("2022-06-21T22:04:31");
