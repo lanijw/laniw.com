@@ -1,0 +1,30 @@
+name: Lint laniw.com
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  pull_request_target:
+    branches: [ "main" ]
+
+jobs:
+  lint-code:
+    name: Run Linter(s)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+          cache: 'npm'
+
+      - name: Clean Install Node.js Dependencies
+        run: npm ci
+
+      - name: Run Linters
+        run: prettier -c **
