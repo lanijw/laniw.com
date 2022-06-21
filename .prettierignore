@@ -1,2 +1,6 @@
+.prettierignore
+.npmrc
+.gitignore
+package-lock.json
 /github/workflows
 /.svelte-kit
