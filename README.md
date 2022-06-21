@@ -1,4 +1,6 @@
-# laniw.com 
+# laniw.com
+
+[![Build, Test and Lint](https://github.com/lanijw/laniw.com/actions/workflows/node.js.yml/badge.svg)](https://github.com/lanijw/laniw.com/actions/workflows/node.js.yml)
 
 ## Develop
 
