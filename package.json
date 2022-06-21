@@ -17,6 +17,7 @@
     "postcss": "^8.4.12",
     "postcss-load-config": "^3.1.4",
     "prettier": "^2.7.1",
+    "prettier-plugin-svelte": "^2.7.0",
     "svelte": "^3.44.0",
     "svelte-loading-spinners": "^0.1.7",
     "svelte-preprocess": "^4.10.5",
@@ -27,13 +28,5 @@
     "@sveltejs/adapter-node": "^1.0.0-next.78",
     "@tailwindcss/typography": "^0.5.2",
     "daisyui": "^2.15.2"
-  },
-  "prettier": {
-    "tabWidth": 2,
-    "singleQuote": false,
-    "semi": true,
-    "bracketSpacing": false,
-    "arrowParens": "avoid",
-    "endOfLine": "lf"
   }
 }
