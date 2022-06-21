@@ -8,6 +8,4 @@
     stroke-linecap="round"
     stroke-linejoin="round"
     stroke-width="2"
-    d="M4 6h16M4 12h8m-8 6h16"
-  /></svg
->
+    d="M4 6h16M4 12h8m-8 6h16" /></svg>

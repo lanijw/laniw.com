@@ -76,15 +76,13 @@
   class:d-card-bordered={depsMissing}
   class:border-2={depsMissing}
   class:border-red-500={depsMissing}
-  for="edit-modal-{module.id}"
->
+  for="edit-modal-{module.id}">
   <div
     class="align-text-middle center-everywhere"
     class:h-8={module.credits === 2}
     class:h-12={module.credits === 3}
     class:h-24={module.credits === 6}
-    class:h-48={module.credits === 12}
-  >
+    class:h-48={module.credits === 12}>
     {module.id}
   </div>
 </label>

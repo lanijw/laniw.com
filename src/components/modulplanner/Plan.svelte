@@ -31,8 +31,7 @@
       <span
         >{semester.modules
           .map(m => m.module.credits)
-          .reduce((a, b) => a + b, 0)} Credits</span
-      >
+          .reduce((a, b) => a + b, 0)} Credits</span>
       <div class="mb-5 grid grid-cols-12 gap-4">
         {#each semester.modules as module}
           <div>

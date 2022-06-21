@@ -55,6 +55,14 @@
   }
 </script>
 
+<style>
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+</style>
+
 <div class="d-navbar bg-base-100 shadow-lg sticky z-50">
   <div class="d-navbar-start">
     <div class="d-dropdown">
@@ -63,8 +71,7 @@
       </label>
       <ul
         tabindex="0"
-        class="d-menu d-menu-compact d-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-      >
+        class="d-menu d-menu-compact d-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="/">Home</a></li>
         <li tabindex="0">
           <a class="justify-between">
@@ -77,8 +84,7 @@
             <li>
               <a
                 href="/fhnw/modulplanner"
-                class:font-semibold={currPageVal === Page.MODULE_PLANNER}
-              >
+                class:font-semibold={currPageVal === Page.MODULE_PLANNER}>
                 Modulplanner
               </a>
             </li>
@@ -95,8 +101,7 @@
             <a
               href={userDataDownload}
               download={downloadFileName()}
-              class="d-btn d-btn-ghost"
-            >
+              class="d-btn d-btn-ghost">
               Daten exportieren
             </a>
           </li>
@@ -113,8 +118,7 @@
       <li tabindex="0">
         <a class="rounded-lg">
           <span class:font-semibold={currPageVal === Page.MODULE_PLANNER}
-            >FHNW</span
-          >
+            >FHNW</span>
           <ChevronDownIcon />
         </a>
         <ul class="p-2 bg-base-100 rounded-lg">
@@ -123,8 +127,7 @@
               href="/fhnw/modulplanner"
               class="rounded-lg"
               class:font-semibold={currPageVal === Page.MODULE_PLANNER}
-              >Modulplanner</a
-            >
+              >Modulplanner</a>
           </li>
         </ul>
       </li>
@@ -142,13 +145,11 @@
           accept=".json"
           id="moduleplanner_file-input"
           class="hidden"
-          bind:files
-        />
+          bind:files />
         <a
           href={userDataDownload}
           download={downloadFileName()}
-          class="d-btn d-btn-ghost"
-        >
+          class="d-btn d-btn-ghost">
           Daten exportieren
           <DownloadIcon />
         </a>
@@ -158,17 +159,8 @@
     <a
       class="h-12 rounded-lg hover:bg-base-200 p-1"
       href="https://github.com/lanijw/laniw.com"
-      title="GitHub repository of this website"
-    >
+      title="GitHub repository of this website">
       <GitHubIcon />
     </a>
   </div>
 </div>
-
-<style>
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-</style>

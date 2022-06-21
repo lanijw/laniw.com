@@ -5,8 +5,7 @@
     height="100%"
     enable-background="new 0 0 24 24"
     viewBox="0 0 24 24"
-    fill="#000000"
-  >
+    fill="#000000">
     <g>
       <rect fill="none" height="24" width="24" />
     </g>

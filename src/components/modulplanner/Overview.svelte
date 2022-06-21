@@ -14,8 +14,7 @@
         title="Projekte"
         modules={modules.projects.modules}
         {userDataVal}
-        borderColor="border-2 border-cyan-600"
-      />
+        borderColor="border-2 border-cyan-600" />
     </div>
     <div class="basis-5/7">
       <ModuleGroupContainer borderColor="border-2 border-blue-700">
@@ -29,16 +28,14 @@
                   <ModuleGroupContainer>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.ict.modules}
-                      {userDataVal}
-                    />
+                      {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
                 <div class="basis-1/4">
                   <ModuleGroupContainer>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.web.modules}
-                      {userDataVal}
-                    />
+                      {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
                 <div class="basis-1/4">
@@ -46,8 +43,7 @@
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.dataSci
                         .modules}
-                      {userDataVal}
-                    />
+                      {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
                 <div class="basis-1/4">
@@ -55,8 +51,7 @@
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.spatialComp
                         .modules}
-                      {userDataVal}
-                    />
+                      {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
               </div>
@@ -67,32 +62,28 @@
                   title="Programmierung"
                   modules={modules.mainModules.baseModules.prog.modules}
                   {userDataVal}
-                  borderColor="border-2 border-blue-700"
-                />
+                  borderColor="border-2 border-blue-700" />
               </div>
               <div class="basis-1/4">
                 <ModuleGroup
                   title="Software Engineering"
                   modules={modules.mainModules.baseModules.swe.modules}
                   {userDataVal}
-                  borderColor="border-2 border-blue-700"
-                />
+                  borderColor="border-2 border-blue-700" />
               </div>
               <div class="basis-1/4">
                 <ModuleGroup
                   title="ICT Systeme"
                   modules={modules.mainModules.baseModules.ict.modules}
                   {userDataVal}
-                  borderColor="border-2 border-blue-700"
-                />
+                  borderColor="border-2 border-blue-700" />
               </div>
               <div class="basis-1/4">
                 <ModuleGroup
                   title="Mathematik"
                   modules={modules.mainModules.baseModules.math.modules}
                   {userDataVal}
-                  borderColor="border-2 border-blue-700"
-                />
+                  borderColor="border-2 border-blue-700" />
               </div>
             </div>
           </div>
@@ -101,8 +92,7 @@
               title="Facherg&auml;nzung"
               modules={modules.mainModules.additionalModules.modules}
               {userDataVal}
-              borderColor="border-2 border-blue-700"
-            />
+              borderColor="border-2 border-blue-700" />
           </div>
         </div>
       </ModuleGroupContainer>
@@ -112,26 +102,22 @@
         title="Betriebswirtschaftslehre"
         modules={modules.bwl.modules}
         {userDataVal}
-        borderColor="border-2 border-fuchsia-600"
-      />
+        borderColor="border-2 border-fuchsia-600" />
       <ModuleGroup
         title="Kommunikation"
         modules={modules.comm.modules}
         {userDataVal}
-        borderColor="border-2 border-fuchsia-600"
-      />
+        borderColor="border-2 border-fuchsia-600" />
       <ModuleGroup
         title="Englisch"
         modules={modules.engl.modules}
         {userDataVal}
-        borderColor="border-2 border-fuchsia-600"
-      />
+        borderColor="border-2 border-fuchsia-600" />
       <ModuleGroup
         title="GSW"
         modules={modules.gsw.modules}
         {userDataVal}
-        borderColor="border-2 border-fuchsia-600"
-      />
+        borderColor="border-2 border-fuchsia-600" />
     </div>
   </div>
 </div>

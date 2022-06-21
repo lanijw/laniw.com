@@ -6,7 +6,12 @@
   "trailingComma": "none",
   "semi": true,
   "bracketSpacing": false,
+  "bracketSameLine": true,
   "arrowParens": "avoid",
   "endOfLine": "lf",
-  "htmlWhitespaceSensitivity": "strict"
+  "htmlWhitespaceSensitivity": "strict",
+  "svelteSortOrder": "options-scripts-styles-markup",
+  "svelteStrictMode": false,
+  "svelteAllowShorthand": true,
+  "svelteIndentScriptAndStyle": true
 }

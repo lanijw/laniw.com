@@ -24,7 +24,6 @@
     <Card
       title="FHNW"
       desc="Any projects in connection to the FHNW can be found in this card."
-      links={fhnwLinks}
-    />
+      links={fhnwLinks} />
   </div>
 </div>

@@ -46,8 +46,7 @@
   <label class="d-modal-box relative" for="">
     <label
       for="edit-modal-{module.id}"
-      class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label
-    >
+      class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label>
     <h3 class="text-xl font-bold">{module.id}</h3>
     <div class="overflow-x-auto mt-2">
       <table class="d-table d-table-compact w-full divide-y">
@@ -85,40 +84,35 @@
           type="radio"
           bind:group={status}
           value={Status.NOT_TAKEN}
-          class="d-radio checked:bg-slate-700 ml-3"
-        />
+          class="d-radio checked:bg-slate-700 ml-3" />
       </StatusRadioButton>
       <StatusRadioButton label="Laufend">
         <input
           type="radio"
           bind:group={status}
           value={Status.CURRENT}
-          class="d-radio checked:bg-indigo-700 ml-3"
-        />
+          class="d-radio checked:bg-indigo-700 ml-3" />
       </StatusRadioButton>
       <StatusRadioButton label="Vorgemerkt">
         <input
           type="radio"
           bind:group={status}
           value={Status.MARKED}
-          class="d-radio checked:bg-amber-400 ml-3"
-        />
+          class="d-radio checked:bg-amber-400 ml-3" />
       </StatusRadioButton>
       <StatusRadioButton label="Bestanden">
         <input
           type="radio"
           bind:group={status}
           value={Status.COMPLETED}
-          class="d-radio checked:bg-green-700 ml-3"
-        />
+          class="d-radio checked:bg-green-700 ml-3" />
       </StatusRadioButton>
       <StatusRadioButton label="Nicht bestanden">
         <input
           type="radio"
           bind:group={status}
           value={Status.FAILED}
-          class="d-radio checked:bg-red-700 ml-3"
-        />
+          class="d-radio checked:bg-red-700 ml-3" />
       </StatusRadioButton>
     </div>
 
@@ -133,8 +127,7 @@
                 class="d-toggle flex-none"
                 class:bg-green-700={status === Status.COMPLETED}
                 class:bg-red-700={status === Status.FAILED}
-                bind:checked={secondTry}
-              />
+                bind:checked={secondTry} />
               <span class="d-label-tex flex-none">2 Versuche</span>
               <span class="flex-auto text-right">
                 aufgewandte Credits: {module.credits * (secondTry ? 2 : 1)}
@@ -148,15 +141,13 @@
           <div class="flex-initial d-form-control pb-3">
             <label
               class="d-label d-label-text cursor-pointer"
-              for="sem-indication-toggle">Semesterangabe</label
-            >
+              for="sem-indication-toggle">Semesterangabe</label>
             <input
               id="sem-indication-toggle"
               type="checkbox"
               class="d-toggle"
               bind:checked={semesterIndication}
-              on:change={updateSem}
-            />
+              on:change={updateSem} />
           </div>
           {#if semesterIndication}
             <div class="flex-auto d-form-control w-full max-w-xs">
@@ -170,8 +161,7 @@
                 bind:value={sem}
                 class="d-range d-range-sm"
                 step="1"
-                id="sem-range"
-              />
+                id="sem-range" />
               <div class="w-full grid grid-cols-12 text-xs gap-2 pl-2">
                 {#each Array.from(Array(12).keys()).map(v => 1 + v) as semester}
                   <span>{semester}</span>
@@ -186,16 +176,14 @@
           <div class="d-form-control flex-none">
             <label
               class="d-label d-label-text cursor-pointer"
-              for="fulfilled-toggle"
-            >
+              for="fulfilled-toggle">
               Erf&uuml;llt
             </label>
             <input
               type="checkbox"
               bind:checked={fulfilled}
               class="d-toggle"
-              id="fulfilled-toggle"
-            />
+              id="fulfilled-toggle" />
           </div>
           {#if !fulfilled}
             <div class="d-form-control w-full max-w-xs inline-block flex-none">
@@ -209,8 +197,7 @@
                 bind:value={grade}
                 class="d-range d-range-sm"
                 step=".5"
-                id="grade-range"
-              />
+                id="grade-range" />
               <div class="w-full flex justify-between text-xs px-2">
                 {#each Array.from(Array(5).keys()).map(v => 4 + v * 0.5) as grade}
                   <span>{grade}</span>
