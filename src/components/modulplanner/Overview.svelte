@@ -26,33 +26,37 @@
             <ModuleGroupContainer borderColor="border-2 border-blue-700">
               <span class="text-l font-semibold">Fachvertiefung</span>
               <div class="grid grid-cols-4">
-                <div>
+                <div class="col-span-2 lg:col-span-1">
                   <ModuleGroupContainer>
+                    <span class="lg:hidden">ICT</span>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.ict.modules}
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div>
+                <div class="col-span-2 lg:col-span-1">
                   <ModuleGroupContainer>
-                    <ModuleChipCollection
-                      modules={modules.mainModules.advancedModules.web.modules}
-                      {userDataVal} />
-                  </ModuleGroupContainer>
-                </div>
-                <div>
-                  <ModuleGroupContainer>
+                    <span class="lg:hidden">Data Science</span>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.dataSci
                         .modules}
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
-                <div>
+                <div class="col-span-2 lg:col-span-1">
                   <ModuleGroupContainer>
+                    <span class="lg:hidden">Spatial Computing</span>
                     <ModuleChipCollection
                       modules={modules.mainModules.advancedModules.spatialComp
                         .modules}
+                      {userDataVal} />
+                  </ModuleGroupContainer>
+                </div>
+                <div class="col-span-2 lg:col-span-1">
+                  <ModuleGroupContainer>
+                    <span class="lg:hidden">Web</span>
+                    <ModuleChipCollection
+                      modules={modules.mainModules.advancedModules.web.modules}
                       {userDataVal} />
                   </ModuleGroupContainer>
                 </div>
