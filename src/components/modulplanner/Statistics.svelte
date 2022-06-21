@@ -100,7 +100,7 @@
     ...sweIds,
     ...ictIds,
     ...mathIds,
-    ...additionalIds
+    ...additionalIds,
   ];
   const mainCredits = userDataValue.s
     .filter(s => isModuleStatusCompletedInGroup(s, mainIds))
