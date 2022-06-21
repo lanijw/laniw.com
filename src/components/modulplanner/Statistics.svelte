@@ -264,7 +264,7 @@
       minCredits:
         modules.mainModules.advancedModules.spatialComp.minModules * 3,
       workshopId:
-      modules.mainModules.advancedModules.spatialComp.requiredModule,
+        modules.mainModules.advancedModules.spatialComp.requiredModule,
       workshopCompleted: isModuleCompleted(
         modules.mainModules.advancedModules.spatialComp.requiredModule
       )
@@ -414,8 +414,7 @@
           )}%
         </div>
         <div class="d-stat-desc">
-          {completedStat.credits}/{completedStat.minCredits} Credits
-          geplant/absolviert
+          {completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
         </div>
       </div>
     {/each}
@@ -432,8 +431,7 @@
           )}%
         </div>
         <div class="d-stat-desc">
-          {completedStat.credits}/{completedStat.minCredits} Credits
-          geplant/absolviert
+          {completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
         </div>
       </div>
     {/each}
@@ -450,8 +448,7 @@
           )}%
         </div>
         <div class="d-stat-desc">
-          {completedStat.credits}/{completedStat.minCredits} Credits
-          geplant/absolviert
+          {completedStat.credits}/{completedStat.minCredits} Credits geplant/absolviert
         </div>
       </div>
     {/each}
