@@ -109,6 +109,14 @@
 
         {#if currPageVal === Page.MODULE_PLANNER}
           <li class="mt-10">
+            <select
+              bind:value={selectedMajor}
+              class="d-select d-select-ghost hover:bg-base-200">
+              <option value={Major.INFORMATIK} selected>Informatik</option>
+              <option value={Major.ICOMPETENCE}>iCompetence</option>
+            </select>
+          </li>
+          <li>
             <label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
               Daten importieren
             </label>
@@ -151,15 +159,15 @@
   </div>
   <div class="d-navbar-end">
     {#if currPageVal === Page.MODULE_PLANNER}
-      {#if EXTRA_MAJORS_PROD || dev}
-        <select
-          bind:value={selectedMajor}
-          class="d-select d-select-ghost hover:bg-base-200">
-          <option value={Major.INFORMATIK} selected>Informatik</option>
-          <option value={Major.ICOMPETENCE}>iCompetence</option>
-        </select>
-      {/if}
       <div class="hidden lg:flex">
+        {#if EXTRA_MAJORS_PROD || dev}
+          <select
+            bind:value={selectedMajor}
+            class="d-select d-select-ghost hover:bg-base-200">
+            <option value={Major.INFORMATIK} selected>Informatik</option>
+            <option value={Major.ICOMPETENCE}>iCompetence</option>
+          </select>
+        {/if}
         <label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
           <UploadIcon />
         </label>
