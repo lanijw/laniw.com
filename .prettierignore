@@ -2,5 +2,5 @@
 .npmrc
 .gitignore
 package-lock.json
-/github/workflows
-/.svelte-kit
+github/workflows/
+.svelte-kit/
