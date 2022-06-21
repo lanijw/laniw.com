@@ -10,7 +10,6 @@ test("downloadableFileName leadGiven leadInFilename", () => {
 });
 
 test("downloadableFileName leadMissing leadMissing", () => {
-  const lead = "testing";
   const src = "testFunc";
   const date = new Date("2022-06-21T22:04:31");
   expect(downloadableFileName("", src, date)).toBe(
