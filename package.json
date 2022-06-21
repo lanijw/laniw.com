@@ -10,9 +10,14 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "@testing-library/jest-dom": "^5.16.4",
     "autoprefixer": "^10.4.4",
+    "babel-jest": "^28.1.1",
     "jest": "^28.1.1",
     "postcss": "^8.4.12",
     "postcss-load-config": "^3.1.4",
