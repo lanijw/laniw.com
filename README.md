@@ -1,6 +1,8 @@
 # laniw.com
 
-[![Build, Test and Lint](https://github.com/lanijw/laniw.com/actions/workflows/node.js.yml/badge.svg)](https://github.com/lanijw/laniw.com/actions/workflows/node.js.yml)
+[![Build laniw.com](https://github.com/lanijw/laniw.com/actions/workflows/build.yml/badge.svg)](https://github.com/lanijw/laniw.com/actions/workflows/build.yml)
+[![Lint laniw.com](https://github.com/lanijw/laniw.com/actions/workflows/lint.yml/badge.svg)](https://github.com/lanijw/laniw.com/actions/workflows/lint.yml)
+[![Test laniw.com](https://github.com/lanijw/laniw.com/actions/workflows/test.yml/badge.svg)](https://github.com/lanijw/laniw.com/actions/workflows/test.yml)
 
 ## Develop
 
