@@ -65,7 +65,7 @@
     </div>
   </Loader>
 {:else if currentSection === Section.STATISTICS}
-  <Statistics {userDataVal} {majorVal}/>
+  <Statistics {userDataVal} {majorVal} />
 {:else if currentSection === Section.PLAN}
   <Plan />
 {/if}
