@@ -45,10 +45,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-    - name: Clean Install Node.js Dependencies
-      run: npm ci
-    - name: Run Tests
-      run: npm test -- --passWithNoTests
+      - name: Clean Install Node.js Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test -- --passWithNoTests
 
   lint-code:
     name: Run Linters
