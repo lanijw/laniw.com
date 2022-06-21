@@ -4,3 +4,5 @@
 package-lock.json
 .github/workflows/
 .svelte-kit/
+.idea/
+build/

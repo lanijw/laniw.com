@@ -1,18 +1,18 @@
 <script>
-	import { onMount } from 'svelte';
+  import {onMount} from "svelte";
 
-	let loader;
-	let Component;
+  let loader;
+  let Component;
 
-	onMount(async () => {
-		Component = (await loader()).default;
-	});
+  onMount(async () => {
+    Component = (await loader()).default;
+  });
 
-	export { loader as this };
+  export {loader as this};
 </script>
 
-<svelte:component this={Component} {...$$restProps}/>
+<svelte:component this={Component} {...$$restProps} />
 
 {#if !Component}
-	<slot name="fallback"></slot>
+  <slot name="fallback" />
 {/if}
