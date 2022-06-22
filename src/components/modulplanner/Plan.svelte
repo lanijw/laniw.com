@@ -32,7 +32,7 @@
         >{semester.modules
           .map(m => m.module.credits)
           .reduce((a, b) => a + b, 0)} Credits</span>
-      <div class="mb-5 grid grid-cols-12 gap-4">
+      <div class="mb-5 grid grid-cols-5 lg:grid-cols-12 gap-3">
         {#each semester.modules as module}
           <div>
             <ModuleChip module={module.module} {userDataVal} fromPlan={true} />
