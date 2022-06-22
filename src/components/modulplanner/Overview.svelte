@@ -1,6 +1,5 @@
 <script>
   import {modules} from "./informatik/modules";
-  import ModuleGroupContainer from "./ModuleGroupContainer.svelte";
   import ModuleChipCollection from "./ModuleChipCollection.svelte";
   import ModuleGroup from "./ModuleGroup.svelte";
   import {ModuleGroupSource} from "./constants";
@@ -21,53 +20,45 @@
         borderColor="border-2 border-cyan-600" />
     </div>
     <div class="col-span-7 lg:col-span-5 order-1">
-      <ModuleGroupContainer borderColor="border-2 border-blue-700">
+      <div class="rounded border-2 border-blue-700 p-3">
         <span class="text-l font-semibold">Fachausbildung</span>
         <div class="grid grid-cols-2">
           <div class="col-span-2 lg:grid lg:grid-cols-2">
-            <ModuleGroupContainer borderColor="border-2 border-blue-700">
+            <div class="rounded border-2 border-blue-700 p-3">
               <span class="text-l font-semibold">Fachvertiefung</span>
               <div class="grid grid-cols-2 lg:grid-cols-4">
                 <div>
-                  <ModuleGroupContainer>
-                    <span class="lg:hidden break-words" style="hyphens: manual"
-                      >ICT</span>
-                    <ModuleChipCollection
-                      modules={modules.mainModules.advancedModules.ict.modules}
-                      {userDataVal} />
-                  </ModuleGroupContainer>
+                  <span class="lg:hidden break-words" style="hyphens: manual"
+                    >ICT</span>
+                  <ModuleChipCollection
+                    modules={modules.mainModules.advancedModules.ict.modules}
+                    {userDataVal} />
                 </div>
                 <div>
-                  <ModuleGroupContainer>
-                    <span class="lg:hidden break-words" style="hyphens: manual"
-                      >Da&shy;ta Sci&shy;ence</span>
-                    <ModuleChipCollection
-                      modules={modules.mainModules.advancedModules.dataSci
-                        .modules}
-                      {userDataVal} />
-                  </ModuleGroupContainer>
+                  <span class="lg:hidden break-words" style="hyphens: manual"
+                    >Da&shy;ta Sci&shy;ence</span>
+                  <ModuleChipCollection
+                    modules={modules.mainModules.advancedModules.dataSci
+                      .modules}
+                    {userDataVal} />
                 </div>
                 <div>
-                  <ModuleGroupContainer>
-                    <span class="lg:hidden break-words" style="hyphens: manual"
-                      >Spa&shy;tial Com&shy;pu&shy;ting</span>
-                    <ModuleChipCollection
-                      modules={modules.mainModules.advancedModules.spatialComp
-                        .modules}
-                      {userDataVal} />
-                  </ModuleGroupContainer>
+                  <span class="lg:hidden break-words" style="hyphens: manual"
+                    >Spa&shy;tial Com&shy;pu&shy;ting</span>
+                  <ModuleChipCollection
+                    modules={modules.mainModules.advancedModules.spatialComp
+                      .modules}
+                    {userDataVal} />
                 </div>
                 <div>
-                  <ModuleGroupContainer>
-                    <span class="lg:hidden break-words" style="hyphens: manual"
-                      >Web</span>
-                    <ModuleChipCollection
-                      modules={modules.mainModules.advancedModules.web.modules}
-                      {userDataVal} />
-                  </ModuleGroupContainer>
+                  <span class="lg:hidden break-words" style="hyphens: manual"
+                    >Web</span>
+                  <ModuleChipCollection
+                    modules={modules.mainModules.advancedModules.web.modules}
+                    {userDataVal} />
                 </div>
               </div>
-            </ModuleGroupContainer>
+            </div>
             <div class="grid grid-cols-2 lg:grid-cols-4">
               <div>
                 <ModuleGroup
@@ -108,7 +99,7 @@
               borderColor="border-2 border-blue-700" />
           </div>
         </div>
-      </ModuleGroupContainer>
+      </div>
     </div>
     <div class="col-span-7 lg:col-span-1 grid content-between order-2">
       <ModuleGroup
