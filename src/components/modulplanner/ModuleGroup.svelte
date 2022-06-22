@@ -12,6 +12,6 @@
 </script>
 
 <ModuleGroupContainer {borderColor}>
-  <span class="text-l font-semibold">{@html title}</span>
+  <span class="text-l font-semibold break-words" style="hyphens: manual">{@html title}</span>
   <ModuleChipCollection {modules} {userDataVal} {source}/>
 </ModuleGroupContainer>
