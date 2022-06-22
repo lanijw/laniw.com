@@ -26,7 +26,7 @@
           <div class="col-span-2 lg:grid lg:grid-cols-2">
             <div class="rounded border-2 border-blue-700 p-3">
               <span class="text-l font-semibold">Fachvertiefung</span>
-              <div class="grid grid-cols-2 lg:grid-cols-4">
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 <div>
                   <span class="lg:hidden break-words" style="hyphens: manual"
                     >ICT</span>
