@@ -16,7 +16,7 @@
   class:grid-cols-4={additionalModules || projects || contextModules}
   class:lg:grid-cols-12={additionalModules}
   class:lg:grid-cols-1={projects}
-  class:lg:grid-cols-2={contextModules}>
+  class:lg:grid-cols-6={contextModules}>
   {#each modules as module}
     <ModuleChip {module} {userDataVal} />
   {/each}

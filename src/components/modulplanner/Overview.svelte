@@ -10,8 +10,8 @@
 </script>
 
 <div class="container mx-auto mt-4 p-1">
-  <div class="grid grid-cols-7 gap-3">
-    <div class="col-span-7 lg:col-span-1 order-2 lg:order-1">
+  <div class="grid grid-cols-6 gap-3">
+    <div class="col-span-6 lg:col-span-1 order-2 lg:order-1">
       <ModuleGroup
         title="Projekte"
         modules={modules.projects.modules}
@@ -19,7 +19,7 @@
         source={ModuleGroupSource.PROJECTS}
         borderColor="border-2 border-cyan-600" />
     </div>
-    <div class="col-span-7 lg:col-span-5 order-1">
+    <div class="col-span-6 lg:col-span-5 order-1">
       <div class="rounded border-2 border-blue-700 p-3">
         <span class="text-l font-semibold">Fachausbildung</span>
         <div class="lg:grid lg:grid-cols-2 gap-3">
@@ -98,31 +98,35 @@
         </div>
       </div>
     </div>
-    <div class="col-span-7 lg:col-span-1 order-2 grid grid-cols-1 gap-3">
-      <ModuleGroup
-        title="Betriebswirtschaftslehre"
-        modules={modules.bwl.modules}
-        {userDataVal}
-        source={ModuleGroupSource.CONTEXT}
-        borderColor="border-2 border-fuchsia-600" />
-      <ModuleGroup
-        title="Kommunikation"
-        modules={modules.comm.modules}
-        {userDataVal}
-        source={ModuleGroupSource.CONTEXT}
-        borderColor="border-2 border-fuchsia-600" />
-      <ModuleGroup
-        title="Englisch"
-        modules={modules.engl.modules}
-        {userDataVal}
-        source={ModuleGroupSource.CONTEXT}
-        borderColor="border-2 border-fuchsia-600" />
-      <ModuleGroup
-        title="GSW"
-        modules={modules.gsw.modules}
-        {userDataVal}
-        source={ModuleGroupSource.CONTEXT}
-        borderColor="border-2 border-fuchsia-600" />
+    <div class="col-span-6 order-2 grid lg:grid-cols-2 gap-3">
+      <div class="grid gap-3">
+        <ModuleGroup
+          title="Betriebswirtschaftslehre"
+          modules={modules.bwl.modules}
+          {userDataVal}
+          source={ModuleGroupSource.CONTEXT}
+          borderColor="border-2 border-fuchsia-600" />
+        <ModuleGroup
+          title="Kommunikation"
+          modules={modules.comm.modules}
+          {userDataVal}
+          source={ModuleGroupSource.CONTEXT}
+          borderColor="border-2 border-fuchsia-600" />
+        <ModuleGroup
+          title="Englisch"
+          modules={modules.engl.modules}
+          {userDataVal}
+          source={ModuleGroupSource.CONTEXT}
+          borderColor="border-2 border-fuchsia-600" />
+      </div>
+      <div>
+        <ModuleGroup
+          title="GSW"
+          modules={modules.gsw.modules}
+          {userDataVal}
+          source={ModuleGroupSource.CONTEXT}
+          borderColor="border-2 border-fuchsia-600" />
+      </div>
     </div>
   </div>
 </div>
