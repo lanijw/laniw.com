@@ -108,15 +108,17 @@
         </li>
 
         {#if currPageVal === Page.MODULE_PLANNER}
+          {#if EXTRA_MAJORS_PROD || dev}
+            <li class="mt-10">
+              <select
+                bind:value={selectedMajor}
+                class="d-select d-select-ghost hover:bg-base-200">
+                <option value={Major.INFORMATIK} selected>Informatik</option>
+                <option value={Major.ICOMPETENCE}>iCompetence</option>
+              </select>
+            </li>
+          {/if}
           <li class="mt-10">
-            <select
-              bind:value={selectedMajor}
-              class="d-select d-select-ghost hover:bg-base-200">
-              <option value={Major.INFORMATIK} selected>Informatik</option>
-              <option value={Major.ICOMPETENCE}>iCompetence</option>
-            </select>
-          </li>
-          <li>
             <label for="moduleplanner_file-input" class="d-btn d-btn-ghost">
               Daten importieren
             </label>
