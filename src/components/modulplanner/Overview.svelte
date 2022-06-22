@@ -23,7 +23,7 @@
       <div class="rounded border-2 border-blue-700 p-3">
         <span class="text-l font-semibold">Fachausbildung</span>
         <div class="lg:grid lg:grid-cols-2 gap-3">
-          <div class="rounded border-2 border-blue-700 p-3">
+          <div class="mb-3 lg:mb-0 rounded border-2 border-blue-700 p-3">
             <span class="text-l font-semibold">Fachvertiefung</span>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <div>
@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3 lg:mb-0">
             <div>
               <ModuleGroup
                 title="Pro&shy;gram&shy;mier&shy;ung"
