@@ -13,7 +13,7 @@
 </script>
 
 <div
-  class="grid lg:grid-cols-1 gap-2 lg:gap-3"
+  class="grid lg:grid-cols-1 gap-3"
   class:grid-cols-3={threeCols}
   class:grid-cols-4={fourCols}>
   {#each modules as module}
