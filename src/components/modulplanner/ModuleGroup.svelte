@@ -1,14 +1,13 @@
 <script>
   import ModuleGroupContainer from "./ModuleGroupContainer.svelte";
   import ModuleChipCollection from "./ModuleChipCollection.svelte";
-  import ModuleGroup
-    from "../../../.svelte-kit/output/server/chunks/Overview-726258ee";
+  import {ModuleGroupSource} from "./constants";
 
   export let title;
   export let modules;
   export let userDataVal;
   export let borderColor;
-  export let source = ModuleGroup.UNKNOWN;
+  export let source = ModuleGroupSource.UNKNOWN;
 </script>
 
 <ModuleGroupContainer {borderColor}>
