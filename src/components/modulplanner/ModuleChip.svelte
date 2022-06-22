@@ -64,11 +64,12 @@
 </script>
 
 <label
-  class="d-card d-card-compact bg-slate-50 shadow-md mt-3 mb-3 cursor-pointer w-full rounded hover:shadow-lg"
+  class="d-card d-card-compact bg-slate-50 shadow-md cursor-pointer w-full rounded hover:shadow-lg lg:col-span-1"
   class:h-8={module.credits === 2}
   class:h-12={module.credits === 3}
-  class:h-24={module.credits === 6}
-  class:h-48={module.credits === 12}
+  class:h-24={module.credits === 6 || module.credits === 12}
+  class:lg:h-48={module.credits === 12}
+  class:col-span-2={module.credits === 12}
   class:bg-amber-400={moduleStatus.status === Status.MARKED}
   class:bg-indigo-300={moduleStatus.status === Status.CURRENT}
   class:bg-green-400={moduleStatus.status === Status.COMPLETED}
