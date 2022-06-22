@@ -10,7 +10,7 @@
 </script>
 
 <div class="container mx-auto mt-5">
-  <div class="grid grid-cols-7">
+  <div class="grid grid-cols-7 gap-3">
     <div class="col-span-7 lg:col-span-1 order-2 lg:order-1">
       <ModuleGroup
         title="Projekte"
@@ -98,7 +98,7 @@
         </div>
       </div>
     </div>
-    <div class="col-span-7 lg:col-span-1 grid content-between order-2">
+    <div class="col-span-7 lg:col-span-1 order-2 grid grid-cols-1 gap-3">
       <ModuleGroup
         title="Betriebswirtschaftslehre"
         modules={modules.bwl.modules}
