@@ -307,11 +307,11 @@
   }
 </script>
 
-<div class="container mx-auto mt-4 p-1">
+<div class="container mx-auto mt-4 p-3">
   <h1 class="text-4xl font-bold">Statistiken</h1>
-  <h2 class="text-3xl font-semibold mt-5">Studiumsfortschritt</h2>
+  <h2 class="text-3xl font-semibold mt-5"><a id="progress">Studiumsfortschritt</a></h2>
 
-  <div class="d-stats shadow m-4">
+  <div class="d-stats d-stats-vertical lg:d-stats-horizontal shadow m-4">
     {#each completedCredits.slice(1, 3) as completedStat}
       <div class="d-stat">
         <div class="d-stat-title">{completedStat.title}</div>
@@ -328,7 +328,7 @@
     {/each}
   </div>
 
-  <div class="d-stats shadow m-4">
+  <div class="d-stats d-stats-vertical lg:d-stats-horizontal shadow m-4">
     {#each completedCredits.slice(3, 7) as completedStat}
       <div class="d-stat">
         <div class="d-stat-title">{completedStat.title}</div>
@@ -346,7 +346,24 @@
   </div>
 
   <div class="d-stats shadow m-4">
-    {#each completedCredits.slice(7, 9) as completedStat}
+    {#each completedCredits.slice(7, 8) as completedStat}
+      <div class="d-stat">
+        <div class="d-stat-title">{completedStat.title}</div>
+        <div class="d-stat-value">
+          {@html formatCreditPercentage(
+            completedStat.credits,
+            completedStat.minCredits
+          )}%
+        </div>
+        <div class="d-stat-desc">
+          {completedStat.credits}/{completedStat.minCredits} Credits absolviert
+        </div>
+      </div>
+    {/each}
+  </div>
+
+  <div class="d-stats shadow m-4">
+    {#each completedCredits.slice(8, 9) as completedStat}
       <div class="d-stat">
         <div class="d-stat-title">{completedStat.title}</div>
         <div class="d-stat-value">
@@ -364,7 +381,7 @@
 
   <h3 class="text-2xl font-semibold mt-5">Profilabsolvierung</h3>
 
-  <div class="grid grid-cols-2">
+  <div class="grid grid-cols-1 lg:grid-cols-2">
     {#each profileCredits as p}
       <div>
         <h4 class="text-xl font-semibold mt-5">{p.title}</h4>
@@ -403,7 +420,7 @@
 
   <h2 class="text-3xl font-semibold mt-5">Studiumplanung</h2>
 
-  <div class="d-stats shadow m-4">
+  <div class="d-stats d-stats-vertical lg:d-stats-horizontal shadow m-4">
     {#each plannedCredits.slice(1, 3) as completedStat}
       <div class="d-stat">
         <div class="d-stat-title">Geplante {completedStat.title}</div>
@@ -420,7 +437,7 @@
     {/each}
   </div>
 
-  <div class="d-stats shadow m-4">
+  <div class="d-stats d-stats-vertical lg:d-stats-horizontal shadow m-4">
     {#each plannedCredits.slice(3, 7) as completedStat}
       <div class="d-stat">
         <div class="d-stat-title">Geplante {completedStat.title}</div>
@@ -437,7 +454,7 @@
     {/each}
   </div>
 
-  <div class="d-stats shadow m-4">
+  <div class="d-stats d-stats-vertical lg:d-stats-horizontal shadow m-4">
     {#each plannedCredits.slice(7, 9) as completedStat}
       <div class="d-stat">
         <div class="d-stat-title">Geplante {completedStat.title}</div>
