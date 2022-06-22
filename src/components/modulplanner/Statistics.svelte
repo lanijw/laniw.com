@@ -309,7 +309,8 @@
 
 <div class="container mx-auto mt-4 p-3">
   <h1 class="text-4xl font-bold">Statistiken</h1>
-  <h2 class="text-3xl font-semibold mt-5"><a id="progress">Studiumsfortschritt</a></h2>
+  <h2 class="text-3xl font-semibold mt-5"
+    ><a id="progress">Studiumsfortschritt</a></h2>
 
   <div class="d-stats d-stats-vertical lg:d-stats-horizontal shadow m-4">
     {#each completedCredits.slice(1, 3) as completedStat}
