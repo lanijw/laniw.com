@@ -16,14 +16,14 @@
 </svelte:head>
 
 {#if currPageVal === Page.HOME}
-  <div class="pt-20">
+  <div class="pt-12">
     <slot />
   </div>
 {:else}
   <HelpOverlay>
     <NavBar {currPageVal} />
 
-    <div class="pt-20">
+    <div class="pt-12">
       <slot />
     </div>
   </HelpOverlay>
