@@ -25,9 +25,7 @@
       depsMatter(userDataVal, module.id);
     let deps = depModules(allModules, module.id);
     missingDeps = depsMissing
-      ? deps.filter(
-          d => !plannedDeps(userDataVal, deps).includes(d)
-        )
+      ? deps.filter(d => !plannedDeps(userDataVal, deps).includes(d))
       : [];
   }
 </script>

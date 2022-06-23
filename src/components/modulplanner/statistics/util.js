@@ -1,6 +1,5 @@
 import {Status} from "../constants";
 
-
 export function sum(a, b) {
   return a + b;
 }

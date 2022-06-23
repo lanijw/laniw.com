@@ -1,7 +1,8 @@
 import {
   formatCreditPercentage,
   isModuleCompleted,
-  isModuleStatusCompletedInGroup, isModuleStatusPlannedInGroup,
+  isModuleStatusCompletedInGroup,
+  isModuleStatusPlannedInGroup,
   moduleStatusToCredits,
   sum
 } from "../../../../src/components/modulplanner/statistics/util";
