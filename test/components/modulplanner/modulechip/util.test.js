@@ -1,6 +1,7 @@
 import {
   depModules,
   depsMatter,
+  hasPlannedDepModules,
   plannedDeps
 } from "../../../../src/components/modulplanner/modulechip/util";
 import {ModuleStatus} from "../../../../src/components/modulplanner/stores";
@@ -137,3 +138,13 @@ test("depModules 6levelDeps 5levelDeps", () => {
   expect(result[3]).toBe("test4");
   expect(result[4]).toBe("test5");
 });
+
+test("hasPlannedDepModules morePlanned true", () => {
+  plannedDeps = jest.fn().mockImplementation(() => []);
+  depModules = jest.fn().mockImplementation(() => [])
+
+  // Write test here.
+});
+test("hasPlannedDepModules lessPlanned false");
+test("hasPlannedDepModules rightAmountPlanned true");
+test("hasPlannedDepModules irrelevantDepsPlanned false");
