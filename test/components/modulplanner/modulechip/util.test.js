@@ -6,6 +6,7 @@ import {
 } from "../../../../src/components/modulplanner/modulechip/util";
 import {ModuleStatus} from "../../../../src/components/modulplanner/stores";
 import {Status} from "../../../../src/components/modulplanner/constants";
+import {Profile} from "../../../../src/components/modulplanner/informatik/modules";
 
 test("depsMatter userDataEmpty false", () => {
   expect(depsMatter({s: []}, "test")).toBe(false);
@@ -140,11 +141,124 @@ test("depModules 6levelDeps 5levelDeps", () => {
 });
 
 test("hasPlannedDepModules morePlanned true", () => {
-  plannedDeps = jest.fn().mockImplementation(() => []);
-  depModules = jest.fn().mockImplementation(() => [])
-
-  // Write test here.
+  const result = hasPlannedDepModules(
+    [
+      {
+        id: "oop1",
+        credits: 3,
+        hardDeps: ["eipr"],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      },
+      {
+        id: "eipr",
+        credits: 3,
+        hardDeps: [],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      }
+    ],
+    {
+      s: [
+        new ModuleStatus("oop1", Status.COMPLETED, undefined, undefined, false),
+        new ModuleStatus("eipr", Status.COMPLETED, undefined, undefined, false)
+      ]
+    },
+    "oop1"
+  );
+  expect(result).toBe(true);
 });
-test("hasPlannedDepModules lessPlanned false");
-test("hasPlannedDepModules rightAmountPlanned true");
-test("hasPlannedDepModules irrelevantDepsPlanned false");
+
+test("hasPlannedDepModules lessPlanned false", () => {
+  const result = hasPlannedDepModules(
+    [
+      {
+        id: "oop1",
+        credits: 3,
+        hardDeps: ["eipr"],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      },
+      {
+        id: "eipr",
+        credits: 3,
+        hardDeps: [],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      }
+    ],
+    {
+      s: [new ModuleStatus("oop1", Status.MARKED, undefined, undefined, false)]
+    },
+    "oop1"
+  );
+  expect(result).toBe(false);
+});
+
+test("hasPlannedDepModules rightAmountPlanned true", () => {
+  const result = hasPlannedDepModules(
+    [
+      {
+        id: "oop1",
+        credits: 3,
+        hardDeps: ["eipr"],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      },
+      {
+        id: "eipr",
+        credits: 3,
+        hardDeps: [],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      }
+    ],
+    {
+      s: [new ModuleStatus("eipr", Status.MARKED, undefined, undefined, false)]
+    },
+    "oop1"
+  );
+  expect(result).toBe(true);
+});
+
+test("hasPlannedDepModules irrelevantDepsPlanned false", () => {
+  const result = hasPlannedDepModules(
+    [
+      {
+        id: "oop1",
+        credits: 3,
+        hardDeps: ["eipr"],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      },
+      {
+        id: "eipr",
+        credits: 3,
+        hardDeps: [],
+        softDeps: [],
+        assessment: false,
+        assessmentSpecial: false,
+        relevantProfile: Profile.NONE
+      }
+    ],
+    {
+      s: [new ModuleStatus("eana", Status.MARKED, undefined, undefined, false)]
+    },
+    "oop1"
+  );
+  expect(result).toBe(true);
+});

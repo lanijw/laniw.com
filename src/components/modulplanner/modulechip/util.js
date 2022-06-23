@@ -15,8 +15,8 @@ export function plannedDeps(userDataVal, deps) {
     return [];
   }
   return deps.filter(d => {
-    const depStatus = userDataVal.s.find(s => s.id === d).status;
-    return (
+    const depStatus = userDataVal.s.find(s => s.id === d)?.status;
+    return depStatus && (
       depStatus === Status.CURRENT ||
       depStatus === Status.MARKED ||
       depStatus === Status.COMPLETED
