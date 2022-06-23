@@ -1,5 +1,4 @@
 import {Status} from "../constants";
-import {allModules} from "../informatik/modules";
 
 
 export function sum(a, b) {
@@ -14,7 +13,7 @@ export function isModuleStatusPlannedInGroup(s, ids) {
   return s.status !== Status.NOT_TAKEN && ids.includes(s.id);
 }
 
-export function moduleStatusToCredits(s) {
+export function moduleStatusToCredits(allModules, s) {
   return allModules.find(m => m.id === s.id).credits;
 }
 
