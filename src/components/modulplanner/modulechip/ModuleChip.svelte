@@ -3,6 +3,12 @@
   import {allModules} from "../informatik/modules";
   import {getModuleStatusById} from "../stores";
   import {Status} from "../constants";
+  import {
+    depModules,
+    depsMatter,
+    hasPlannedDepModules,
+    plannedDeps
+  } from "./util";
 
   export let module;
   export let userDataVal;
@@ -15,51 +21,14 @@
   let missingDeps;
   $: {
     depsMissing =
-      !hasPlannedDepModules(userDataVal, module.id) &&
+      !hasPlannedDepModules(allModules, userDataVal, module.id) &&
       depsMatter(userDataVal, module.id);
-    let deps = depModules(module.id);
+    let deps = depModules(allModules, module.id);
     missingDeps = depsMissing
-      ? depModules(module.id).filter(
+      ? deps.filter(
           d => !plannedDeps(userDataVal, deps).includes(d)
         )
       : [];
-  }
-
-  function depsMatter(userDataVal, id) {
-    const currModuleStatus = userDataVal.s.find(s => s.id === id);
-    return currModuleStatus ? currModuleStatus.status === Status.MARKED : false;
-  }
-
-  function hasPlannedDepModules(userDataVal, id) {
-    const deps = depModules(id);
-    return deps.length === plannedDeps(userDataVal, deps).length;
-  }
-
-  function plannedDeps(userDataVal, deps) {
-    if (!userDataVal.s.length) {
-      return [];
-    }
-    return deps.filter(d => {
-      const depStatus = userDataVal.s.find(s => s.id === d).status;
-      return (
-        depStatus === Status.CURRENT ||
-        depStatus === Status.MARKED ||
-        depStatus === Status.COMPLETED
-      );
-    });
-  }
-
-  function depModules(id) {
-    let finalDeps = [];
-    let currentDeps = [id];
-    for (let i = 0; i < 5; i++) {
-      currentDeps = currentDeps.flatMap(d => {
-        const currentModule = allModules.find(m => m.id === d);
-        return [...currentModule.hardDeps, ...currentModule.softDeps];
-      });
-      finalDeps = [...finalDeps, ...currentDeps];
-    }
-    return [...new Set(finalDeps.filter(d => d !== id))];
   }
 </script>
 
