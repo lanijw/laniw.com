@@ -79,35 +79,36 @@
 
     <h4 class="text-lg font-bold mt-4 mb-2">Modulstatus</h4>
     <div class="grid grid-cols-2 gap-1 mb-2">
-      <StatusRadioButton label="Nicht belegt">
+      <StatusRadioButton label="Nicht belegt" for="not-taken-toggle">
         <input
           type="radio"
+          id="not-taken-toggle"
           bind:group={status}
           value={Status.NOT_TAKEN}
           class="d-radio checked:bg-slate-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Laufend">
+      <StatusRadioButton label="Laufend" for="current-toggle">
         <input
           type="radio"
           bind:group={status}
           value={Status.CURRENT}
           class="d-radio checked:bg-indigo-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Vorgemerkt">
+      <StatusRadioButton label="Vorgemerkt" for="marked-toggle">
         <input
           type="radio"
           bind:group={status}
           value={Status.MARKED}
           class="d-radio checked:bg-amber-400 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Bestanden">
+      <StatusRadioButton label="Bestanden" for="completed-toggle">
         <input
           type="radio"
           bind:group={status}
           value={Status.COMPLETED}
           class="d-radio checked:bg-green-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Nicht bestanden">
+      <StatusRadioButton label="Nicht bestanden" for="failed-toggle">
         <input
           type="radio"
           bind:group={status}
@@ -119,20 +120,21 @@
     <div class="h-48">
       {#if status === Status.COMPLETED || status === Status.FAILED}
         <div class="d-form-control pb-2">
-          <label class="d-label cursor-pointer inline">
-            <div class="flex gap-x-2">
-              <span class="d-label-text flex-none">1 Versuch</span>
-              <input
-                type="checkbox"
-                class="d-toggle flex-none"
-                class:bg-green-700={status === Status.COMPLETED}
-                class:bg-red-700={status === Status.FAILED}
-                bind:checked={secondTry} />
-              <span class="d-label-tex flex-none">2 Versuche</span>
-              <span class="flex-auto text-right">
-                aufgewandte Credits: {module.credits * (secondTry ? 2 : 1)}
-              </span>
-            </div>
+          <label
+            class="d-label cursor-pointer inline flex gap-x-2"
+            for="second-try-toggle">
+            <span class="d-label-text flex-none">1 Versuch</span>
+            <input
+              type="checkbox"
+              id="second-try-toggle"
+              class="d-toggle flex-none"
+              class:bg-green-700={status === Status.COMPLETED}
+              class:bg-red-700={status === Status.FAILED}
+              bind:checked={secondTry} />
+            <span class="d-label-text flex-none">2 Versuche</span>
+            <span class="flex-auto text-right">
+              aufgewandte Credits: {module.credits * (secondTry ? 2 : 1)}
+            </span>
           </label>
         </div>
       {/if}

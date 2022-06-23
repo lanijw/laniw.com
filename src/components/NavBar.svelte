@@ -82,20 +82,20 @@
 <div class="d-navbar bg-base-100 shadow-lg sticky z-50">
   <div class="d-navbar-start">
     <div class="d-dropdown">
-      <label tabindex="0" class="d-btn d-btn-ghost lg:hidden">
+      <span tabindex="0" class="d-btn d-btn-ghost lg:hidden">
         <MenuIcon />
-      </label>
+      </span>
       <ul
         tabindex="0"
         class="d-menu d-menu-compact d-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="/">Home</a></li>
         <li tabindex="0">
-          <a class="justify-between">
+          <span class="justify-between cursor-pointer">
             <span class:font-semibold={currPageVal === Page.MODULE_PLANNER}>
               FHNW
             </span>
             <ChevronRightIcon />
-          </a>
+          </span>
           <ul class="p-2 shadow bg-base-100 rounded-box">
             <li>
               <a
@@ -142,11 +142,11 @@
     <ul class="d-menu d-menu-horizontal p-0">
       <li><a href="/" class="rounded-lg">Home</a></li>
       <li tabindex="0">
-        <a class="rounded-lg">
+        <span class="rounded-lg cursor-pointer">
           <span class:font-semibold={currPageVal === Page.MODULE_PLANNER}
             >FHNW</span>
           <ChevronDownIcon />
-        </a>
+        </span>
         <ul class="p-2 bg-base-100 rounded-lg">
           <li>
             <a
