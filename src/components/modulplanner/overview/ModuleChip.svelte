@@ -1,8 +1,8 @@
 <script>
-  import StatusForm from "./status-form/StatusForm.svelte";
-  import {allModules} from "./informatik/modules";
-  import {getModuleStatusById} from "./stores";
-  import {Status} from "./constants";
+  import StatusForm from "../status-form/StatusForm.svelte";
+  import {allModules} from "../informatik/modules";
+  import {getModuleStatusById} from "../stores";
+  import {Status} from "../constants";
 
   export let module;
   export let userDataVal;

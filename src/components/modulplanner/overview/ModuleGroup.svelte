@@ -1,6 +1,6 @@
 <script>
   import ModuleChipCollection from "./ModuleChipCollection.svelte";
-  import {ModuleGroupSource} from "./constants";
+  import {ModuleGroupSource} from "../constants";
 
   export let title;
   export let modules;

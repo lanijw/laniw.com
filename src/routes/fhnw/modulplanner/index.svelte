@@ -31,7 +31,7 @@
   let currentSection = Section.OVERVIEW;
 
   function importOverview() {
-    return import("../../../components/modulplanner/Overview.svelte");
+    return import("../../../components/modulplanner/overview/Overview.svelte");
   }
 </script>
 

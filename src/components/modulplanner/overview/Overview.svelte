@@ -1,8 +1,8 @@
 <script>
-  import {modules} from "./informatik/modules";
+  import {modules} from "../informatik/modules";
   import ModuleChipCollection from "./ModuleChipCollection.svelte";
   import ModuleGroup from "./ModuleGroup.svelte";
-  import {ModuleGroupSource} from "./constants";
+  import {ModuleGroupSource} from "../constants";
 
   export let userDataVal;
   export let majorVal;
