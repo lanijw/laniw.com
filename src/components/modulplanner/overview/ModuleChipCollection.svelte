@@ -1,5 +1,5 @@
 <script>
-  import ModuleChip from "./ModuleChip.svelte";
+  import ModuleChip from "../modulechip/ModuleChip.svelte";
   import {ModuleGroupSource} from "../constants";
 
   export let modules;
