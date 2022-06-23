@@ -1,6 +1,6 @@
 <script>
   import {onDestroy} from "svelte";
-  import ModuleChip from "./ModuleChip.svelte";
+  import ModuleChip from "./modulechip/ModuleChip.svelte";
   import {allModules} from "./informatik/modules.js";
   import {userData} from "./stores";
 

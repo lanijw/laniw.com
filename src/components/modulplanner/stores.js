@@ -11,7 +11,7 @@ export class ModuleStatus {
   }
 
   static defaultInstance(id) {
-    return new ModuleStatus(id, Status.NOT_TAKEN, null, null, false);
+    return new ModuleStatus(id, Status.NOT_TAKEN, undefined, undefined, false);
   }
 }
 

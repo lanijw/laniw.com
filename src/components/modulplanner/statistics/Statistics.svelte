@@ -1,8 +1,16 @@
 <script>
-  import {allModules, modules, Profile} from "./informatik/modules.js";
-  import {Status} from "./constants.js";
-  import CheckIcon from "../icons/CheckIcon.svelte";
-  import CloseIcon from "../icons/CloseIcon.svelte";
+  import {allModules, modules, Profile} from "../informatik/modules.js";
+  import {Status} from "../constants.js";
+  import CheckIcon from "../../icons/CheckIcon.svelte";
+  import CloseIcon from "../../icons/CloseIcon.svelte";
+  import {
+    formatCreditPercentage,
+    isModuleCompleted,
+    isModuleStatusCompletedInGroup,
+    isModuleStatusPlannedInGroup,
+    moduleStatusToCredits,
+    sum
+  } from "./util";
 
   export let userDataVal;
   export let majorVal;
@@ -14,57 +22,57 @@
     .reduce(sum, 0);
   const plannedTotalCredits = userDataVal.s
     .filter(s => s.status !== Status.NOT_TAKEN)
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce((a, b) => a + b, 0);
 
   const projectIds = modules.projects.modules.map(m => m.id);
   const projectCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, projectIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedProjectCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, projectIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const progIds = modules.mainModules.baseModules.prog.modules.map(m => m.id);
   const progCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, progIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedProgCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, progIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const sweIds = modules.mainModules.baseModules.swe.modules.map(m => m.id);
   const sweCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, sweIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedSweCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, sweIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const ictIds = modules.mainModules.baseModules.ict.modules.map(m => m.id);
   const ictCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, ictIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedIctCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, ictIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const mathIds = modules.mainModules.baseModules.math.modules.map(m => m.id);
   const mathCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, mathIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedMathCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, mathIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const advancedIds = [
@@ -75,11 +83,11 @@
   ].map(m => m.id);
   const advancedCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, advancedIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedAdvancedCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, advancedIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const additionalIds = modules.mainModules.additionalModules.modules.map(
@@ -87,11 +95,11 @@
   );
   const additionalCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, additionalIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedAdditionalCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, additionalIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const mainIds = [
@@ -104,11 +112,11 @@
   ];
   const mainCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, mainIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
   const plannedMainCredits = userDataVal.s
     .filter(s => isModuleStatusPlannedInGroup(s, mainIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const completedCredits = [
@@ -212,7 +220,7 @@
   );
   const completedDataSciProfileCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, dataSciProfileIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const ictProfileIds = allModules.filter(
@@ -220,7 +228,7 @@
   );
   const completedIctProfileCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, ictProfileIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const spatialCompProfileIds = allModules.filter(
@@ -228,7 +236,7 @@
   );
   const completedSpatialCompProfileCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, spatialCompProfileIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const webProfileIds = allModules.filter(
@@ -236,7 +244,7 @@
   );
   const completedWebProfileCredits = userDataVal.s
     .filter(s => isModuleStatusCompletedInGroup(s, webProfileIds))
-    .map(moduleStatusToCredits)
+    .map(s => moduleStatusToCredits(allModules, s))
     .reduce(sum, 0);
 
   const profileCredits = [
@@ -246,6 +254,7 @@
       minCredits: modules.mainModules.advancedModules.dataSci.minModules * 3,
       workshopId: modules.mainModules.advancedModules.dataSci.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.dataSci.requiredModule
       )
     },
@@ -255,6 +264,7 @@
       minCredits: modules.mainModules.advancedModules.ict.minModules * 3,
       workshopId: modules.mainModules.advancedModules.ict.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.ict.requiredModule
       )
     },
@@ -266,6 +276,7 @@
       workshopId:
         modules.mainModules.advancedModules.spatialComp.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.spatialComp.requiredModule
       )
     },
@@ -275,36 +286,11 @@
       minCredits: modules.mainModules.advancedModules.web.minModules * 3,
       workshopId: modules.mainModules.advancedModules.web.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.web.requiredModule
       )
     }
   ];
-
-  function sum(a, b) {
-    return a + b;
-  }
-
-  function isModuleStatusCompletedInGroup(s, ids) {
-    return (s.status === Status.COMPLETED || s.fulfilled) && ids.includes(s.id);
-  }
-
-  function isModuleStatusPlannedInGroup(s, ids) {
-    return s.status !== Status.NOT_TAKEN && ids.includes(s.id);
-  }
-
-  function moduleStatusToCredits(s) {
-    return allModules.find(m => m.id === s.id).credits;
-  }
-
-  function formatCreditPercentage(credits, minCredits) {
-    const result = Math.round(10 * 100 * (credits / minCredits)) / 10;
-    return minCredits === 0 ? "&infin;" : result;
-  }
-
-  function isModuleCompleted(id) {
-    const status = userDataVal.s.find(s => s.id === id);
-    return status.status === Status.COMPLETED || status.fulfilled;
-  }
 </script>
 
 <div class="container mx-auto mt-4 p-3">
