@@ -3,7 +3,7 @@
   import {onDestroy} from "svelte";
   import {Page} from "../../../constants";
   import {major, userData} from "../../../components/modulplanner/stores";
-  import Statistics from "../../../components/modulplanner/Statistics.svelte";
+  import Statistics from "../../../components/modulplanner/statistics/Statistics.svelte";
   import Plan from "../../../components/modulplanner/Plan.svelte";
   import {Status} from "../../../components/modulplanner/constants";
   import Loader from "../../../components/Loader.svelte";

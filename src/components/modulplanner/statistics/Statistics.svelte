@@ -1,8 +1,16 @@
 <script>
-  import {allModules, modules, Profile} from "./informatik/modules.js";
-  import {Status} from "./constants.js";
-  import CheckIcon from "../icons/CheckIcon.svelte";
-  import CloseIcon from "../icons/CloseIcon.svelte";
+  import {allModules, modules, Profile} from "../informatik/modules.js";
+  import {Status} from "../constants.js";
+  import CheckIcon from "../../icons/CheckIcon.svelte";
+  import CloseIcon from "../../icons/CloseIcon.svelte";
+  import {
+    formatCreditPercentage,
+    isModuleCompleted,
+    isModuleStatusCompletedInGroup,
+    isModuleStatusPlannedInGroup,
+    moduleStatusToCredits,
+    sum
+  } from "./util";
 
   export let userDataVal;
   export let majorVal;
@@ -246,6 +254,7 @@
       minCredits: modules.mainModules.advancedModules.dataSci.minModules * 3,
       workshopId: modules.mainModules.advancedModules.dataSci.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.dataSci.requiredModule
       )
     },
@@ -255,6 +264,7 @@
       minCredits: modules.mainModules.advancedModules.ict.minModules * 3,
       workshopId: modules.mainModules.advancedModules.ict.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.ict.requiredModule
       )
     },
@@ -266,6 +276,7 @@
       workshopId:
         modules.mainModules.advancedModules.spatialComp.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.spatialComp.requiredModule
       )
     },
@@ -275,36 +286,11 @@
       minCredits: modules.mainModules.advancedModules.web.minModules * 3,
       workshopId: modules.mainModules.advancedModules.web.requiredModule,
       workshopCompleted: isModuleCompleted(
+        userDataVal,
         modules.mainModules.advancedModules.web.requiredModule
       )
     }
   ];
-
-  function sum(a, b) {
-    return a + b;
-  }
-
-  function isModuleStatusCompletedInGroup(s, ids) {
-    return (s.status === Status.COMPLETED || s.fulfilled) && ids.includes(s.id);
-  }
-
-  function isModuleStatusPlannedInGroup(s, ids) {
-    return s.status !== Status.NOT_TAKEN && ids.includes(s.id);
-  }
-
-  function moduleStatusToCredits(s) {
-    return allModules.find(m => m.id === s.id).credits;
-  }
-
-  function formatCreditPercentage(credits, minCredits) {
-    const result = Math.round(10 * 100 * (credits / minCredits)) / 10;
-    return minCredits === 0 ? "&infin;" : result;
-  }
-
-  function isModuleCompleted(id) {
-    const status = userDataVal.s.find(s => s.id === id);
-    return status.status === Status.COMPLETED || status.fulfilled;
-  }
 </script>
 
 <div class="container mx-auto mt-4 p-3">
