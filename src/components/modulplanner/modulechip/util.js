@@ -2,7 +2,7 @@ import {Status} from "../constants";
 
 export function depsMatter(userDataVal, id) {
   const currModuleStatus = userDataVal.s.find(s => s.id === id);
-  return currModuleStatus ? currModuleStatus.status === Status.MARKED : false;
+  return currModuleStatus?.status === Status.MARKED;
 }
 
 export function hasPlannedDepModules(allModules, userDataVal, id) {
