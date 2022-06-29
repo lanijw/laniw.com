@@ -79,38 +79,42 @@
 
     <h4 class="text-lg font-bold mt-4 mb-2">Modulstatus</h4>
     <div class="grid grid-cols-2 gap-1 mb-2">
-      <StatusRadioButton label="Nicht belegt" for="not-taken-toggle">
+      <StatusRadioButton label="Nicht belegt" for="not-taken-toggle-{module.id}">
         <input
           type="radio"
-          id="not-taken-toggle"
+          id="not-taken-toggle-{module.id}"
           bind:group={status}
           value={Status.NOT_TAKEN}
           class="d-radio checked:bg-slate-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Laufend" for="current-toggle">
+      <StatusRadioButton label="Laufend" for="current-toggle-{module.id}">
         <input
           type="radio"
+          id="current-toggle-{module.id}"
           bind:group={status}
           value={Status.CURRENT}
           class="d-radio checked:bg-indigo-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Vorgemerkt" for="marked-toggle">
+      <StatusRadioButton label="Vorgemerkt" for="marked-toggle-{module.id}">
         <input
           type="radio"
+          id="marked-toggle-{module.id}"
           bind:group={status}
           value={Status.MARKED}
           class="d-radio checked:bg-amber-400 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Bestanden" for="completed-toggle">
+      <StatusRadioButton label="Bestanden" for="completed-toggle-{module.id}">
         <input
           type="radio"
+          id="completed-toggle-{module.id}"
           bind:group={status}
           value={Status.COMPLETED}
           class="d-radio checked:bg-green-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Nicht bestanden" for="failed-toggle">
+      <StatusRadioButton label="Nicht bestanden" for="failed-toggle-{module.id}">
         <input
           type="radio"
+          id="failed-toggle-{module.id}"
           bind:group={status}
           value={Status.FAILED}
           class="d-radio checked:bg-red-700 ml-3" />
@@ -122,11 +126,11 @@
         <div class="d-form-control pb-2">
           <label
             class="d-label cursor-pointer inline flex gap-x-2"
-            for="second-try-toggle">
+            for="second-try-toggle-{module.id}">
             <span class="d-label-text flex-none">1 Versuch</span>
             <input
               type="checkbox"
-              id="second-try-toggle"
+              id="second-try-toggle-{module.id}"
               class="d-toggle flex-none"
               class:bg-green-700={status === Status.COMPLETED}
               class:bg-red-700={status === Status.FAILED}
@@ -143,9 +147,9 @@
           <div class="flex-initial d-form-control pb-3">
             <label
               class="d-label d-label-text cursor-pointer"
-              for="sem-indication-toggle">Semesterangabe</label>
+              for="sem-indication-toggle-{module.id}">Semesterangabe</label>
             <input
-              id="sem-indication-toggle"
+              id="sem-indication-toggle-{module.id}"
               type="checkbox"
               class="d-toggle"
               bind:checked={semesterIndication}
@@ -153,7 +157,7 @@
           </div>
           {#if semesterIndication}
             <div class="flex-auto d-form-control w-full max-w-xs">
-              <label for="sem-range" class="d-label d-label-text">
+              <label for="sem-range-{module.id}" class="d-label d-label-text">
                 Semester
               </label>
               <input
@@ -163,7 +167,7 @@
                 bind:value={sem}
                 class="d-range d-range-sm"
                 step="1"
-                id="sem-range" />
+                id="sem-range-{module.id}" />
               <div class="w-full grid grid-cols-12 text-xs gap-2 pl-2">
                 {#each Array.from(Array(12).keys()).map(v => 1 + v) as semester}
                   <span>{semester}</span>
@@ -178,18 +182,18 @@
           <div class="d-form-control flex-none">
             <label
               class="d-label d-label-text cursor-pointer"
-              for="fulfilled-toggle">
+              for="fulfilled-toggle-{module.id}">
               Erf&uuml;llt
             </label>
             <input
               type="checkbox"
               bind:checked={fulfilled}
               class="d-toggle"
-              id="fulfilled-toggle" />
+              id="fulfilled-toggle-{module.id}" />
           </div>
           {#if !fulfilled}
             <div class="d-form-control w-full max-w-xs inline-block flex-none">
-              <label for="grade-range" class="d-label d-label-text">
+              <label for="grade-range-{module.id}" class="d-label d-label-text">
                 Note
               </label>
               <input
@@ -199,7 +203,7 @@
                 bind:value={grade}
                 class="d-range d-range-sm"
                 step=".5"
-                id="grade-range" />
+                id="grade-range-{module.id}" />
               <div class="w-full flex justify-between text-xs px-2">
                 {#each Array.from(Array(5).keys()).map(v => 4 + v * 0.5) as grade}
                   <span>{grade}</span>
