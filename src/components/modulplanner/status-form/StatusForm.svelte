@@ -33,9 +33,9 @@
   }
 
   $: {
-    if (fulfilled) {
+    if (grade !== undefined && fulfilled) {
       grade = undefined;
-    } else {
+    } else if (grade === undefined) {
       grade = 4;
     }
   }
