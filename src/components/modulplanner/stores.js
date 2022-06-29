@@ -2,16 +2,17 @@ import {writable} from "svelte/store";
 import {Status} from "./constants";
 
 export class ModuleStatus {
-  constructor(id, status, grade, sem, fulfilled) {
+  constructor(id, status, grade, sem, fulfilled, secondTry) {
     this.id = id;
     this.status = status;
     this.grade = grade;
     this.fulfilled = fulfilled;
     this.sem = sem;
+    this.secondTry = secondTry;
   }
 
   static defaultInstance(id) {
-    return new ModuleStatus(id, Status.NOT_TAKEN, undefined, undefined, false);
+    return new ModuleStatus(id, Status.NOT_TAKEN, undefined, undefined, false, false);
   }
 }
 
@@ -47,7 +48,7 @@ export function getModuleStatusById(storeValue, id) {
 }
 
 export const USER_DATA_DEFAULT_VAL = {
-  v: "1.0.0",
+  v: "1.1.0",
   s: []
 };
 export const userData = writable(USER_DATA_DEFAULT_VAL);

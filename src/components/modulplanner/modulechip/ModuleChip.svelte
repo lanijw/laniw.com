@@ -55,4 +55,4 @@
   </div>
 </label>
 
-<StatusForm {module} {...moduleStatus} {missingDeps} {fromPlan} />
+<StatusForm {module} {moduleStatus} {missingDeps} {fromPlan} />

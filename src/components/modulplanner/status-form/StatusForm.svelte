@@ -5,45 +5,32 @@
   import {ModuleStatus, updateModuleStatus} from "../stores";
 
   export let module;
-  export let id;
-  export let status;
-  export let secondTry = false;
-  export let grade;
-  export let fulfilled = false;
-  export let sem;
+  export let moduleStatus
   export let missingDeps;
 
   export let fromPlan;
 
-  let mounted = false;
-  onMount(() => (mounted = true));
-  $: {
-    if (mounted) {
-      updateModuleStatus(new ModuleStatus(id, status, grade, sem, fulfilled));
-    }
-  }
-
-  let semesterIndication = !(sem === undefined || sem === null);
+  let semesterIndication = !(moduleStatus.sem === undefined || sem === null);
   function updateSem() {
     if (semesterIndication) {
-      sem = 1;
+      moduleStatus.sem = 1;
     } else {
-      sem = undefined;
+      moduleStatus.sem = undefined;
     }
   }
 
   $: {
-    if (grade !== undefined && fulfilled) {
-      grade = undefined;
-    } else if (grade === undefined) {
-      grade = 4;
+    if (moduleStatus.grade !== undefined && moduleStatus.fulfilled) {
+      moduleStatus.grade = undefined;
+    } else if (moduleStatus.grade === undefined) {
+      moduleStatus.grade = 4;
     }
   }
 </script>
 
 <input type="checkbox" id="edit-modal-{module.id}" class="d-modal-toggle" />
 <label for="edit-modal-{module.id}" class="d-modal">
-  <label class="d-modal-box relative" for="">
+  <label class="d-modal-box relative" for="none">
     <label
       for="edit-modal-{module.id}"
       class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label>
@@ -83,7 +70,7 @@
         <input
           type="radio"
           id="not-taken-toggle-{module.id}"
-          bind:group={status}
+          bind:group={moduleStatus.status}
           value={Status.NOT_TAKEN}
           class="d-radio checked:bg-slate-700 ml-3" />
       </StatusRadioButton>
@@ -91,7 +78,7 @@
         <input
           type="radio"
           id="current-toggle-{module.id}"
-          bind:group={status}
+          bind:group={moduleStatus.status}
           value={Status.CURRENT}
           class="d-radio checked:bg-indigo-700 ml-3" />
       </StatusRadioButton>
@@ -99,7 +86,7 @@
         <input
           type="radio"
           id="marked-toggle-{module.id}"
-          bind:group={status}
+          bind:group={moduleStatus.status}
           value={Status.MARKED}
           class="d-radio checked:bg-amber-400 ml-3" />
       </StatusRadioButton>
@@ -107,7 +94,7 @@
         <input
           type="radio"
           id="completed-toggle-{module.id}"
-          bind:group={status}
+          bind:group={moduleStatus.status}
           value={Status.COMPLETED}
           class="d-radio checked:bg-green-700 ml-3" />
       </StatusRadioButton>
@@ -115,14 +102,14 @@
         <input
           type="radio"
           id="failed-toggle-{module.id}"
-          bind:group={status}
+          bind:group={moduleStatus.status}
           value={Status.FAILED}
           class="d-radio checked:bg-red-700 ml-3" />
       </StatusRadioButton>
     </div>
 
     <div class="h-48">
-      {#if status === Status.COMPLETED || status === Status.FAILED}
+      {#if moduleStatus.status === Status.COMPLETED || moduleStatus.status === Status.FAILED}
         <div class="d-form-control pb-2">
           <label
             class="d-label cursor-pointer inline flex gap-x-2"
@@ -132,17 +119,17 @@
               type="checkbox"
               id="second-try-toggle-{module.id}"
               class="d-toggle flex-none"
-              class:bg-green-700={status === Status.COMPLETED}
-              class:bg-red-700={status === Status.FAILED}
-              bind:checked={secondTry} />
+              class:bg-green-700={moduleStatus.status === Status.COMPLETED}
+              class:bg-red-700={moduleStatus.status === Status.FAILED}
+              bind:checked={moduleStatus.secondTry} />
             <span class="d-label-text flex-none">2 Versuche</span>
             <span class="flex-auto text-right">
-              aufgewandte Credits: {module.credits * (secondTry ? 2 : 1)}
+              aufgewandte Credits: {module.credits * (moduleStatus.secondTry ? 2 : 1)}
             </span>
           </label>
         </div>
       {/if}
-      {#if (status === Status.CURRENT || status === Status.MARKED || status === Status.COMPLETED || status === Status.FAILED) && !fromPlan}
+      {#if (moduleStatus.status === Status.CURRENT || moduleStatus.status === Status.MARKED || moduleStatus.status === Status.COMPLETED || status === Status.FAILED) && !fromPlan}
         <div class="flex gap-x-2">
           <div class="flex-initial d-form-control pb-3">
             <label
@@ -164,7 +151,7 @@
                 type="range"
                 min="1"
                 max="12"
-                bind:value={sem}
+                bind:value={moduleStatus.sem}
                 class="d-range d-range-sm"
                 step="1"
                 id="sem-range-{module.id}" />
@@ -187,11 +174,11 @@
             </label>
             <input
               type="checkbox"
-              bind:checked={fulfilled}
+              bind:checked={moduleStatus.fulfilled}
               class="d-toggle"
               id="fulfilled-toggle-{module.id}" />
           </div>
-          {#if !fulfilled}
+          {#if !moduleStatus.fulfilled}
             <div class="d-form-control w-full max-w-xs inline-block flex-none">
               <label for="grade-range-{module.id}" class="d-label d-label-text">
                 Note
@@ -200,7 +187,7 @@
                 type="range"
                 min="4"
                 max="6"
-                bind:value={grade}
+                bind:value={moduleStatus.grade}
                 class="d-range d-range-sm"
                 step=".5"
                 id="grade-range-{module.id}" />
