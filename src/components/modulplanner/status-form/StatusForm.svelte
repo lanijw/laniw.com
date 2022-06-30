@@ -79,7 +79,9 @@
 
     <h4 class="text-lg font-bold mt-4 mb-2">Modulstatus</h4>
     <div class="grid grid-cols-2 gap-1 mb-2">
-      <StatusRadioButton label="Nicht belegt" for="not-taken-toggle-{module.id}">
+      <StatusRadioButton
+        label="Nicht belegt"
+        for="not-taken-toggle-{module.id}">
         <input
           type="radio"
           id="not-taken-toggle-{module.id}"
@@ -111,7 +113,9 @@
           value={Status.COMPLETED}
           class="d-radio checked:bg-green-700 ml-3" />
       </StatusRadioButton>
-      <StatusRadioButton label="Nicht bestanden" for="failed-toggle-{module.id}">
+      <StatusRadioButton
+        label="Nicht bestanden"
+        for="failed-toggle-{module.id}">
         <input
           type="radio"
           id="failed-toggle-{module.id}"
