@@ -260,5 +260,5 @@ test("hasPlannedDepModules irrelevantDepsPlanned false", () => {
     },
     "oop1"
   );
-  expect(result).toBe(true);
+  expect(result).toBe(false);
 });

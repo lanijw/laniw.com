@@ -1,12 +1,16 @@
 <script>
   import HelpIcon from "./icons/HelpIcon.svelte";
   import {onMount} from "svelte";
+  import {Page} from "../constants.js";
+
+  export let currPageVal;
 
   onMount(() => {
     getCollaborators();
   });
 
   let collaborators = [];
+
   async function getCollaborators() {
     const apiUrl =
       "https://api.github.com/repos/lanijw/laniw.com/pulls?state=all";
@@ -20,7 +24,6 @@
       .then(data => [
         ...new Set(data.map(r => r.user.login).filter(n => n !== "lanijw"))
       ]);
-    console.log(collaborators);
   }
 </script>
 
@@ -37,6 +40,29 @@
   <div class="d-drawer-side">
     <label for="help-drawer" class="d-drawer-overlay" />
     <div class="d-menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+      {#if currPageVal === Page.MODULE_PLANNER}
+        <h3 class="mt-10 text-2xl">Modulplanner Anleitung</h3>
+        <p>
+          Der Modulplanner unterst&uuml;tzt einige praktische, aber nicht
+          offensichtliche Funktionalit&auml;ten. F&uuml;r eine Anleitung schau
+          doch <a
+            class="d-link d-link-primary"
+            href="https://github.com/lanijw/laniw.com/blob/main/modulplanner/README.md"
+            >hier</a>
+          nach. Fehlt dir noch etwas an der Anleitung? Erstelle ein
+          <a
+            class="d-link d-link-primary"
+            href="https://github.com/lanijw/laniw.com/issues/new"
+            >GitHub Issue</a>
+          oder gleich einen
+          <a
+            class="d-link d-link-primary"
+            href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"
+            >pull request</a
+          >.
+        </p>
+        <div class="d-divider">General</div>
+      {/if}
       <h3 class="mt-10 text-2xl">Feedback</h3>
       <p>
         I try to create the best applications possible with the smallest amount
