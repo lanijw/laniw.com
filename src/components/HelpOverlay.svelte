@@ -43,17 +43,23 @@
       {#if currPageVal === Page.MODULE_PLANNER}
         <h3 class="mt-10 text-2xl">Modulplanner Anleitung</h3>
         <p>
-          Der Modulplanner unterst&uuml;tzt einige praktische, aber nicht offensichtliche
-          Funktionalit&auml;ten. F&uuml;r eine Anleitung schau doch <a
-          class="d-link d-link-primary"
-          href="https://github.com/lanijw/laniw.com/blob/main/modulplanner/README.md"
-        >hier</a> nach. Fehlt dir noch etwas an der Anleitung? Erstelle ein <a
-          class="d-link d-link-primary"
-          href="https://github.com/lanijw/laniw.com/issues/new">GitHub Issue</a
-        > oder gleich einen <a
-          class="d-link d-link-primary"
-          href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"
-        >pull request</a>.
+          Der Modulplanner unterst&uuml;tzt einige praktische, aber nicht
+          offensichtliche Funktionalit&auml;ten. F&uuml;r eine Anleitung schau
+          doch <a
+            class="d-link d-link-primary"
+            href="https://github.com/lanijw/laniw.com/blob/main/modulplanner/README.md"
+            >hier</a>
+          nach. Fehlt dir noch etwas an der Anleitung? Erstelle ein
+          <a
+            class="d-link d-link-primary"
+            href="https://github.com/lanijw/laniw.com/issues/new"
+            >GitHub Issue</a>
+          oder gleich einen
+          <a
+            class="d-link d-link-primary"
+            href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"
+            >pull request</a
+          >.
         </p>
         <div class="d-divider">General</div>
       {/if}
@@ -63,9 +69,9 @@
         of errors possible, but some bugs still slip through my fingers. If you
         find a bug that you would like me to fix you can either create a pull
         request to <a
-        class="d-link d-link-primary"
-        href="https://github.com/lanijw/laniw.com">my GitHub</a
-      >, or create a
+          class="d-link d-link-primary"
+          href="https://github.com/lanijw/laniw.com">my GitHub</a
+        >, or create a
         <a
           class="d-link d-link-primary"
           href="https://github.com/lanijw/laniw.com/issues/new">GitHub issue</a
@@ -78,7 +84,7 @@
         <a
           class="d-link d-link-primary"
           href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"
-        >pull request</a
+          >pull request</a
         >. I tend to list all current features/bugs I'm working on in
         <a href="https://github.com/lanijw/laniw.com/issues">my issues</a>. If
         there aren't any issues just create an issue and I'm sure I can find you
@@ -93,7 +99,7 @@
         <div class="flex flex-row flex-wrap pt-2">
           {#each collaborators as collaborator}
             <div class="p-1 rounded bg-primary text-primary-content"
-            >{collaborator}</div>
+              >{collaborator}</div>
           {/each}
         </div>
       {/if}
