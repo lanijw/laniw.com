@@ -55,7 +55,7 @@
 {#if mounted && navigator.share}
   <button
     on:click={shareModulplanner}
-    class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-28 right-16 w-10 z-50 bg-slate-200 hover:bg-slate-400 shadow-md rounded-full cursor-pointer">
+    class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-24 lg:right-28 right-16 w-10 z-50 bg-slate-200 hover:bg-slate-400 shadow-md rounded-full cursor-pointer">
     <ShareIcon />
   </button>
 {/if}

@@ -32,7 +32,7 @@
   <div class="d-drawer-content">
     <label
       for="help-drawer"
-      class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-16 right-4 w-10 z-50 bg-slate-200 hover:bg-slate-900 shadow-md rounded-full cursor-pointer">
+      class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-24 lg:right-16 right-4 w-10 z-50 bg-slate-200 hover:bg-slate-900 shadow-md rounded-full cursor-pointer">
       <HelpIcon />
     </label>
     <slot />
