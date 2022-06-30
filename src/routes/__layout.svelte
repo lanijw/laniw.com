@@ -20,7 +20,7 @@
     <slot />
   </div>
 {:else}
-  <HelpOverlay>
+  <HelpOverlay {currPageVal}>
     <NavBar {currPageVal} />
 
     <div class="pt-12">
