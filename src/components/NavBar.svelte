@@ -2,7 +2,6 @@
   import DownloadIcon from "./icons/DownloadIcon.svelte";
   import {major, Major, userData} from "./modulplanner/stores";
   import {onDestroy} from "svelte";
-  import {downloadableFileName} from "../util";
   import UploadIcon from "./icons/UploadIcon.svelte";
   import LaniwIcon from "./icons/LaniwIcon.svelte";
   import ChevronDownIcon from "./icons/ChevronDownIcon.svelte";
@@ -12,6 +11,7 @@
   import ChevronRightIcon from "./icons/ChevronRightIcon.svelte";
   import {EXTRA_MAJORS_PROD} from "../flags";
   import {dev} from "$app/env";
+  import {downloadFileName, uploadFile} from "./modulplanner/userdata";
 
   export let currPageVal;
 
@@ -39,36 +39,6 @@
 
   let files = [];
   $: uploadFile(files);
-
-  function downloadFileName() {
-    return downloadableFileName("", "Studenthub-Benutzerdaten", new Date());
-  }
-
-  function uploadFile(files) {
-    if (!files.length) {
-      return;
-    }
-
-    let fileContent = "";
-    const reader = new FileReader();
-    reader.addEventListener(
-      "load",
-      () => {
-        files = [];
-        fileContent = reader.result;
-        const importedUserData = JSON.parse(fileContent);
-        if ("v" in importedUserData) {
-          userData.update(_ => importedUserData);
-        } else {
-          alert(
-            "Your data was exported too early in this product's development. Please reenter your data by hand."
-          );
-        }
-      },
-      false
-    );
-    reader.readAsText(files[0]);
-  }
 </script>
 
 <style>

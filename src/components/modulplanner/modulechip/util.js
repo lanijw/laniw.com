@@ -1,7 +1,7 @@
 import {Status} from "../constants";
 
 export function depsMatter(userDataVal, id) {
-  const currModuleStatus = userDataVal.s.find(s => s.id === id);
+  const currModuleStatus = Object.values(userDataVal.s).find(s => s.id === id);
   return currModuleStatus?.status === Status.MARKED;
 }
 
@@ -15,7 +15,7 @@ export function plannedDeps(userDataVal, deps) {
     return [];
   }
   return deps.filter(d => {
-    const depStatus = userDataVal.s.find(s => s.id === d)?.status;
+    const depStatus = Object.values(userDataVal.s).find(s => s.id === d)?.status;
     return (
       depStatus &&
       (depStatus === Status.CURRENT ||

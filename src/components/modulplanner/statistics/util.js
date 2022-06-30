@@ -22,6 +22,6 @@ export function formatCreditPercentage(credits, minCredits) {
 }
 
 export function isModuleCompleted(userDataVal, id) {
-  const status = userDataVal.s.find(s => s.id === id);
+  const status = Object.values(userDataVal.s).find(s => s.id === id);
   return status.status === Status.COMPLETED || status.fulfilled;
 }

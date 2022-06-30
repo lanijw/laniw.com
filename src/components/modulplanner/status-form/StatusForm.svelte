@@ -5,7 +5,7 @@
   import {ModuleStatus, updateModuleStatus} from "../stores";
 
   export let module;
-  export let moduleStatus
+  export let moduleStatus;
   export let missingDeps;
 
   export let fromPlan;
@@ -128,7 +128,8 @@
               bind:checked={moduleStatus.secondTry} />
             <span class="d-label-text flex-none">2 Versuche</span>
             <span class="flex-auto text-right">
-              aufgewandte Credits: {module.credits * (moduleStatus.secondTry ? 2 : 1)}
+              aufgewandte Credits: {module.credits *
+                (moduleStatus.secondTry ? 2 : 1)}
             </span>
           </label>
         </div>

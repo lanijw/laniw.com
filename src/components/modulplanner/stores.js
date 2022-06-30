@@ -32,24 +32,9 @@ export async function updateModuleStatus(status) {
   });
 }
 
-export function getModuleStatusById(storeValue, id) {
-  if (!id) return;
-
-  const matchingModules = storeValue.s.filter(m => m.id === id);
-  if (matchingModules.length) {
-    if (matchingModules.length > 1) {
-      console.warn(
-        `Expected 0 or 1 matches but found ${matchingModules.length} matches. Proceeding with first match.`
-      );
-    }
-    return matchingModules[0];
-  }
-  return ModuleStatus.defaultInstance(id);
-}
-
 export const USER_DATA_DEFAULT_VAL = {
   v: "1.1.0",
-  s: []
+  s: {}
 };
 export const userData = writable(USER_DATA_DEFAULT_VAL);
 

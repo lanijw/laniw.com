@@ -1,7 +1,6 @@
 <script>
   import StatusForm from "../status-form/StatusForm.svelte";
   import {allModules} from "../informatik/modules";
-  import {getModuleStatusById} from "../stores";
   import {Status} from "../constants";
   import {
     depModules,
@@ -15,7 +14,7 @@
   export let fromPlan = false;
 
   let moduleStatus;
-  $: moduleStatus = getModuleStatusById(userDataVal, module.id);
+  $: moduleStatus = userDataVal.s?[module.id] : ModuleStatus.defaultInstance(module.id);
 
   let depsMissing;
   let missingDeps;
