@@ -4,6 +4,8 @@
   import {ModuleStatus} from "../stores.js";
 
   export let modules;
+  $: console.log("Detected update of modules in modulechipcollection " + modules.length)
+  // TODO(laniw): Pass destructured object to module chip, since update of modulestatus doesn't work otherwise.
   export let userDataVal;
   export let source = ModuleGroupSource.UNKNOWN;
 

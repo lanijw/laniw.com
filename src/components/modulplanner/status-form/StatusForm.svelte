@@ -1,8 +1,7 @@
 <script>
   import {Status} from "../constants";
   import StatusRadioButton from "./StatusRadioButtonContainer.svelte";
-  import {onMount} from "svelte";
-  import {ModuleStatus, updateModuleStatus} from "../stores";
+  import {userData} from "../stores";
 
   export let module;
   export let moduleStatus;
@@ -10,7 +9,10 @@
 
   export let fromPlan;
 
+  console.log(moduleStatus);
+
   let semesterIndication = !(moduleStatus.sem === undefined || sem === null);
+
   function updateSem() {
     if (semesterIndication) {
       moduleStatus.sem = 1;
@@ -25,6 +27,10 @@
     } else if (moduleStatus.grade === undefined) {
       moduleStatus.grade = 4;
     }
+  }
+
+  $: {
+    userData.update(v => v);
   }
 </script>
 
@@ -129,12 +135,19 @@
             <span class="d-label-text flex-none">2 Versuche</span>
             <span class="flex-auto text-right">
               aufgewandte Credits: {module.credits *
-                (moduleStatus.secondTry ? 2 : 1)}
+            (moduleStatus.secondTry ? 2 : 1)}
             </span>
           </label>
         </div>
       {/if}
-      {#if (moduleStatus.status === Status.CURRENT || moduleStatus.status === Status.MARKED || moduleStatus.status === Status.COMPLETED || status === Status.FAILED) && !fromPlan}
+      {#if (moduleStatus.status ===
+        Status.CURRENT ||
+        moduleStatus.status ===
+        Status.MARKED ||
+        moduleStatus.status ===
+        Status.COMPLETED ||
+        status ===
+        Status.FAILED) && !fromPlan}
         <div class="flex gap-x-2">
           <div class="flex-initial d-form-control pb-3">
             <label

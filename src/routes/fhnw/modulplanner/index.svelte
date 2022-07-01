@@ -14,6 +14,7 @@
 
   let userDataVal;
   const unsubUserData = userData.subscribe(v => (userDataVal = v));
+  $: console.log("Detected update of userDataVal in index " + userDataVal.v)
 
   let majorVal;
   const unsubMajor = major.subscribe(v => (majorVal = v));

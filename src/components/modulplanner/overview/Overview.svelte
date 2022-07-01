@@ -5,6 +5,7 @@
   import {ModuleGroupSource} from "../constants";
 
   export let userDataVal;
+  $: console.log("Detected update of userDataVal in overview " + userDataVal.v)
   export let majorVal;
   // TODO(#21): Implement use of major.
 </script>

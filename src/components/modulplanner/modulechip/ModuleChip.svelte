@@ -20,7 +20,6 @@
   }
 </script>
 
-{@debug module, moduleStatus}
 <label
   class="d-card d-card-compact bg-slate-50 shadow-md cursor-pointer w-full rounded hover:shadow-lg lg:col-span-1"
   class:h-8={module.credits === 2}
