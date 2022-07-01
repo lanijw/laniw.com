@@ -1,11 +1,5 @@
-import {
-  ModuleStatus,
-  updateModuleStatus,
-  userData
-} from "../../../src/components/modulplanner/stores";
+import {ModuleStatus} from "../../../src/components/modulplanner/stores";
 import {Status} from "../../../src/components/modulplanner/constants";
-import {get} from "svelte/store";
-import * as Module from "module";
 import {prepUserData} from "../../../src/components/modulplanner/userdata";
 
 test("prepUserData v1.0.0 v.1.1.0", () => {

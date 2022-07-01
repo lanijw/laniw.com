@@ -35,7 +35,7 @@
       <div class="mb-5 grid grid-cols-5 lg:grid-cols-12 gap-3">
         {#each semester.modules as module}
           <div>
-            <ModuleChip module={module.module} {userDataVal} fromPlan={true} />
+            <ModuleChip module={module.module} bind:moduleStatus={userDataVal.s[module.module.id]} fromPlan={true} />
           </div>
         {/each}
       </div>

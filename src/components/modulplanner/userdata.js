@@ -1,11 +1,7 @@
 import {downloadableFileName} from "../../util";
-import {userData} from "./stores";
+import {ModuleStatus, USER_DATA_DEFAULT_VAL, userData} from "./stores.js";
 import {Status} from "./constants.js";
-
-export const USER_DATA_DEFAULT_VAL = {
-  v: "1.1.0",
-  s: {}
-};
+import {allModules} from "./informatik/modules.js";
 
 export function downloadFileName() {
   return downloadableFileName("", "Studenthub-Benutzerdaten", new Date());
@@ -47,6 +43,9 @@ export function prepUserData(iud) {
     iud.s
       .filter(s => s.status !== undefined && s.status !== Status.NOT_TAKEN)
       .forEach(s => (statusesMap[s.id] = s));
+    allModules
+      .filter(m => !Object.keys(statusesMap).includes(m.id))
+      .forEach(m => (statusesMap[m.id] = ModuleStatus.defaultInstance(m.id)));
     iud.s = statusesMap;
     iud.v = USER_DATA_DEFAULT_VAL.v;
   }

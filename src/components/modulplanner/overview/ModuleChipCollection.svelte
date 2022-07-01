@@ -1,6 +1,7 @@
 <script>
   import ModuleChip from "../modulechip/ModuleChip.svelte";
   import {ModuleGroupSource} from "../constants";
+  import {ModuleStatus} from "../stores.js";
 
   export let modules;
   export let userDataVal;
@@ -18,6 +19,6 @@
   class:lg:grid-cols-1={projects}
   class:lg:grid-cols-6={contextModules}>
   {#each modules as module}
-    <ModuleChip {module} {userDataVal} />
+    <ModuleChip {module} bind:moduleStatus={userDataVal.s[module.id]} />
   {/each}
 </div>

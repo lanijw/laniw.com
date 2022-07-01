@@ -1,11 +1,20 @@
 import {
-  getModuleStatusById,
   ModuleStatus,
   updateModuleStatus,
+  USER_DATA_DEFAULT_VAL,
   userData
 } from "../../../src/components/modulplanner/stores";
 import {get} from "svelte/store";
 import {Status} from "../../../src/components/modulplanner/constants";
+import {allModules} from "../../../src/components/modulplanner/informatik/modules.js";
+
+test("USER_DATA_DEFAULT_VAL containsAllModules", () => {
+  expect(
+    Object.keys(USER_DATA_DEFAULT_VAL.s).every(id =>
+      allModules.map(m => m.id).includes(id)
+    )
+  ).toBe(true);
+});
 
 test("updateModuleStatus storeUndefined noAction", () => {
   userData.update(_ => undefined);

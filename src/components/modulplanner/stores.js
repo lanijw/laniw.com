@@ -1,6 +1,6 @@
 import {writable} from "svelte/store";
 import {Status} from "./constants";
-import {USER_DATA_DEFAULT_VAL} from "./userdata.js";
+import {allModules} from "./informatik/modules.js";
 
 export class ModuleStatus {
   constructor(id, status, grade, sem, fulfilled, secondTry) {
@@ -13,13 +13,35 @@ export class ModuleStatus {
   }
 
   static defaultInstance(id) {
-    return new ModuleStatus(id, Status.NOT_TAKEN, undefined, undefined, false, false);
+    return new ModuleStatus(
+      id,
+      Status.NOT_TAKEN,
+      undefined,
+      undefined,
+      false,
+      false
+    );
   }
 }
 
+function buildDefaultModuleStatuses() {
+  const statuses = {};
+  allModules.forEach(
+    m => (statuses[m.id] = ModuleStatus.defaultInstance(m.id))
+  );
+  return statuses;
+}
+
+export const USER_DATA_DEFAULT_VAL = {
+  v: "1.1.0",
+  s: buildDefaultModuleStatuses()
+};
+
 export async function updateModuleStatus(status) {
   userData.update(v => {
-    if (!v) return;
+    if (!v) {
+      return;
+    }
 
     const otherModules = v.s.filter(m => m.id !== status.id);
     if (otherModules.length < v.s.length - 1) {

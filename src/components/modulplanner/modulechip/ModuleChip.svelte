@@ -1,34 +1,26 @@
 <script>
   import StatusForm from "../status-form/StatusForm.svelte";
-  import {allModules} from "../informatik/modules";
   import {Status} from "../constants";
-  import {
-    depModules,
-    depsMatter,
-    hasPlannedDepModules,
-    plannedDeps
-  } from "./util";
+  import {depModules, depsMatter, hasPlannedDepModules, plannedDeps} from "./util";
 
   export let module;
-  export let userDataVal;
+  export let moduleStatus;
   export let fromPlan = false;
-
-  let moduleStatus;
-  $: moduleStatus = userDataVal.s?[module.id] : ModuleStatus.defaultInstance(module.id);
 
   let depsMissing;
   let missingDeps;
   $: {
     depsMissing =
-      !hasPlannedDepModules(allModules, userDataVal, module.id) &&
-      depsMatter(userDataVal, module.id);
-    let deps = depModules(allModules, module.id);
+      !hasPlannedDepModules(module.id) &&
+      depsMatter(module.id);
+    let deps = depModules(module.id);
     missingDeps = depsMissing
-      ? deps.filter(d => !plannedDeps(userDataVal, deps).includes(d))
+      ? deps.filter(d => !plannedDeps(deps).includes(d))
       : [];
   }
 </script>
 
+{@debug module, moduleStatus}
 <label
   class="d-card d-card-compact bg-slate-50 shadow-md cursor-pointer w-full rounded hover:shadow-lg lg:col-span-1"
   class:h-8={module.credits === 2}
