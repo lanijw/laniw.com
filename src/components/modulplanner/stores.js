@@ -1,5 +1,6 @@
 import {writable} from "svelte/store";
 import {Status} from "./constants";
+import {USER_DATA_DEFAULT_VAL} from "./userdata.js";
 
 export class ModuleStatus {
   constructor(id, status, grade, sem, fulfilled, secondTry) {
@@ -32,10 +33,6 @@ export async function updateModuleStatus(status) {
   });
 }
 
-export const USER_DATA_DEFAULT_VAL = {
-  v: "1.1.0",
-  s: {}
-};
 export const userData = writable(USER_DATA_DEFAULT_VAL);
 
 export const Major = {
