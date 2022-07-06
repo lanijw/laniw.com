@@ -1,14 +1,14 @@
 <script>
-  import {currPage} from "../../../stores.js";
+  import {currPage} from "../../stores.js";
   import {onDestroy, onMount} from "svelte";
-  import {Page} from "../../../constants";
-  import {major, userData} from "../../../components/modulplanner/stores";
-  import Statistics from "../../../components/modulplanner/statistics/Statistics.svelte";
-  import Plan from "../../../components/modulplanner/Plan.svelte";
-  import {Status} from "../../../components/modulplanner/constants";
-  import Loader from "../../../components/Loader.svelte";
+  import {Page} from "../../constants.js";
+  import {major, userData} from "../../components/modulplanner/stores.js";
+  import Statistics from "../../components/modulplanner/statistics/Statistics.svelte";
+  import Plan from "../../components/modulplanner/Plan.svelte";
+  import {Status} from "../../components/modulplanner/constants.js";
+  import Loader from "../../components/Loader.svelte";
   import {Jellyfish} from "svelte-loading-spinners";
-  import ShareIcon from "../../../components/icons/ShareIcon.svelte";
+  import ShareIcon from "../../components/icons/ShareIcon.svelte";
 
   currPage.set(Page.MODULE_PLANNER);
 
@@ -37,7 +37,7 @@
   let currentSection = Section.OVERVIEW;
 
   function importOverview() {
-    return import("../../../components/modulplanner/overview/Overview.svelte");
+    return import("../../components/modulplanner/overview/Overview.svelte");
   }
 
   function shareModulplanner() {

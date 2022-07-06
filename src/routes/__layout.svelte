@@ -15,7 +15,7 @@
   <title>laniw.com</title>
 </svelte:head>
 
-{#if currPageVal === Page.HOME}
+{#if currPageVal === Page.HOME || currPageVal === Page.UNKNOWN}
   <div class="pt-12">
     <slot />
   </div>
@@ -23,8 +23,6 @@
   <HelpOverlay {currPageVal}>
     <NavBar {currPageVal} />
 
-    <div class="pt-12">
-      <slot />
-    </div>
+    <slot />
   </HelpOverlay>
 {/if}

@@ -23,8 +23,8 @@
     });
 </script>
 
-<div class="container mx-auto mt-4 p-1">
-  <h1 class="text-4xl font-bold">Studiumsplanung</h1>
+<div class="container mx-auto p-3">
+  <h1>Studiumsplanung</h1>
   {#each semesters as semester}
     {#if semester.modules.length}
       <h2 class="text-3xl font-semibold inline">Semester {semester.n}</h2>

@@ -9,7 +9,7 @@
   // TODO(#21): Implement use of major.
 </script>
 
-<div class="container mx-auto mt-4 p-1">
+<div class="container mx-auto p-3">
   <div class="grid grid-cols-6 gap-3">
     <div class="col-span-6 lg:col-span-1 order-2 lg:order-1">
       <ModuleGroup

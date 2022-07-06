@@ -89,6 +89,9 @@
         tabindex="0"
         class="d-menu d-menu-compact d-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="/">Home</a></li>
+        <li
+          ><a href="/cv" class:font-semibold={currPageVal === Page.CV}>CV</a
+          ></li>
         <li tabindex="0">
           <span class="justify-between cursor-pointer">
             <span class:font-semibold={currPageVal === Page.MODULE_PLANNER}>
@@ -141,6 +144,12 @@
   <div class="d-navbar-center hidden lg:flex">
     <ul class="d-menu d-menu-horizontal p-0">
       <li><a href="/" class="rounded-lg">Home</a></li>
+      <li
+        ><a
+          href="/cv"
+          class="rounded-lg"
+          class:font-semibold={currPageVal === Page.CV}>CV</a
+        ></li>
       <li tabindex="0">
         <span class="rounded-lg cursor-pointer">
           <span class:font-semibold={currPageVal === Page.MODULE_PLANNER}

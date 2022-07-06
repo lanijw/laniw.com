@@ -41,7 +41,7 @@
     <label for="help-drawer" class="d-drawer-overlay" />
     <div class="d-menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
       {#if currPageVal === Page.MODULE_PLANNER}
-        <h3 class="mt-10 text-2xl">Modulplanner Anleitung</h3>
+        <h3 class="mt-10">Modulplanner Anleitung</h3>
         <p>
           Der Modulplanner unterst&uuml;tzt einige praktische, aber nicht
           offensichtliche Funktionalit&auml;ten. F&uuml;r eine Anleitung schau
@@ -63,7 +63,7 @@
         </p>
         <div class="d-divider">General</div>
       {/if}
-      <h3 class="mt-10 text-2xl">Feedback</h3>
+      <h3 class="mt-10">Feedback</h3>
       <p>
         I try to create the best applications possible with the smallest amount
         of errors possible, but some bugs still slip through my fingers. If you
@@ -77,7 +77,7 @@
           href="https://github.com/lanijw/laniw.com/issues/new">GitHub issue</a
         >.
       </p>
-      <h3 class="mt-4 text-2xl">Support</h3>
+      <h3 class="mt-4">Support</h3>
       <p>
         If you are interested in helping me improve this website and some of its
         projects I would be happy to hear from you in a
@@ -91,7 +91,7 @@
         something to do.
       </p>
       {#if collaborators.length}
-        <h3 class="mt-4 text-2xl">Collaborators</h3>
+        <h3 class="mt-4">Collaborators</h3>
         <p>
           Many thanks to the people who helped me work on my projects on
           <a href="https://laniw.com">laniw.com</a>!

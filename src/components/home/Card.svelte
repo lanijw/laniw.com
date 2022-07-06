@@ -1,4 +1,6 @@
 <script>
+  import OpenInNewIcon from "../icons/OpenInNewIcon.svelte";
+
   export let title;
   export let desc;
   export let links;
@@ -12,7 +14,14 @@
       <ul class="list-none">
         {#each links as link}
           <li>
-            <a href={link.href} class="d-link d-link-primary">{link.text}</a>
+            <a href={link.href}>
+              <span class="d-link d-link-primary">{link.text}</span>
+              {#if link.external}
+                <div class="inline-block w-6 h-6 -mb-1">
+                  <OpenInNewIcon />
+                </div>
+              {/if}
+            </a>
           </li>
         {/each}
       </ul>
