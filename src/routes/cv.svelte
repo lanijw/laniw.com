@@ -80,7 +80,7 @@
     },
     {
       skill: "MySQL",
-      completion: .85
+      completion: 0.85
     }
   ];
 
@@ -120,6 +120,69 @@
       skills: otherSkills,
       color: "bg-teal-500"
     }
+  ];
+
+  const ExperienceType = {
+    EDUCATION: 1,
+    EXTRACURRICULAR: 2,
+    WORK: 3
+  };
+
+  const ExperienceTypeMap = new Map([
+    [ExperienceType.EDUCATION, "Education"],
+    [ExperienceType.EXTRACURRICULAR, "Extracurricular"],
+    [ExperienceType.WORK, "Work"],
+  ])
+
+  class ExperienceItem {
+    constructor(from, to, type, title, org = undefined) {
+      this.from = from;
+      this.to = to;
+      this.type = type;
+      this.title = title;
+      this.org = org;
+    }
+  }
+
+  const experiences = [
+    new ExperienceItem(
+      "Jan 2022",
+      "Now",
+      ExperienceType.EXTRACURRICULAR,
+      "Student's Union Vice President"
+    ),
+    new ExperienceItem(
+      "Sep 2021",
+      "Now",
+      ExperienceType.WORK,
+      "3D-Printer Lab Manager", "makerstudio"
+    ),
+    new ExperienceItem(
+      "Sep 2021",
+      "Now",
+      ExperienceType.EDUCATION,
+      "BSc Computer Sciences",
+      "University of Applied Sciences and Arts Northwestern Switzerland"
+    ),
+    new ExperienceItem(
+      "Aug 2017",
+      "Aug 2021",
+      ExperienceType.WORK,
+      "Software Engineering Apprenticeship",
+      "Google Switzerland GmbH"
+    ),
+    new ExperienceItem(
+      "Aug 2017",
+      "May 2021",
+      ExperienceType.EDUCATION,
+      "Berufsmaturit&auml;tsschule Z&uuml;rich"
+    ),
+    new ExperienceItem(
+      "Aug 2017",
+      "Jan 2021",
+      ExperienceType.EDUCATION,
+      "Technische BErufssschule Z&uuml;rich"
+    ),
   ];
 
   function copyEmailToClipboard() {
@@ -203,76 +266,27 @@
 
             <h2 class="mb-4 mt-8">Education and Experience</h2>
             <div class="flex flex-wrap gap-3 lg:hidden">
-              <div class="w-full">
-                Jan 2022 - Now
-                <span
-                  class="rounded-full bg-warning text-warning-content px-1 text-xs"
-                  >Extracurricular</span>
-                <div class="relative left-5">
-                  Student's Union Vice President
-                  <Icon icon="info" class="h-5 w-5 inline" />
-                </div>
-              </div>
-              <div class="w-full">
-                Sep 2021 - Now
-                <span
-                  class="rounded-full bg-info text-info-content px-1 text-xs"
-                  >Work</span>
-                <div class="relative left-5">
-                  makerstudio <br />
-                  3D-Printer Lab Manager
-                  <Icon icon="info" class="h-5 w-5 inline" />
-                </div>
-              </div>
-              <div class="w-full">
-                <div class="inline-block relative">
-                  Sep 2021 - Now
+              {#each experiences as e}
+                <div class="w-full">
+                  {@html e.from} - {@html e.to}
                   <span
-                    class="rounded-full bg-success text-success-content px-1 text-xs"
-                    >Education</span>
+                    class="rounded-full px-1 text-xs"
+                    class:bg-info={e.type === ExperienceType.WORK}
+                    class:text-info-content={e.type === ExperienceType.WORK}
+                    class:bg-success={e.type === ExperienceType.EDUCATION}
+                    class:text-success-content={e.type === ExperienceType.EDUCATION}
+                    class:bg-warning={e.type === ExperienceType.EXTRACURRICULAR}
+                    class:text-warning-content={e.type === ExperienceType.EXTRACURRICULAR}
+                  >{@html ExperienceTypeMap.get(e.type)}</span>
                   <div class="relative left-5">
-                    BSc Computer Sciences @ FHNW
+                    {@html e.title}
+                    {#if e.org}
+                      <br> {e.org}
+                      {/if}
                     <Icon icon="info" class="h-5 w-5 inline" />
                   </div>
                 </div>
-              </div>
-              <div class="w-full">
-                <div class="inline-block relative">
-                  Aug 2017 - May 2021
-                  <span
-                    class="rounded-full bg-info text-info-content px-1 text-xs"
-                    >Work</span>
-                  <div class="relative left-5">
-                    Google Switzerland GmbH, Zürich <br />
-                    Software Engineering Apprenticeship
-                    <Icon icon="info" class="h-5 w-5 inline" />
-                  </div>
-                </div>
-              </div>
-              <div class="w-full">
-                <div class="inline-block relative">
-                  Aug 2017 - May 2021
-                  <span
-                    class="rounded-full bg-success text-success-content px-1 text-xs"
-                    >Education</span>
-                  <div class="relative left-5">
-                    Berufsmaturitätsschule Zürich
-                    <Icon icon="info" class="h-5 w-5 inline" />
-                  </div>
-                </div>
-              </div>
-              <div class="w-full">
-                <div class="inline-block relative">
-                  Aug 2017 - Jan 2021
-                  <span
-                    class="rounded-full bg-success text-success-content px-1 text-xs"
-                    >Education</span>
-                  <div class="relative left-5">
-                    Technische Berufsschule Zürich
-                    <Icon icon="info" class="h-5 w-5 inline" />
-                  </div>
-                </div>
-              </div>
+                {/each}
             </div>
             <div class="hidden lg:flex flex-wrap gap-1">
               <div class="d-divider w-full">Now</div>
