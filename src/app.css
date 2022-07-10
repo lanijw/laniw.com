@@ -25,7 +25,7 @@ h4 {
 
 [data-tooltip] {
   @apply cursor-pointer relative;
-  @apply after:absolute after:content-[attr(data-tooltip)] after:top-0 after:-translate-y-full after:left-1/2 after:-translate-x-1/2;
+  @apply after:fixed after:content-[attr(data-tooltip)] after:top-0 after:-translate-y-full after:left-1/2 after:-translate-x-1/2;
   @apply after:bg-black after:text-white after:px-2 after:py-1 after:text-center after:rounded-lg after:w-max;
-  @apply after:transition-all after:duration-75 after:origin-center after:scale-0 after:hover:scale-100;
+  @apply after:transition-all after:duration-75 after:origin-bottom after:scale-0 after:hover:scale-100;
 }

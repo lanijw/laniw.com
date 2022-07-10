@@ -5,7 +5,10 @@
   let className;
   export {className as class};
 
-  const IconMap = new Map([["info", "./InfoIcon.svelte"]]);
+  const IconMap = new Map([
+    ["info", "./InfoIcon.svelte"],
+    ["clipboard", "./ClipboardIcon.svelte"]
+  ]);
 
   let Component;
 
