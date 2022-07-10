@@ -6,15 +6,14 @@
   let className;
   export {className as class};
 
-  console.log(filled)
-
   const IconMap = new Map([
-    ["info", "./InfoIcon"],
-    ["clipboard", "./ClipboardIcon"],
-    ["clipboard-check", "./ClipboardCheckIcon"]
+    ["clipboard", "Clipboard"],
+    ["clipboard-check", "ClipboardCheck"],
+    ["info", "Info"],
+    ["share", "Share"]
   ]);
 
-  let Component;
+  let Icon;
   let mounted = false;
 
   onMount(() => {
@@ -22,14 +21,18 @@
   });
 
   async function updateIcon(icon) {
-    Component = (await import(IconMap.get(icon).concat(filled ? "Filled" : "").concat(".svelte"))).default;
+    const iconFileName = "./".concat(IconMap.get(icon)).concat("Icon.svelte");
+    const filledIconFileName = "./"
+      .concat(IconMap.get(icon))
+      .concat("IconFilled.svelte");
+    Icon = (await import(filled ? filledIconFileName : iconFileName)).default;
   }
 
   $: if (mounted) updateIcon(icon);
 </script>
 
-<svelte:component this={Component} class={className} />
+<svelte:component this={Icon} class={className} />
 
-{#if !Component}
+{#if !Icon}
   {icon}
 {/if}

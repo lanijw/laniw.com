@@ -30,7 +30,6 @@
         function () {
           clipboardIcon = "clipboard-check";
           setTimeout(() => (clipboardIcon = "clipboard"), 1000);
-          console.log(clipboardIcon)
         },
         function () {
           /* clipboard write failed */

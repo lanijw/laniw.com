@@ -5,5 +5,5 @@
 </script>
 
 <label for={id} class="cursor-pointer {className}">
-  <slot/>
+  <slot />
 </label>

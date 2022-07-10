@@ -9,6 +9,7 @@
   import Loader from "../../components/Loader.svelte";
   import {Jellyfish} from "svelte-loading-spinners";
   import ShareIcon from "../../components/icons/ShareIcon.svelte";
+  import Icon from "../../components/icons/Icon.svelte";
 
   currPage.set(Page.MODULE_PLANNER);
 
@@ -55,8 +56,10 @@
 {#if mounted && navigator.share}
   <button
     on:click={shareModulplanner}
-    class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-28 right-16 w-10 z-50 bg-slate-200 hover:bg-slate-400 shadow-md rounded-full cursor-pointer">
-    <ShareIcon />
+    class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-28 right-16 w-10 h-10 z-50 bg-primary hover:bg-primary-content shadow-md rounded-full cursor-pointer">
+    <Icon
+      icon="share"
+      class="w-9 h-9 stroke-primary-content hover:stroke-primary" />
   </button>
 {/if}
 

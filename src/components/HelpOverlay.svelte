@@ -1,7 +1,7 @@
 <script>
-  import HelpIcon from "./icons/HelpIcon.svelte";
   import {onMount} from "svelte";
   import {Page} from "../constants.js";
+  import Icon from "./icons/Icon.svelte";
 
   export let currPageVal;
 
@@ -32,8 +32,10 @@
   <div class="d-drawer-content">
     <label
       for="help-drawer"
-      class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-16 right-4 w-10 z-50 bg-slate-200 hover:bg-slate-900 shadow-md rounded-full cursor-pointer">
-      <HelpIcon />
+      class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-16 right-4 w-10 h-10 z-50 bg-primary hover:bg-primary-content shadow-md rounded-full cursor-pointer">
+      <Icon
+        icon="info"
+        class="w-10 h-10 stroke-primary-content hover:stroke-primary" />
     </label>
     <slot />
   </div>
