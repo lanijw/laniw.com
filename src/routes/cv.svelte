@@ -5,6 +5,7 @@
   import {getLaniwAge, getUrlParams} from "../util.js";
   import {onMount} from "svelte";
   import ProgressBar from "../components/ProgressBar.svelte";
+  import Icon from "../components/icons/Icon.svelte";
 
   currPage.set(Page.CV);
 
@@ -71,7 +72,7 @@
     },
     {
       skill: "Python",
-      completion: 1
+      completion: 0.8
     },
     {
       skill: "PHP",
@@ -122,11 +123,16 @@
   ];
 
   function copyEmailToClipboard() {
-    navigator.clipboard.writeText("lani.julian.wagner+5r6Mq.laniw.com@gmail.com").then(function() {
-      /* clipboard successfully set */
-    }, function() {
-      /* clipboard write failed */
-    });
+    navigator.clipboard
+      .writeText("lani.julian.wagner+5r6Mq.laniw.com@gmail.com")
+      .then(
+        function () {
+          /* clipboard successfully set */
+        },
+        function () {
+          /* clipboard write failed */
+        }
+      );
   }
 </script>
 
@@ -142,11 +148,12 @@
             alt="Lani Wagner"
             class="w-5/6 lg:w-auto h-auto object-cover" />
         </div>
-        <p class="text-4xl lg:text-7xl text-center lg:text-left">
+        <p
+          class="text-4xl lg:text-7xl text-center lg:text-left mx-4 lg:mx-auto">
           Hi, I'm <b>Lani</b> (<span
             data-tooltip="{age} years old"
             class="after:text-2xl">{age}<span class="lg:hidden">y</span></span
-          >), an up-and-coming software engineer.
+          >), an up-and-coming software engineer based in Switzerland.
         </p>
       </div>
 
@@ -195,7 +202,79 @@
             </div>
 
             <h2 class="mb-4 mt-8">Education and Experience</h2>
-            <div class="flex flex-wrap gap-1">
+            <div class="flex flex-wrap gap-3 lg:hidden">
+              <div class="w-full">
+                Jan 2022 - Now
+                <span
+                  class="rounded-full bg-warning text-warning-content px-1 text-xs"
+                  >Extracurricular</span>
+                <div class="relative left-5">
+                  Student's Union Vice President
+                  <Icon icon="info" class="h-5 w-5 inline" />
+                </div>
+              </div>
+              <div class="w-full">
+                Sep 2021 - Now
+                <span
+                  class="rounded-full bg-info text-info-content px-1 text-xs"
+                  >Work</span>
+                <div class="relative left-5">
+                  makerstudio <br />
+                  3D-Printer Lab Manager
+                  <Icon icon="info" class="h-5 w-5 inline" />
+                </div>
+              </div>
+              <div class="w-full">
+                <div class="inline-block relative">
+                  Sep 2021 - Now
+                  <span
+                    class="rounded-full bg-success text-success-content px-1 text-xs"
+                    >Education</span>
+                  <div class="relative left-5">
+                    BSc Computer Sciences @ FHNW
+                    <Icon icon="info" class="h-5 w-5 inline" />
+                  </div>
+                </div>
+              </div>
+              <div class="w-full">
+                <div class="inline-block relative">
+                  Aug 2017 - May 2021
+                  <span
+                    class="rounded-full bg-info text-info-content px-1 text-xs"
+                    >Work</span>
+                  <div class="relative left-5">
+                    Google Switzerland GmbH, Zürich <br />
+                    Software Engineering Apprenticeship
+                    <Icon icon="info" class="h-5 w-5 inline" />
+                  </div>
+                </div>
+              </div>
+              <div class="w-full">
+                <div class="inline-block relative">
+                  Aug 2017 - May 2021
+                  <span
+                    class="rounded-full bg-success text-success-content px-1 text-xs"
+                    >Education</span>
+                  <div class="relative left-5">
+                    Berufsmaturitätsschule Zürich
+                    <Icon icon="info" class="h-5 w-5 inline" />
+                  </div>
+                </div>
+              </div>
+              <div class="w-full">
+                <div class="inline-block relative">
+                  Aug 2017 - Jan 2021
+                  <span
+                    class="rounded-full bg-success text-success-content px-1 text-xs"
+                    >Education</span>
+                  <div class="relative left-5">
+                    Technische Berufsschule Zürich
+                    <Icon icon="info" class="h-5 w-5 inline" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:flex flex-wrap gap-1">
               <div class="d-divider w-full">Now</div>
 
               <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
@@ -220,7 +299,9 @@
             <h2 class="mb-4 mt-8">Contact Me</h2>
 
             Send me a message:
-            <a href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com" class="d-link d-link-primary"
+            <a
+              href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com"
+              class="d-link d-link-primary"
               >lani[dot]julian.wagner+5r6Mq.laniw.com[at]gmail.com</a>
             <div class="inline cursor-pointer" on:click={copyEmailToClipboard}>
               <svg
