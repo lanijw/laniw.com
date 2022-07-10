@@ -7,29 +7,30 @@
   import Icon from "../components/icons/Icon.svelte";
   import {allSkills, experiences, SkillType} from "../components/cv/data";
   import Modal from "../components/Modal.svelte";
-  import LgExperiencesTimelineItem
-    from "../components/cv/LgExperiencesTimelineItem.svelte";
+  import LgExperiencesTimelineItem from "../components/cv/LgExperiencesTimelineItem.svelte";
   import ModalTrigger from "../components/ModalTrigger.svelte";
   import ExperienceLabel from "../components/cv/ExperienceLabel.svelte";
 
   currPage.set(Page.CV);
 
   let lang = "en";
-  let age = "Loading...";
+  let age = "20";
   onMount(() => {
     const paramLang = getUrlParams().get("lang");
     lang = paramLang ? paramLang : "en";
     age = getLaniwAge();
   });
 
-  let extraContentShown = false;
+  let clipboardIcon = "clipboard";
 
   function copyEmailToClipboard() {
     navigator.clipboard
       .writeText("lani.julian.wagner+5r6Mq.laniw.com@gmail.com")
       .then(
         function () {
-          /* clipboard successfully set */
+          clipboardIcon = "clipboard-check";
+          setTimeout(() => (clipboardIcon = "clipboard"), 1000);
+          console.log(clipboardIcon)
         },
         function () {
           /* clipboard write failed */
@@ -48,7 +49,7 @@
   }
 </script>
 
-<div class="container mx-auto">
+<div class="container mx-auto mb-24">
   {#if lang === "de"}
     <h1>Lebenslauf</h1>
   {:else}
@@ -82,9 +83,12 @@
                   skills.category === SkillType.OTHER}
                 class:lg:col-span-1={skills.category ===
                   SkillType.MAIN_CODING ||
-                  skills.category === SkillType.SECONDARY_CODING || s.skill === "French"}
-                class:lg:col-span-2={(skills.category === SkillType.LANGUAGE && s.skill !== "French") ||
-                  skills.category === SkillType.OTHER || s.skill === "Svelte/SvelteKit"}
+                  skills.category === SkillType.SECONDARY_CODING ||
+                  s.skill === "French"}
+                class:lg:col-span-2={(skills.category === SkillType.LANGUAGE &&
+                  s.skill !== "French") ||
+                  skills.category === SkillType.OTHER ||
+                  s.skill === "Svelte/SvelteKit"}
                 class:lg:order-1={skills.category === SkillType.MAIN_CODING}
                 class:lg:order-2={skills.category === SkillType.LANGUAGE}
                 class:lg:order-3={skills.category ===
@@ -166,15 +170,19 @@
           </div>
         </div>
 
-        <h2 class="mb-4 mt-8 text-center">Contact Me</h2>
-        <a
-          href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com"
-          class="d-link d-link-primary break-all"
-          >lani.julian.wagner+5r6Mq.laniw.com[at]gmail.com</a>
-        <div class="inline cursor-pointer" on:click={copyEmailToClipboard}>
-          <Icon
-            icon="clipboard"
-            class="h-6 w-6 inline transition-all duration-200 hover:scale-125 active:scale-75" />
+        <p class="text-4xl mb-4 mt-12 text-center">Shoot me a Message!</p>
+        <div class="text-center">
+          <a
+            href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com"
+            class="d-link d-link-primary break-all"
+            >lani.julian.wagner+5r6Mq.laniw.com[at]gmail.com</a>
+          <div
+            class="cursor-pointer flex justify-center mt-4"
+            on:click={copyEmailToClipboard}>
+            <Icon
+              icon={clipboardIcon}
+              class="h-12 w-12 transition-all duration-200 lg:hover:scale-125 active:scale-75 lg:active:scale-75" />
+          </div>
         </div>
       </div>
       <!-- Modals with empty triggers to trigger from mobile and desktop view with separate labels. -->
