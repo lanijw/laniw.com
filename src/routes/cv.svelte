@@ -138,39 +138,39 @@
             ></div>
           <div class="col-span-8 grid grid-cols-8 gap-2">
             <LgExperiencesTimelineItem
-              leadSpan="6"
-              span="1"
-              followSpan="1"
+              leadSpan="col-span-6"
+              span="col-span-1"
+              followSpan="col-span-1"
               experience={experiences[0]}
               modalTriggerId="experience-0" />
             <LgExperiencesTimelineItem
-              leadSpan="5"
-              span="2"
-              followSpan="1"
+              leadSpan="col-span-5"
+              span="col-span-2"
+              followSpan="col-span-1"
               experience={experiences[1]}
               modalTriggerId="experience-1" />
             <LgExperiencesTimelineItem
-              leadSpan="5"
-              span="2"
-              followSpan="1"
+              leadSpan="col-span-5"
+              span="col-span-2"
+              followSpan="col-span-1"
               experience={experiences[2]}
               modalTriggerId="experience-2" />
             <LgExperiencesTimelineItem
-              leadSpan="1"
-              span="4"
-              followSpan="3"
+              leadSpan="col-span-1"
+              span="col-span-4"
+              followSpan="col-span-3"
               experience={experiences[3]}
               modalTriggerId="experience-3" />
             <LgExperiencesTimelineItem
-              leadSpan="1"
-              span="4"
-              followSpan="3"
+              leadSpan="col-span-1"
+              span="col-span-4"
+              followSpan="col-span-3"
               experience={experiences[4]}
               modalTriggerId="experience-4" />
           </div>
         </div>
 
-        <p class="text-4xl mb-4 mt-12 text-center">Shoot me a Message!</p>
+        <p class="text-4xl mb-4 mt-20 text-center">Shoot me a Message!</p>
         <div class="text-center">
           <a
             href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com"
