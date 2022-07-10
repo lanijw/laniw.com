@@ -2,13 +2,16 @@
   import {onMount} from "svelte";
 
   export let icon;
+  export let filled = false;
   let className;
   export {className as class};
 
+  console.log(filled)
+
   const IconMap = new Map([
-    ["info", "./InfoIcon.svelte"],
-    ["clipboard", "./ClipboardIcon.svelte"],
-    ["clipboard-check", "./ClipboardCheckIcon.svelte"]
+    ["info", "./InfoIcon"],
+    ["clipboard", "./ClipboardIcon"],
+    ["clipboard-check", "./ClipboardCheckIcon"]
   ]);
 
   let Component;
@@ -19,7 +22,7 @@
   });
 
   async function updateIcon(icon) {
-    Component = (await import(IconMap.get(icon))).default;
+    Component = (await import(IconMap.get(icon).concat(filled ? "Filled" : "").concat(".svelte"))).default;
   }
 
   $: if (mounted) updateIcon(icon);

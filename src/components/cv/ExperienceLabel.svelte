@@ -24,6 +24,6 @@
     {#if e.org}
       <br /> {@html e.org}
     {/if}
-    <Icon icon="info" class="h-5 w-5 inline" />
+    <Icon icon="info" filled class="h-5 w-5 inline" />
   </div>
 </div>
