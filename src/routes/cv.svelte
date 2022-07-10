@@ -49,11 +49,11 @@
   }
 </script>
 
-<div class="container mx-auto mb-24">
+<div class="container mx-auto my-24">
   {#if lang === "de"}
     <h1>Lebenslauf</h1>
   {:else}
-    <div class="pt-24 mx-2">
+    <div class="mx-2">
       <div class="flex gap-4 flex-col lg:flex-row lg:items-center mb-10">
         <div class="flex justify-center">
           <img

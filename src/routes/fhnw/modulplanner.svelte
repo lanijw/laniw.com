@@ -60,7 +60,7 @@
   </button>
 {/if}
 
-<div class="d-tabs flex justify-center mt-10">
+<div class="d-tabs flex justify-center mt-24">
   <button
     class="d-tab d-tab-lg d-tab-lifted font-bold"
     class:d-tab-active={currentSection === Section.OVERVIEW}
