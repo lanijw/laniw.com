@@ -10,7 +10,6 @@
   let Component;
 
   onMount(async () => {
-    console.log(IconMap.get(icon));
     Component = (await import(IconMap.get(icon))).default;
   });
 </script>

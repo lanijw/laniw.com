@@ -14,6 +14,9 @@
     SkillType
   } from "../components/cv/data";
   import Modal from "../components/Modal.svelte";
+  import LgExperiencesTimelineItem from "../components/cv/LgExperiencesTimelineItem.svelte";
+  import ModalTrigger from "../components/ModalTrigger.svelte";
+  import ExperienceLabel from "../components/cv/ExperienceLabel.svelte";
 
   currPage.set(Page.CV);
 
@@ -25,7 +28,7 @@
     age = getLaniwAge();
   });
 
-  let extraContentShown = false;
+  let extraContentShown = true;
 
   function copyEmailToClipboard() {
     navigator.clipboard
@@ -101,7 +104,7 @@
         {/if}
         <div class="d-collapse-content">
           <div>
-            <h2 class="mb-4">Skills</h2>
+            <h2 class="mb-4 lg:text-center">Skills</h2>
             <div class="grid grid-cols-12 lg:grid-cols-6 gap-4">
               {#each allSkills as skills}
                 {#each skills.skills as s}
@@ -111,7 +114,8 @@
                     class:col-span-4={skills.category === SkillType.LANGUAGE}
                     class:col-span-6={skills.category ===
                       SkillType.MAIN_CODING ||
-                      skills.category === SkillType.OTHER}>
+                      skills.category === SkillType.OTHER}
+                    class="lg:col-span-1">
                     <p class="text-lg">{s.skill}</p>
                     <ProgressBar
                       completion={s.completion}
@@ -122,65 +126,54 @@
               {/each}
             </div>
 
-            <h2 class="mb-4 mt-8">Education and Experience</h2>
+            <h2 class="mb-4 mt-8 lg:text-center">Education and Experience</h2>
             <div class="flex flex-wrap gap-3 lg:hidden">
               {#each experiences as e, i}
-                <Modal id={`experience-${i}`}>
-                  <svelte:fragment slot="trigger">
-                    <div class="w-full">
-                      {@html e.from} - {@html e.to}
-                      <span
-                        class="rounded-full px-1 text-xs"
-                        class:bg-info={e.type === ExperienceType.WORK}
-                        class:text-info-content={e.type === ExperienceType.WORK}
-                        class:bg-success={e.type === ExperienceType.EDUCATION}
-                        class:text-success-content={e.type ===
-                          ExperienceType.EDUCATION}
-                        class:bg-warning={e.type ===
-                          ExperienceType.EXTRACURRICULAR}
-                        class:text-warning-content={e.type ===
-                          ExperienceType.EXTRACURRICULAR}
-                        >{@html ExperienceTypeMap.get(e.type)}</span>
-                      <div class="relative left-5">
-                        {@html e.title}
-                        {#if e.org}
-                          <br /> {@html e.org}
-                        {/if}
-                        <Icon icon="info" class="h-5 w-5 inline" />
-                      </div>
-                    </div>
-                  </svelte:fragment>
-                  <svelte:fragment slot="content">
-                    <h3 class="mb-4">{@html e.title}</h3>
-                    <p>{@html e.desc}</p>
-                  </svelte:fragment>
-                </Modal>
+                <ModalTrigger id={`experience-${i}`}>
+                  <ExperienceLabel experience={e} />
+                </ModalTrigger>
               {/each}
             </div>
-            <div class="hidden lg:flex flex-wrap gap-1">
-              <div class="d-divider w-full">Now</div>
-
-              <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
-                >BSc @ FHNW</div>
-              <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
-                >makerstudio @ FHNW</div>
-              <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
-                >students.fhnw</div>
-
-              <div class="d-divider w-full">2021</div>
-
-              <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
-                >Apprenticeship @ Google</div>
-              <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
-                >Technical Trade School @ TBZ</div>
-              <div class="rounded-lg shadow-lg p-4 h-auto flex-basis-1"
-                >General Education @ BMS</div>
-
-              <div class="d-divider w-full">2017</div>
+            <div class="hidden lg:grid grid-cols-8">
+              <div class="text-center col-span-2">2017</div>
+              <div class="text-center col-span-2">2018-2017</div>
+              <div class="text-center col-span-2">2021</div>
+              <div class="text-center col-span-2">2022</div>
+              <div class="grid col-span-8 grid-cols-8 gap-2">
+                <LgExperiencesTimelineItem
+                  leadSpan="6"
+                  span="1"
+                  followSpan="1"
+                  experience={experiences[0]}
+                  modalTriggerId="experience-0" />
+                <LgExperiencesTimelineItem
+                  leadSpan="5"
+                  span="2"
+                  followSpan="1"
+                  experience={experiences[1]}
+                  modalTriggerId="experience-1" />
+                <LgExperiencesTimelineItem
+                  leadSpan="5"
+                  span="2"
+                  followSpan="1"
+                  experience={experiences[2]}
+                  modalTriggerId="experience-2" />
+                <LgExperiencesTimelineItem
+                  leadSpan="1"
+                  span="4"
+                  followSpan="3"
+                  experience={experiences[3]}
+                  modalTriggerId="experience-3" />
+                <LgExperiencesTimelineItem
+                  leadSpan="1"
+                  span="4"
+                  followSpan="3"
+                  experience={experiences[4]}
+                  modalTriggerId="experience-4" />
+              </div>
             </div>
 
-            <h2 class="mb-4 mt-8">Contact Me</h2>
-
+            <h2 class="mb-4 mt-8 text-center">Contact Me</h2>
             <a
               href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com"
               class="d-link d-link-primary break-all"
@@ -200,6 +193,16 @@
               </svg>
             </div>
           </div>
+          <!-- Modals with empty triggers to trigger from mobile and desktop view with separate labels. -->
+          {#each experiences as e, i}
+            <Modal id={`experience-${i}`}>
+              <svelte:fragment slot="trigger" />
+              <svelte:fragment slot="content">
+                <h3 class="mb-4">{@html e.title}</h3>
+                <p>{@html e.desc}</p>
+              </svelte:fragment>
+            </Modal>
+          {/each}
         </div>
       </div>
     </div>

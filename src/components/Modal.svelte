@@ -1,10 +1,12 @@
 <script>
+  import ModalTrigger from "./ModalTrigger.svelte";
+
   export let id;
 </script>
 
-<label for={id}>
+<ModalTrigger {id}>
   <slot name="trigger" />
-</label>
+</ModalTrigger>
 
 <input type="checkbox" {id} class="d-modal-toggle" />
 <label for={id} class="d-modal d-modal-bottom sm:d-modal-middle transition-all">

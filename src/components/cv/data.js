@@ -184,7 +184,7 @@ export const experiences = [
     "Aug 2017",
     "Aug 2021",
     ExperienceType.EDUCATION,
-    "Berufsmaturit&auml;tsschule Z&uuml;rich<br>Technische Berufssschule Z&uuml;rich",
+    "Berufsmaturit&auml;tsschule Z&uuml;rich<br>Technische Berufsschule Z&uuml;rich",
     "Every apprenticeship in Switzerland has a work portion and an school " +
       "portion. In my case I visited a school for my general education called a " +
       "<a href='https://www.berufsberatung.ch/dyn/show/3309' class='d-link d-link-primary'>BMS</a> " +
