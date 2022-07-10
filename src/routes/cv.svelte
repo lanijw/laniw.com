@@ -181,7 +181,7 @@
             on:click={copyEmailToClipboard}>
             <Icon
               icon={clipboardIcon}
-              class="h-12 w-12 transition-all duration-200 lg:hover:scale-125 active:scale-75 lg:active:scale-75" />
+              class="h-12 w-12 transition-all duration-200 lg:hover:scale-125 active:scale-75" />
           </div>
         </div>
       </div>
