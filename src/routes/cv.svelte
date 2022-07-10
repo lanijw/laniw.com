@@ -10,7 +10,8 @@
     allSkills,
     experiences,
     ExperienceType,
-    ExperienceTypeMap
+    ExperienceTypeMap,
+    SkillType
   } from "../components/cv/data";
   import Modal from "../components/Modal.svelte";
 
@@ -24,7 +25,7 @@
     age = getLaniwAge();
   });
 
-  let extraContentShown = true;
+  let extraContentShown = false;
 
   function copyEmailToClipboard() {
     navigator.clipboard
@@ -37,6 +38,16 @@
           /* clipboard write failed */
         }
       );
+  }
+
+  function mapCategoryToProgressColor(skillType) {
+    const SkillTypeMap = new Map([
+      [SkillType.LANGUAGE, "bg-sky-600"],
+      [SkillType.MAIN_CODING, "bg-amber-500"],
+      [SkillType.SECONDARY_CODING, "bg-red-500"],
+      [SkillType.OTHER, "bg-teal-500"]
+    ]);
+    return SkillTypeMap.get(skillType);
   }
 </script>
 
@@ -91,15 +102,21 @@
         <div class="d-collapse-content">
           <div>
             <h2 class="mb-4">Skills</h2>
-            <div class="grid grid-cols-2 lg:grid-cols-6 gap-4">
+            <div class="grid grid-cols-12 lg:grid-cols-6 gap-4">
               {#each allSkills as skills}
                 {#each skills.skills as s}
-                  <div>
+                  <div
+                    class:col-span-3={skills.category ===
+                      SkillType.SECONDARY_CODING}
+                    class:col-span-4={skills.category === SkillType.LANGUAGE}
+                    class:col-span-6={skills.category ===
+                      SkillType.MAIN_CODING ||
+                      skills.category === SkillType.OTHER}>
                     <p class="text-lg">{s.skill}</p>
                     <ProgressBar
                       completion={s.completion}
                       wrapperClass="h-3"
-                      class={skills.color} />
+                      class={mapCategoryToProgressColor(skills.category)} />
                   </div>
                 {/each}
               {/each}
@@ -117,14 +134,17 @@
                         class:bg-info={e.type === ExperienceType.WORK}
                         class:text-info-content={e.type === ExperienceType.WORK}
                         class:bg-success={e.type === ExperienceType.EDUCATION}
-                        class:text-success-content={e.type === ExperienceType.EDUCATION}
-                        class:bg-warning={e.type === ExperienceType.EXTRACURRICULAR}
-                        class:text-warning-content={e.type === ExperienceType.EXTRACURRICULAR}
-                      >{@html ExperienceTypeMap.get(e.type)}</span>
+                        class:text-success-content={e.type ===
+                          ExperienceType.EDUCATION}
+                        class:bg-warning={e.type ===
+                          ExperienceType.EXTRACURRICULAR}
+                        class:text-warning-content={e.type ===
+                          ExperienceType.EXTRACURRICULAR}
+                        >{@html ExperienceTypeMap.get(e.type)}</span>
                       <div class="relative left-5">
                         {@html e.title}
                         {#if e.org}
-                          <br> {@html e.org}
+                          <br /> {@html e.org}
                         {/if}
                         <Icon icon="info" class="h-5 w-5 inline" />
                       </div>
@@ -135,7 +155,7 @@
                     <p>{@html e.desc}</p>
                   </svelte:fragment>
                 </Modal>
-                {/each}
+              {/each}
             </div>
             <div class="hidden lg:flex flex-wrap gap-1">
               <div class="d-divider w-full">Now</div>
@@ -161,11 +181,10 @@
 
             <h2 class="mb-4 mt-8">Contact Me</h2>
 
-            Send me a message:
             <a
               href="mailto:lani.julian.wagner+5r6Mq.laniw.com@gmail.com"
-              class="d-link d-link-primary"
-              >lani[dot]julian.wagner+5r6Mq.laniw.com[at]gmail.com</a>
+              class="d-link d-link-primary break-all"
+              >lani.julian.wagner+5r6Mq.laniw.com[at]gmail.com</a>
             <div class="inline cursor-pointer" on:click={copyEmailToClipboard}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -78,22 +78,29 @@ const otherSkills = [
   }
 ];
 
+export const SkillType = {
+  LANGUAGE: 1,
+  MAIN_CODING: 2,
+  SECONDARY_CODING: 3,
+  OTHER: 4
+};
+
 export const allSkills = [
   {
     skills: languageSkills,
-    color: "bg-sky-600"
+    category: SkillType.LANGUAGE
   },
   {
     skills: mainCodingSkills,
-    color: "bg-amber-500"
+    category: SkillType.MAIN_CODING
   },
   {
     skills: secondaryCodingSkills,
-    color: "bg-red-500"
+    category: SkillType.SECONDARY_CODING
   },
   {
     skills: otherSkills,
-    color: "bg-teal-500"
+    category: SkillType.OTHER
   }
 ];
 
@@ -134,9 +141,9 @@ export const experiences = [
     ExperienceType.WORK,
     "3D-Printer Lab Manager",
     "I joined the makerstudio as a Lab Manager when I started my BSc in" +
-    "Computer Science. I am responsible for organizing introductory courses to" +
-    "print 3D objects on our printers and leading sessions for people to start" +
-    "their prints.",
+      "Computer Science. I am responsible for organizing introductory courses to" +
+      "print 3D objects on our printers and leading sessions for people to start" +
+      "their prints.",
     "makerstudio"
   ),
   new ExperienceItem(
@@ -145,10 +152,10 @@ export const experiences = [
     ExperienceType.EDUCATION,
     "BSc Computer Science",
     "After my apprenticeship I went to study " +
-    "<a href='https://www.fhnw.ch/en/degree-programmes/engineering/computer-sciences' class='d-link d-link-primary'>computer science at the FHNW</a> " +
-    "(University of Applied Sciences and Arts Northwestern Switzerland, German: " +
-    "Fachhochschule Nordwestschweiz) because I wanted to complement the practical " +
-    "experience I got through my apprenticeship with a focus on the practical applications.",
+      "<a href='https://www.fhnw.ch/en/degree-programmes/engineering/computer-sciences' class='d-link d-link-primary'>computer science at the FHNW</a> " +
+      "(University of Applied Sciences and Arts Northwestern Switzerland, German: " +
+      "Fachhochschule Nordwestschweiz) because I wanted to complement the practical " +
+      "experience I got through my apprenticeship with a focus on the practical applications.",
     "FHNW"
   ),
   new ExperienceItem(
@@ -179,10 +186,10 @@ export const experiences = [
     ExperienceType.EDUCATION,
     "Berufsmaturit&auml;tsschule Z&uuml;rich<br>Technische Berufssschule Z&uuml;rich",
     "Every apprenticeship in Switzerland has a work portion and an school " +
-    "portion. In my case I visited a school for my general education called a " +
-    "<a href='https://www.berufsberatung.ch/dyn/show/3309' class='d-link d-link-primary'>BMS</a> " +
-    "and a school for my technical education called the TBZ, which is mandatory " +
-    "for the <a href='https://www.berufsberatung.ch/dyn/show/1922' class='d-link d-link-primary'>EFZ</a> " +
-    "diploma I received at the end."
+      "portion. In my case I visited a school for my general education called a " +
+      "<a href='https://www.berufsberatung.ch/dyn/show/3309' class='d-link d-link-primary'>BMS</a> " +
+      "and a school for my technical education called the TBZ, which is mandatory " +
+      "for the <a href='https://www.berufsberatung.ch/dyn/show/1922' class='d-link d-link-primary'>EFZ</a> " +
+      "diploma I received at the end."
   )
 ];
