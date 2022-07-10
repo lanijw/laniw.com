@@ -49,7 +49,7 @@
     },
     {
       skill: "CSS",
-      completion: 0.7
+      completion: 0.8
     },
     {
       skill: "JavaScript",
@@ -57,11 +57,11 @@
     },
     {
       skill: "TypeScript",
-      completion: 0.6
+      completion: 0.7
     },
     {
       skill: "Svelte/SvelteKit",
-      completion: 0.7
+      completion: 0.9
     }
   ];
 
@@ -80,7 +80,7 @@
     },
     {
       skill: "MySQL",
-      completion: 1
+      completion: .85
     }
   ];
 
