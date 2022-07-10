@@ -12,6 +12,7 @@
     ExperienceType,
     ExperienceTypeMap
   } from "../components/cv/data";
+  import Modal from "../components/Modal.svelte";
 
   currPage.set(Page.CV);
 
@@ -106,26 +107,34 @@
 
             <h2 class="mb-4 mt-8">Education and Experience</h2>
             <div class="flex flex-wrap gap-3 lg:hidden">
-              {#each experiences as e}
-                <div class="w-full">
-                  {@html e.from} - {@html e.to}
-                  <span
-                    class="rounded-full px-1 text-xs"
-                    class:bg-info={e.type === ExperienceType.WORK}
-                    class:text-info-content={e.type === ExperienceType.WORK}
-                    class:bg-success={e.type === ExperienceType.EDUCATION}
-                    class:text-success-content={e.type === ExperienceType.EDUCATION}
-                    class:bg-warning={e.type === ExperienceType.EXTRACURRICULAR}
-                    class:text-warning-content={e.type === ExperienceType.EXTRACURRICULAR}
-                  >{@html ExperienceTypeMap.get(e.type)}</span>
-                  <div class="relative left-5">
-                    {@html e.title}
-                    {#if e.org}
-                      <br> {e.org}
-                      {/if}
-                    <Icon icon="info" class="h-5 w-5 inline" />
-                  </div>
-                </div>
+              {#each experiences as e, i}
+                <Modal id={`experience-${i}`}>
+                  <svelte:fragment slot="trigger">
+                    <div class="w-full">
+                      {@html e.from} - {@html e.to}
+                      <span
+                        class="rounded-full px-1 text-xs"
+                        class:bg-info={e.type === ExperienceType.WORK}
+                        class:text-info-content={e.type === ExperienceType.WORK}
+                        class:bg-success={e.type === ExperienceType.EDUCATION}
+                        class:text-success-content={e.type === ExperienceType.EDUCATION}
+                        class:bg-warning={e.type === ExperienceType.EXTRACURRICULAR}
+                        class:text-warning-content={e.type === ExperienceType.EXTRACURRICULAR}
+                      >{@html ExperienceTypeMap.get(e.type)}</span>
+                      <div class="relative left-5">
+                        {@html e.title}
+                        {#if e.org}
+                          <br> {@html e.org}
+                        {/if}
+                        <Icon icon="info" class="h-5 w-5 inline" />
+                      </div>
+                    </div>
+                  </svelte:fragment>
+                  <svelte:fragment slot="content">
+                    <h3 class="mb-4">{@html e.title}</h3>
+                    <p>{@html e.desc}</p>
+                  </svelte:fragment>
+                </Modal>
                 {/each}
             </div>
             <div class="hidden lg:flex flex-wrap gap-1">
