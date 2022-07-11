@@ -1,4 +1,6 @@
-import {dev} from "$app/env";
+/**
+ * @jest-environment jsdom
+ */
 
 export function downloadableFileName(lead, sourceProgram, date) {
   const year = formatDatePart(date.getFullYear());

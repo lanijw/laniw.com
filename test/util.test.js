@@ -15,5 +15,6 @@ test("downloadableFileName leadMissing leadMissing", () => {
 });
 
 test("replaceUrlParams langParam mappedCorrectly", () => {
-  const result = replaceUrlParams();
+  const result = replaceUrlParams(new Map([["lang", "en"]]));
+  expect(result).toBe("http://localhost/?lang=en");
 });

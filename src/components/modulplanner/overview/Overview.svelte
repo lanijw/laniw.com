@@ -27,8 +27,7 @@
             <span class="text-l font-semibold">Fachvertiefung</span>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <div>
-                <span class="lg:hidden break-words"
-                  >ICT</span>
+                <span class="lg:hidden break-words">ICT</span>
                 <ModuleChipCollection
                   modules={modules.mainModules.advancedModules.ict.modules}
                   {userDataVal} />
@@ -49,8 +48,7 @@
                   {userDataVal} />
               </div>
               <div>
-                <span class="lg:hidden break-words hyphens-manual"
-                  >Web</span>
+                <span class="lg:hidden break-words hyphens-manual">Web</span>
                 <ModuleChipCollection
                   modules={modules.mainModules.advancedModules.web.modules}
                   {userDataVal} />

@@ -21,8 +21,7 @@
     SkillType
   } from "../components/cv/data";
   import Modal from "../components/Modal.svelte";
-  import LgExperiencesTimelineItem
-    from "../components/cv/LgExperiencesTimelineItem.svelte";
+  import LgExperiencesTimelineItem from "../components/cv/LgExperiencesTimelineItem.svelte";
   import ModalTrigger from "../components/ModalTrigger.svelte";
   import ExperienceLabel from "../components/cv/ExperienceLabel.svelte";
 

@@ -4,27 +4,28 @@ export const englishHeroText =
   `data-tooltip="${age} years old" ` +
   `class="after:text-2xl">${age}<span class="lg:hidden">y</span></span ` +
   ">), an up-and-coming software engineer based in Switzerland.";
-export const germanHeroText = "Hallo, ich bin <b>Lani</b> (<span " +
+export const germanHeroText =
+  "Hallo, ich bin <b>Lani</b> (<span " +
   `data-tooltip="${age} Jahre alt" ` +
   `class="after:text-2xl">${age}<span class="lg:hidden">J</span></span ` +
   ">), ein " +
   "Informatiker bzw. Full Stack Entwickler aus der Schweiz.";
 
 export const englishSkillsTitle = "Skills";
-export const germanSkillsTitle = "F&auml;higkeiten"
+export const germanSkillsTitle = "F&auml;higkeiten";
 
-export const englishExperienceTitle = "Education and Experience"
-export const germanExperienceTitle = "Ausbildung und Erfahrung"
+export const englishExperienceTitle = "Education and Experience";
+export const germanExperienceTitle = "Ausbildung und Erfahrung";
 
-export const englishExtraChip = "Extracurricular"
+export const englishExtraChip = "Extracurricular";
 export const englishWorkChip = "Work";
-export const englishEduChip = "Education"
-export const germanExtraChip = "Ehrenamtlich"
+export const englishEduChip = "Education";
+export const germanExtraChip = "Ehrenamtlich";
 export const germanWorkChip = "Arbeit";
-export const germanEduChip = "Ausbildung"
+export const germanEduChip = "Ausbildung";
 
-export const englishContactTitle = "Shoot me a Message!"
-export const germanContactTitle = "Schick mir doch 'ne Nachricht!"
+export const englishContactTitle = "Shoot me a Message!";
+export const germanContactTitle = "Schick mir doch 'ne Nachricht!";
 
 const englishLanguageSkills = [
   {
