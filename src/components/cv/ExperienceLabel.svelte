@@ -35,7 +35,7 @@
     class:bg-warning={e.type === ExperienceType.EXTRACURRICULAR}
     class:text-warning-content={e.type === ExperienceType.EXTRACURRICULAR}
     >{@html chip}</span>
-  <div class="relative left-5">
+  <div class="relative ml-5">
     {@html e.title}
     {#if e.org}
       <br /> {@html e.org}

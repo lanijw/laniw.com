@@ -4,9 +4,9 @@
   import {onDestroy} from "svelte";
   import {infoOpened} from "./stores";
 
-  export let leadSpan;
-  export let span;
-  export let followSpan;
+  export let leadSpan = "";
+  export let span = "";
+  export let followSpan = "";
   export let experience;
   export let modalTriggerId;
   export let lang;

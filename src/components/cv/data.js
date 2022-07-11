@@ -42,6 +42,10 @@ const colorfulFhnw =
 const colorfulMakerstudio =
   "<span class='font-semibold text-green-700'>MakerStudio</span> ";
 
+const colorfulStudents =
+  "<span class='font-semibold'><span class='text-[#B10932]'>students.</span>" +
+  "<span class='text-[#FEED01]'>fhnw</span></span>";
+
 const englishLanguageSkills = [
   {
     skill: "English",
@@ -235,10 +239,11 @@ export const englishExperiences = [
     "Jan 2022",
     "Now",
     ExperienceType.EXTRACURRICULAR,
-    "<span class='font-semibold text-[#DBCF18]'>Stu</span><span class='font-semibold text-[#B11735]'>dent</span> Union President",
+    "Student Union President",
     "Since January 2022 I have been active in a co-presidency leading the " +
       "student's union. The student's union at the FHNW (my college) represents " +
-      "the student body toward the school and organizes events during the semester."
+      "the student body toward the school and organizes events during the semester.",
+    colorfulStudents
   ),
   new ExperienceItem(
     "Sep 2021",
@@ -308,13 +313,12 @@ export const germanExperiences = [
     "Jan 2022",
     "Jetzt",
     ExperienceType.EXTRACURRICULAR,
-    "Pr&auml;&shy;si&shy;di&shy;um " +
-      "<span class='font-semibold text-[#DBCF18]'>Stu</span>&shy;<span class='font-semibold text-[#B11735]'>den</span>&shy;<span class='font-semibold text-[#DBCF18]'>ten</span>" +
-      "&shy;ver&shy;ein&shy;i&shy;gung",
+    "Pr&auml;&shy;si&shy;di&shy;um Stu&shy;den&shy;ten&shy;ver&shy;ein&shy;i&shy;gung",
     "Seit Januar 2022 bin ich in der Fachschaft Technik in einem " +
       "Kopr&auml;sidium aktiv. Die Studentenvereinigiung an der FHNW " +
       "repr&auml;sentiert die Studenten gegen&uuml;ber der Schule und organisiert " +
-      "Veranstaltungen f&uuml;r die Studenten w&auml;hrend dem Semester."
+      "Veranstaltungen f&uuml;r die Studenten w&auml;hrend dem Semester.",
+    colorfulStudents
   ),
   new ExperienceItem(
     "Sep 2021",
