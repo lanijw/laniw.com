@@ -47,7 +47,7 @@
     }
   });
 
-  let clipboardIcon = "clipboard";
+  let clipboardIcon = "Clipboard";
 
   function copyEmailToClipboard() {
     navigator.clipboard

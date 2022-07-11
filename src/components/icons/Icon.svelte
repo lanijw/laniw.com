@@ -6,13 +6,6 @@
   let className;
   export {className as class};
 
-  const IconMap = new Map([
-    ["clipboard", "Clipboard"],
-    ["clipboard-check", "ClipboardCheck"],
-    ["info", "Info"],
-    ["share", "Share"]
-  ]);
-
   let Icon;
   let mounted = false;
 
@@ -21,11 +14,7 @@
   });
 
   async function updateIcon(icon) {
-    const iconFileName = "./".concat(IconMap.get(icon)).concat("Icon.svelte");
-    const filledIconFileName = "./"
-      .concat(IconMap.get(icon))
-      .concat("IconFilled.svelte");
-    Icon = (await import(filled ? filledIconFileName : iconFileName)).default;
+    Icon = (await import(/* @vite-ignore */`./${icon}Icon${filled ? "Filled" : ""}.svelte`)).default;
   }
 
   $: if (mounted) updateIcon(icon);
