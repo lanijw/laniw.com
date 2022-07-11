@@ -14,7 +14,11 @@
   });
 
   async function updateIcon(icon) {
-    Icon = (await import(/* @vite-ignore */`./${icon}Icon${filled ? "Filled" : ""}.svelte`)).default;
+    Icon = (
+      await import(
+        /* @vite-ignore */ `./${icon}Icon${filled ? "Filled" : ""}.svelte`
+      )
+    ).default;
   }
 
   $: if (mounted) updateIcon(icon);
