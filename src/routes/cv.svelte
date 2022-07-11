@@ -167,32 +167,32 @@
           modalTriggerId="experience-0"
           {lang} />
         <LgExperiencesTimelineItem
-          leadSpan="col-span-5"
+          leadSpan="col-span-1"
+          span="col-span-4"
+          followSpan="hidden"
+          experience={experiences[3]}
+          modalTriggerId="experience-3"
+          {lang} />
+        <LgExperiencesTimelineItem
+          leadSpan="hidden"
           span="col-span-2"
           followSpan="col-span-1"
           experience={experiences[1]}
           modalTriggerId="experience-1"
           {lang} />
         <LgExperiencesTimelineItem
-          leadSpan="col-span-5"
+          leadSpan="col-span-1"
+          span="col-span-4"
+          followSpan="hidden"
+          experience={experiences[4]}
+          modalTriggerId="experience-4"
+          {lang} />
+        <LgExperiencesTimelineItem
+          leadSpan="hidden"
           span="col-span-2"
           followSpan="col-span-1"
           experience={experiences[2]}
           modalTriggerId="experience-2"
-          {lang} />
-        <LgExperiencesTimelineItem
-          leadSpan="col-span-1"
-          span="col-span-4"
-          followSpan="col-span-3"
-          experience={experiences[3]}
-          modalTriggerId="experience-3"
-          {lang} />
-        <LgExperiencesTimelineItem
-          leadSpan="col-span-1"
-          span="col-span-4"
-          followSpan="col-span-3"
-          experience={experiences[4]}
-          modalTriggerId="experience-4"
           {lang} />
       </div>
     </div>
