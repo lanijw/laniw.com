@@ -1,9 +1,20 @@
 <script>
-  import {ExperienceType, ExperienceTypeMap} from "./data";
+  import {
+    EnglishExperienceTypeMap,
+    ExperienceType,
+    GermanExperienceTypeMap
+  } from "./data";
   import Icon from "../icons/Icon.svelte";
 
   let e;
   export {e as experience};
+  export let lang;
+
+  let chip;
+  $: chip =
+    lang === "en"
+      ? EnglishExperienceTypeMap.get(e.type)
+      : GermanExperienceTypeMap.get(e.type);
 </script>
 
 <div class="w-full">
@@ -16,7 +27,7 @@
     class:text-success-content={e.type === ExperienceType.EDUCATION}
     class:bg-warning={e.type === ExperienceType.EXTRACURRICULAR}
     class:text-warning-content={e.type === ExperienceType.EXTRACURRICULAR}
-    >{@html ExperienceTypeMap.get(e.type)}</span>
+    >{@html chip}</span>
   <div class="relative left-5">
     {@html e.title}
     {#if e.org}

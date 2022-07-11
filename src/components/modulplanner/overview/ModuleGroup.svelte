@@ -10,7 +10,7 @@
 </script>
 
 <div class="rounded {borderColor ? `${borderColor} p-3` : borderColor}">
-  <span class="text-l font-semibold break-words" style="hyphens: manual"
+  <span class="text-l font-semibold break-words hyphens-manual"
     >{@html title}</span>
   <ModuleChipCollection {modules} {userDataVal} {source} />
 </div>

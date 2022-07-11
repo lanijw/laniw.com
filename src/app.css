@@ -29,3 +29,15 @@ h4 {
   @apply after:bg-black after:text-white after:px-2 after:py-1 after:text-center after:rounded-lg after:w-max;
   @apply after:transition-all after:duration-75 after:origin-bottom after:scale-0 after:hover:scale-100;
 }
+
+.hyphens-none {
+  hyphens: none;
+}
+
+.hyphens-manual {
+  hyphens: manual;
+}
+
+.hyphens-auto {
+  hyphens: auto;
+}

@@ -47,15 +47,3 @@ export function getUrlParams() {
   const urlParams = window.location.search;
   return new URLSearchParams(urlParams);
 }
-
-export function getLaniwAge() {
-  if (dev) return 20;
-  let today = new Date();
-  let birthDate = new Date(process.env.BIRTHDATE);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  let m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-}
