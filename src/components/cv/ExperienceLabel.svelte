@@ -42,12 +42,10 @@
     {/if}
     <Icon icon="Info" filled class="h-5 w-5 inline" />
     {#if !infoOpenedVal}
-      <span transition:scale>
-        <Icon
-          icon="CursorClick"
-          filled
-          class="h-5 w-5 inline motion-safe:animate-pulse animate-pulse" />
-      </span>
+      <Icon
+        icon="CursorClick"
+        filled
+        class="h-5 w-5 inline motion-safe:animate-pulse animate-pulse" />
     {/if}
   </div>
 </div>

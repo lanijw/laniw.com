@@ -1,4 +1,6 @@
 <script>
+  import {scale} from "svelte/transition";
+
   let className;
   export {className as class};
 </script>
@@ -9,7 +11,8 @@
   fill="none"
   viewBox="0 0 24 24"
   stroke="currentColor"
-  stroke-width="2">
+  stroke-width="2"
+  transition:scale>
   <path
     stroke-linecap="round"
     stroke-linejoin="round"
