@@ -12,6 +12,9 @@
   }
 </script>
 
-<label for={id} class="cursor-pointer {className}" on:click={dispatchTriggerClick}>
+<label
+  for={id}
+  class="cursor-pointer {className}"
+  on:click={dispatchTriggerClick}>
   <slot />
 </label>

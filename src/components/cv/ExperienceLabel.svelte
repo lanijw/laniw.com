@@ -7,7 +7,7 @@
   import Icon from "../icons/Icon.svelte";
   import {infoOpened} from "./stores";
   import {onDestroy} from "svelte";
-  import { scale } from 'svelte/transition';
+  import {scale} from "svelte/transition";
 
   let e;
   export {e as experience};
@@ -16,8 +16,6 @@
   let infoOpenedVal;
   const unsubInfoOpened = infoOpened.subscribe(v => (infoOpenedVal = v));
   onDestroy(() => unsubInfoOpened());
-
-
 
   let chip;
   $: chip =
@@ -45,7 +43,10 @@
     <Icon icon="Info" filled class="h-5 w-5 inline" />
     {#if !infoOpenedVal}
       <span transition:scale>
-        <Icon icon="CursorClick" filled class="h-5 w-5 inline motion-safe:animate-pulse animate-pulse"/>
+        <Icon
+          icon="CursorClick"
+          filled
+          class="h-5 w-5 inline motion-safe:animate-pulse animate-pulse" />
       </span>
     {/if}
   </div>

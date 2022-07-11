@@ -27,17 +27,20 @@ export const germanEduChip = "Ausbildung";
 export const englishContactTitle = "Shoot me a Message!";
 export const germanContactTitle = "Schick mir doch 'ne Nachricht!";
 
-const colorfulGoogle = "<span class='font-semibold'><span class='text-[#4285F4]'>G</span>" +
+const colorfulGoogle =
+  "<span class='font-semibold'><span class='text-[#4285F4]'>G</span>" +
   "<span class='text-[#DB4437]'>o</span>" +
   "<span class='text-[#F4B400]'>o</span>" +
   "<span class='text-[#4285F4]'>g</span>" +
   "<span class='text-[#0F9D58]'>l</span>" +
   "<span class='text-[#DB4437]'>e</span></span>";
 
-const colorfulFhnw = "<span class='font-semibold'>FH" +
+const colorfulFhnw =
+  "<span class='font-semibold'>FH" +
   "<span class='text-[#FDE70E] bg-black px-1 pb-0.5'>NW</span></span>";
 
-const colorfulMakerstudio = "<span class='font-semibold text-green-700'>MakerStudio</span> "
+const colorfulMakerstudio =
+  "<span class='font-semibold text-green-700'>MakerStudio</span> ";
 
 const englishLanguageSkills = [
   {
@@ -234,8 +237,8 @@ export const englishExperiences = [
     ExperienceType.EXTRACURRICULAR,
     "<span class='font-semibold text-[#DBCF18]'>Stu</span><span class='font-semibold text-[#B11735]'>dent</span> Union President",
     "Since January 2022 I have been active in a co-presidency leading the " +
-    "student's union. The student's union at the FHNW (my college) represents " +
-    "the student body toward the school and organizes events during the semester."
+      "student's union. The student's union at the FHNW (my college) represents " +
+      "the student body toward the school and organizes events during the semester."
   ),
   new ExperienceItem(
     "Sep 2021",
@@ -306,8 +309,8 @@ export const germanExperiences = [
     "Jetzt",
     ExperienceType.EXTRACURRICULAR,
     "Pr&auml;&shy;si&shy;di&shy;um " +
-    "<span class='font-semibold text-[#DBCF18]'>Stu</span>&shy;<span class='font-semibold text-[#B11735]'>den</span>&shy;<span class='font-semibold text-[#DBCF18]'>ten</span>" +
-    "&shy;ver&shy;ein&shy;i&shy;gung",
+      "<span class='font-semibold text-[#DBCF18]'>Stu</span>&shy;<span class='font-semibold text-[#B11735]'>den</span>&shy;<span class='font-semibold text-[#DBCF18]'>ten</span>" +
+      "&shy;ver&shy;ein&shy;i&shy;gung",
     "Seit Januar 2022 bin ich in der Fachschaft Technik in einem " +
       "Kopr&auml;sidium aktiv. Die Studentenvereinigiung an der FHNW " +
       "repr&auml;sentiert die Studenten gegen&uuml;ber der Schule und organisiert " +
