@@ -27,6 +27,18 @@ export const germanEduChip = "Ausbildung";
 export const englishContactTitle = "Shoot me a Message!";
 export const germanContactTitle = "Schick mir doch 'ne Nachricht!";
 
+const colorfulGoogle = "<span class='font-semibold'><span class='text-[#4285F4]'>G</span>" +
+  "<span class='text-[#DB4437]'>o</span>" +
+  "<span class='text-[#F4B400]'>o</span>" +
+  "<span class='text-[#4285F4]'>g</span>" +
+  "<span class='text-[#0F9D58]'>l</span>" +
+  "<span class='text-[#DB4437]'>e</span></span>";
+
+const colorfulFhnw = "<span class='font-semibold'>FH" +
+  "<span class='text-[#FDE70E] bg-black px-1 pb-0.5'>NW</span></span>";
+
+const colorfulMakerstudio = "<span class='font-semibold text-green-700'>MakerStudio</span> "
+
 const englishLanguageSkills = [
   {
     skill: "English",
@@ -220,19 +232,21 @@ export const englishExperiences = [
     "Jan 2022",
     "Now",
     ExperienceType.EXTRACURRICULAR,
-    "Student's Union President",
-    "Since January 2022 I have been active in a co-presidency leading the student's union. The student's union at the FHNW (my college) represents the student body toward the school and organizes events during the semester."
+    "<span class='font-semibold text-[#DBCF18]'>Stu</span><span class='font-semibold text-[#B11735]'>dent</span> Union President",
+    "Since January 2022 I have been active in a co-presidency leading the " +
+    "student's union. The student's union at the FHNW (my college) represents " +
+    "the student body toward the school and organizes events during the semester."
   ),
   new ExperienceItem(
     "Sep 2021",
     "Now",
     ExperienceType.WORK,
     "3D-Printer Lab Manager",
-    "I joined the makerstudio as a Lab Manager when I started my BSc in" +
+    "I joined the MakerStudio as a Lab Manager when I started my BSc in" +
       "Computer Science. I am responsible for organizing introductory courses to" +
       "print 3D objects on our printers and leading sessions for people to start" +
       "their prints.",
-    "makerstudio"
+    colorfulMakerstudio
   ),
   new ExperienceItem(
     "Sep 2021",
@@ -244,7 +258,7 @@ export const englishExperiences = [
       "(University of Applied Sciences and Arts Northwestern Switzerland, German: " +
       "Fachhochschule Nordwestschweiz) because I want to complement the practical " +
       "experience I got through my apprenticeship with a focus on the practical applications.",
-    "FHNW"
+    colorfulFhnw
   ),
   new ExperienceItem(
     "Aug 2017",
@@ -253,7 +267,7 @@ export const englishExperiences = [
     "Software Engineering Apprenticeship",
     'I was originally interested in taking the typical "American" ' +
       "educational path, but quickly realised that the purely theoretical " +
-      "application of my knowledge seemed rather boring, so I finish the last " +
+      "application of my knowledge seemed rather boring, so I finished the last " +
       "years of mandatory education and started my apprenticeship at Google at " +
       "the age of 15. The following list gives you an overview of the projects " +
       "I worked on." +
@@ -266,7 +280,7 @@ export const englishExperiences = [
       "<li>Apprentice event organisation</li>" +
       "<li>Documentation and Requirements Engineering</li>" +
       "</ul>",
-    "Google Switzerland GmbH"
+    `${colorfulGoogle} Switzerland GmbH`
   ),
   new ExperienceItem(
     "Aug 2017",
@@ -291,7 +305,9 @@ export const germanExperiences = [
     "Jan 2022",
     "Jetzt",
     ExperienceType.EXTRACURRICULAR,
-    "Pr&auml;&shy;si&shy;di&shy;um Stu&shy;den&shy;ten&shy;ver&shy;ein&shy;i&shy;gung",
+    "Pr&auml;&shy;si&shy;di&shy;um " +
+    "<span class='font-semibold text-[#DBCF18]'>Stu</span>&shy;<span class='font-semibold text-[#B11735]'>den</span>&shy;<span class='font-semibold text-[#DBCF18]'>ten</span>" +
+    "&shy;ver&shy;ein&shy;i&shy;gung",
     "Seit Januar 2022 bin ich in der Fachschaft Technik in einem " +
       "Kopr&auml;sidium aktiv. Die Studentenvereinigiung an der FHNW " +
       "repr&auml;sentiert die Studenten gegen&uuml;ber der Schule und organisiert " +
@@ -303,10 +319,10 @@ export const germanExperiences = [
     ExperienceType.WORK,
     "3D-Drucker Lab Manager",
     "Als ich meinen BSc in Informatik an der FHNW gestartet habe bin ich " +
-      "auch dem makerstudio als Lab Manager beigetreten. Ich bin " +
+      "auch dem MakerStudio als Lab Manager beigetreten. Ich bin " +
       "daf&uuml;verantwortlich Einf&uuml;hrungskurse zum Labor zu leiten und " +
       "Kunden beim Drucken zu begleiten.",
-    "makerstudio"
+    colorfulMakerstudio
   ),
   new ExperienceItem(
     "Sep 2021",
@@ -318,7 +334,7 @@ export const germanExperiences = [
       "(Fachhochschule Nordwestschweiz) studieren, weil ich meine praktische " +
       "Erfahrung durch die entsprechende Theorie - mit einem Fokus auf die Anwendung davon - " +
       "erg&auml;nzen m&ouml;chte.",
-    "FHNW"
+    colorfulFhnw
   ),
   new ExperienceItem(
     "Aug 2017",
@@ -341,7 +357,7 @@ export const germanExperiences = [
       "<li>Planung Lehrlingsanl&auml;sse</li>" +
       "<li>Erstellung von Projektdokumentation und Anforderungsanalyse</li>" +
       "</ul>",
-    "Google Schweiz GmbH"
+    `${colorfulGoogle} Schweiz GmbH`
   ),
   new ExperienceItem(
     "Aug 2017",
