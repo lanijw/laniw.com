@@ -9,7 +9,7 @@
   // TODO(#21): Implement use of major.
 </script>
 
-<div class="container mx-auto mt-4 p-1">
+<div class="container mx-auto p-3">
   <div class="grid grid-cols-6 gap-3">
     <div class="col-span-6 lg:col-span-1 order-2 lg:order-1">
       <ModuleGroup
@@ -27,21 +27,21 @@
             <span class="text-l font-semibold">Fachvertiefung</span>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <div>
-                <span class="lg:hidden break-words" style="hyphens: manual"
+                <span class="lg:hidden break-words"
                   >ICT</span>
                 <ModuleChipCollection
                   modules={modules.mainModules.advancedModules.ict.modules}
                   {userDataVal} />
               </div>
               <div>
-                <span class="lg:hidden break-words" style="hyphens: manual"
+                <span class="lg:hidden break-words hyphens-manual"
                   >Da&shy;ta Sci&shy;ence</span>
                 <ModuleChipCollection
                   modules={modules.mainModules.advancedModules.dataSci.modules}
                   {userDataVal} />
               </div>
               <div>
-                <span class="lg:hidden break-words" style="hyphens: manual"
+                <span class="lg:hidden break-words hyphens-manual"
                   >Spa&shy;tial Com&shy;pu&shy;ting</span>
                 <ModuleChipCollection
                   modules={modules.mainModules.advancedModules.spatialComp
@@ -49,7 +49,7 @@
                   {userDataVal} />
               </div>
               <div>
-                <span class="lg:hidden break-words" style="hyphens: manual"
+                <span class="lg:hidden break-words hyphens-manual"
                   >Web</span>
                 <ModuleChipCollection
                   modules={modules.mainModules.advancedModules.web.modules}

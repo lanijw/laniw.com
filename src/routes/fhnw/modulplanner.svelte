@@ -1,14 +1,15 @@
 <script>
-  import {currPage} from "../../../stores.js";
+  import {currPage} from "../../stores.js";
   import {onDestroy, onMount} from "svelte";
-  import {Page} from "../../../constants";
-  import {major, userData} from "../../../components/modulplanner/stores";
-  import Statistics from "../../../components/modulplanner/statistics/Statistics.svelte";
-  import Plan from "../../../components/modulplanner/Plan.svelte";
-  import {Status} from "../../../components/modulplanner/constants";
-  import Loader from "../../../components/Loader.svelte";
+  import {Page} from "../../constants.js";
+  import {major, userData} from "../../components/modulplanner/stores.js";
+  import Statistics from "../../components/modulplanner/statistics/Statistics.svelte";
+  import Plan from "../../components/modulplanner/Plan.svelte";
+  import {Status} from "../../components/modulplanner/constants.js";
+  import Loader from "../../components/Loader.svelte";
   import {Jellyfish} from "svelte-loading-spinners";
-  import ShareIcon from "../../../components/icons/ShareIcon.svelte";
+  import ShareIcon from "../../components/icons/ShareIcon.svelte";
+  import Icon from "../../components/icons/Icon.svelte";
 
   currPage.set(Page.MODULE_PLANNER);
 
@@ -37,7 +38,7 @@
   let currentSection = Section.OVERVIEW;
 
   function importOverview() {
-    return import("../../../components/modulplanner/overview/Overview.svelte");
+    return import("../../components/modulplanner/overview/Overview.svelte");
   }
 
   function shareModulplanner() {
@@ -55,12 +56,14 @@
 {#if mounted && navigator.share}
   <button
     on:click={shareModulplanner}
-    class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-28 right-16 w-10 z-50 bg-slate-200 hover:bg-slate-400 shadow-md rounded-full cursor-pointer">
-    <ShareIcon />
+    class="drawer-button btn btn-primary fixed bottom-4 lg:bottom-auto lg:top-28 lg:right-28 right-16 w-10 h-10 z-50 bg-primary hover:bg-primary-content shadow-md rounded-full cursor-pointer">
+    <Icon
+      icon="share"
+      class="w-9 h-9 stroke-primary-content hover:stroke-primary" />
   </button>
 {/if}
 
-<div class="d-tabs flex justify-center mt-10">
+<div class="d-tabs flex justify-center mt-24">
   <button
     class="d-tab d-tab-lg d-tab-lifted font-bold"
     class:d-tab-active={currentSection === Section.OVERVIEW}

@@ -47,7 +47,7 @@
     <label
       for="edit-modal-{module.id}"
       class="d-btn d-btn-sm d-btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-xl font-bold">{module.id}</h3>
+    <h3>{module.id}</h3>
     <div class="overflow-x-auto mt-2">
       <table class="d-table d-table-compact w-full divide-y">
         <tr>
@@ -77,7 +77,7 @@
       </table>
     </div>
 
-    <h4 class="text-lg font-bold mt-4 mb-2">Modulstatus</h4>
+    <h4 class="mt-4 mb-2">Modulstatus</h4>
     <div class="grid grid-cols-2 gap-1 mb-2">
       <StatusRadioButton
         label="Nicht belegt"

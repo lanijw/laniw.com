@@ -1,4 +1,4 @@
-import {downloadableFileName} from "../src/util";
+import {downloadableFileName, replaceUrlParams} from "../src/util";
 
 test("downloadableFileName leadGiven leadInFilename", () => {
   const date = new Date("2022-06-21T22:04:31");
@@ -12,4 +12,8 @@ test("downloadableFileName leadMissing leadMissing", () => {
   expect(downloadableFileName("", "testFunc", date)).toBe(
     "testFunc_2022-06-21_22-04-31.json"
   );
+});
+
+test("replaceUrlParams langParam mappedCorrectly", () => {
+  const result = replaceUrlParams();
 });

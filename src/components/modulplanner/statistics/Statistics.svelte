@@ -293,8 +293,8 @@
   ];
 </script>
 
-<div class="container mx-auto mt-4 p-3">
-  <h1 class="text-4xl font-bold">Statistiken</h1>
+<div class="container mx-auto p-3">
+  <h1>Statistiken</h1>
   <h2 class="text-3xl font-semibold mt-5"
     ><a id="progress">Studiumsfortschritt</a></h2>
 
@@ -366,12 +366,12 @@
     {/each}
   </div>
 
-  <h3 class="text-2xl font-semibold mt-5">Profilabsolvierung</h3>
+  <h3 class="mt-5">Profilabsolvierung</h3>
 
   <div class="grid grid-cols-1 lg:grid-cols-2">
     {#each profileCredits as p}
       <div>
-        <h4 class="text-xl font-semibold mt-5">{p.title}</h4>
+        <h4 class="mt-5">{p.title}</h4>
 
         <div class="d-stats shadow m-4">
           <div class="d-stat">
