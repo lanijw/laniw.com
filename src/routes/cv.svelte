@@ -2,7 +2,7 @@
   import {currPage} from "../stores.js";
   import {Page} from "../constants.js";
   import {getUrlParams} from "../util.js";
-  import {onMount} from "svelte";
+  import {onDestroy, onMount} from "svelte";
   import ProgressBar from "../components/ProgressBar.svelte";
   import Icon from "../components/icons/Icon.svelte";
   import {
@@ -24,6 +24,7 @@
   import LgExperiencesTimelineItem from "../components/cv/LgExperiencesTimelineItem.svelte";
   import ModalTrigger from "../components/ModalTrigger.svelte";
   import ExperienceLabel from "../components/cv/ExperienceLabel.svelte";
+  import {infoOpened} from "../components/cv/stores";
 
   currPage.set(Page.CV);
 
@@ -48,13 +49,12 @@
   });
 
   let clipboardIcon = "Clipboard";
-
   function copyEmailToClipboard() {
     navigator.clipboard
       .writeText("lani.julian.wagner+5r6Mq.laniw.com@gmail.com")
       .then(
         function () {
-          clipboardIcon = "clipboard-check";
+          clipboardIcon = "ClipboardCheck";
           setTimeout(() => (clipboardIcon = "clipboard"), 1000);
         },
         function () {
@@ -62,6 +62,10 @@
         }
       );
   }
+
+  let infoOpenedVal;
+  const unsubInfoOpened = infoOpened.subscribe(v => (infoOpenedVal = v));
+  onDestroy(() => unsubInfoOpened());
 
   function mapCategoryToProgressColor(skillType) {
     const SkillTypeMap = new Map([
@@ -126,7 +130,9 @@
     <h2 class="mb-4 mt-20 lg:text-center">{@html experienceTitle}</h2>
     <div class="grid gap-3 lg:hidden">
       {#each experiences as e, i}
-        <ModalTrigger id={`experience-${i}`}>
+        <ModalTrigger
+          id={`experience-${i}`}
+          on:triggerClick={() => infoOpened.set(true)}>
           <ExperienceLabel experience={e} {lang} />
         </ModalTrigger>
       {/each}

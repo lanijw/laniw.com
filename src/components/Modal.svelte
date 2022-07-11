@@ -1,10 +1,17 @@
 <script>
   import ModalTrigger from "./ModalTrigger.svelte";
+  import {createEventDispatcher} from "svelte";
 
   export let id;
+
+  const dispatch = createEventDispatcher();
+
+  function dispatchTriggerClick() {
+    dispatch("triggerClick", {});
+  }
 </script>
 
-<ModalTrigger {id}>
+<ModalTrigger {id} on:triggerClick={dispatchTriggerClick}>
   <slot name="trigger" />
 </ModalTrigger>
 
