@@ -30,20 +30,20 @@ export const germanContactTitle = "Schick mir doch 'ne Nachricht!";
 const colorfulGoogle =
   "<span class='font-semibold'><span class='text-[#4285F4]'>G</span>" +
   "<span class='text-[#DB4437]'>o</span>" +
-  "<span class='text-[#F4B400]'>o</span>" +
+  "<span class='text-[#F4B400]'>o</span>&shy;" +
   "<span class='text-[#4285F4]'>g</span>" +
   "<span class='text-[#0F9D58]'>l</span>" +
   "<span class='text-[#DB4437]'>e</span></span>";
 
 const colorfulFhnw =
-  "<span class='font-semibold'>FH" +
+  "<span class='font-semibold'>FH&shy;" +
   "<span class='text-[#FDE70E] bg-black px-1 pb-0.5'>NW</span></span>";
 
 const colorfulMakerstudio =
-  "<span class='font-semibold text-green-700'>MakerStudio</span> ";
+  "<span class='font-semibold text-green-700'>Ma&shy;ker&shy;Stu&shy;di&shy;o</span> ";
 
 const colorfulStudents =
-  "<span class='font-semibold'><span class='text-[#B10932]'>students.</span>" +
+  "<span class='font-semibold'><span class='text-[#B10932]'>stu&shy;dents&shy;.&shy;</span>&shy;" +
   "<span class='text-[#FEED01]'>fhnw</span></span>";
 
 const englishLanguageSkills = [
