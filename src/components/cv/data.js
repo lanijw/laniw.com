@@ -241,8 +241,16 @@ export const englishExperiences = [
     ExperienceType.EXTRACURRICULAR,
     "Student Union President",
     "Since January 2022 I have been active in a co-presidency leading the " +
-      "student's union. The student's union at the FHNW (my college) represents " +
-      "the student body toward the school and organizes events during the semester.",
+      "student's union. We represent the student body toward the school and " +
+      "organizes events during the semester. The following list gives you an " +
+      "overview of the projects I worked on." +
+      +'<ul class="list-disc ml-6">' +
+      "<li>Organizing events for 1000+ people</li>" +
+      "<li>Organizing meetings with members</li>" +
+      "<li>Organizing meetings with the student union board</li>" +
+      "<li>Taking minutes for meetings</li>" +
+      "<li>General oversight of student union involvment</li>" +
+      "</ul>",
     colorfulStudents
   ),
   new ExperienceItem(
@@ -250,10 +258,10 @@ export const englishExperiences = [
     "Now",
     ExperienceType.WORK,
     "3D-Printer Lab Manager",
-    "I joined the MakerStudio as a Lab Manager when I started my BSc in" +
-      "Computer Science. I am responsible for organizing introductory courses to" +
-      "print 3D objects on our printers and leading sessions for people to start" +
-      "their prints.",
+    "I joined the MakerStudio as a Lab Manager when I started my BSc in " +
+      "Computer Science. I am responsible for organizing introductory courses to " +
+      "print 3D objects on our printers and leading sessions for people to help " +
+      "them start their prints.",
     colorfulMakerstudio
   ),
   new ExperienceItem(
@@ -265,7 +273,7 @@ export const englishExperiences = [
       "<a href='https://www.fhnw.ch/en/degree-programmes/engineering/computer-sciences' class='d-link d-link-primary'>computer science at the FHNW</a> " +
       "(University of Applied Sciences and Arts Northwestern Switzerland, German: " +
       "Fachhochschule Nordwestschweiz) because I want to complement the practical " +
-      "experience I got through my apprenticeship with a focus on the practical applications.",
+      "experience I got through my apprenticeship with the theory.",
     colorfulFhnw
   ),
   new ExperienceItem(
@@ -296,14 +304,16 @@ export const englishExperiences = [
     ExperienceType.EDUCATION,
     "Berufsmaturit&auml;tsschule Z&uuml;rich<br>Technische Berufsschule Z&uuml;rich",
     "Every apprenticeship in Switzerland has a work portion and an school " +
-      "portion. In my case I visited a school for my general education called a " +
+      "portion. In my case I visited a school for my general education called the " +
       "<a href='https://www.berufsberatung.ch/dyn/show/3309' class='d-link d-link-primary'>BMS</a> " +
       "and a school for my technical education called the TBZ, which is mandatory " +
       "for the <a href='https://www.berufsberatung.ch/dyn/show/1922' class='d-link d-link-primary'>EFZ</a> " +
       "diploma I received at the end." +
       "<ul class='list-disc ml-6'>" +
-      "<li>Final grade BMS: 5.2</li>" +
-      "<li>Final grade TBZ: 5.5</li>" +
+      "<li>Final grade BMS: " +
+      "<span data-tooltip='passing: 4, good: 5, exceeds: 6'>5.2</span></li>" +
+      "<li>Final grade TBZ: " +
+      "<span data-tooltip='passing: 4, good: 5, exceeds: 6'>5.5</span></li>" +
       "</ul>"
   )
 ];
