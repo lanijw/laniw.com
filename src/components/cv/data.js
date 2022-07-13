@@ -87,7 +87,7 @@ const mainCodingSkills = [
   },
   {
     skill: "CSS",
-    completion: 0.8
+    completion: 0.9
   },
   {
     skill: "JavaScript",
