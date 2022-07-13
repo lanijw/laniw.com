@@ -205,8 +205,9 @@
         class="d-link d-link-primary break-all"
         >lani.julian.wagner+5r6Mq.laniw.com[at]gmail.com</a>
       <div
-        class="cursor-pointer flex justify-center mt-4"
-        on:click={copyEmailToClipboard}>
+        class="cursor-pointer flex items-center justify-center mt-4 after:hover:mb-12"
+        on:click={copyEmailToClipboard} >
+        <span class="mr-2">Copy email address</span>
         <Icon
           icon={clipboardIcon}
           class="h-12 w-12 transition-all duration-200 lg:hover:scale-125 active:scale-75" />
