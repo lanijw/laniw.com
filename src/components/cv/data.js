@@ -400,9 +400,9 @@ export const germanExperiences = [
       "Diplom erforderlich ist." +
       "<ul class='list-disc ml-6'>" +
       "<li>Abschlussnote BMS: " +
-    "<span data-tooltip='bestanden: 4, gut: 5, ausgezeichnet: 6'>5.2</span></li>" +
+      "<span data-tooltip='bestanden: 4, gut: 5, ausgezeichnet: 6'>5.2</span></li>" +
       "<li>Abschlussnote TBZ: " +
-    "<span data-tooltip='bestanden: 4, gut: 5, ausgezeichnet: 6'>5.5</span></li>" +
+      "<span data-tooltip='bestanden: 4, gut: 5, ausgezeichnet: 6'>5.5</span></li>" +
       "</ul>"
   )
 ];
