@@ -1,11 +1,11 @@
 const age = 20;
 export const englishHeroText =
-  "Hi, I'm <b>Lani</b> (<span " +
+  "Hi, I'm <span class='font-semibold'>Lani</span> (<span " +
   `data-tooltip="${age} years old" ` +
   `class="after:text-2xl">${age}<span class="lg:hidden">y</span></span ` +
   ">), an up-and-coming software engineer based in Switzerland.";
 export const germanHeroText =
-  "Hallo, ich bin <b>Lani</b> (<span " +
+  "Hallo, ich bin <span class='font-semibold'>Lani</span> (<span " +
   `data-tooltip="${age} Jahre alt" ` +
   `class="after:text-2xl">${age}<span class="lg:hidden">J</span></span ` +
   ">), ein " +
