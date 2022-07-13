@@ -114,8 +114,9 @@
             class:lg:order-2={skills.category === SkillType.LANGUAGE}
             class:lg:order-3={skills.category === SkillType.SECONDARY_CODING ||
               skills.category === SkillType.OTHER}
-            class="overflow-hidden whitespace-nowrap text-ellipsis">
-            <span class="text-lg">
+            data-tooltip={s.skill}>
+            <span
+              class="text-lg w-full h-full overflow-hidden whitespace-nowrap text-ellipsis">
               {@html s.skill}
             </span>
             <ProgressBar
