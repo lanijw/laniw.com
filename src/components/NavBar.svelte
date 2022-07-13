@@ -79,7 +79,7 @@
   }
 </style>
 
-<div class="d-navbar bg-base-100 shadow-lg sticky z-50">
+<div class="d-navbar bg-base-100 shadow-lg sticky z-40">
   <div class="d-navbar-start">
     <div class="d-dropdown">
       <span tabindex="0" class="d-btn d-btn-ghost lg:hidden">
