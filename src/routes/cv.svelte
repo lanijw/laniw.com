@@ -115,10 +115,10 @@
             class:lg:order-3={skills.category === SkillType.SECONDARY_CODING ||
               skills.category === SkillType.OTHER}
             data-tooltip={s.skill}>
-            <span
-              class="text-lg w-full h-full overflow-hidden whitespace-nowrap text-ellipsis">
+            <div
+              class="text-lg w-full h-full -mb-1.5 overflow-hidden whitespace-nowrap text-ellipsis">
               {@html s.skill}
-            </span>
+            </div>
             <ProgressBar
               completion={s.completion}
               wrapperClass="h-3"
