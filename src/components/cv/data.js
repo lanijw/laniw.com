@@ -244,12 +244,13 @@ export const englishExperiences = [
       "student's union. We represent the student body toward the school and " +
       "organizes events during the semester. The following list gives you an " +
       "overview of the projects I worked on." +
-      +'<ul class="list-disc ml-6">' +
+      '<ul class="list-disc ml-6">' +
       "<li>Organizing events for 1000+ people</li>" +
       "<li>Organizing meetings with members</li>" +
       "<li>Organizing meetings with the student union board</li>" +
       "<li>Taking minutes for meetings</li>" +
       "<li>General oversight of student union involvment</li>" +
+      "<li>Student's union Lead</li>" +
       "</ul>",
     colorfulStudents
   ),
@@ -284,8 +285,8 @@ export const englishExperiences = [
     'I was originally interested in taking the typical "American" ' +
       "educational path, but quickly realised that the purely theoretical " +
       "application of my knowledge seemed rather boring, so I finished the last " +
-      "years of mandatory education and started my apprenticeship at Google at " +
-      "the age of 15. The following list gives you an overview of the projects " +
+      "years of mandatory education and started my apprenticeship at Google. " +
+      "The following list gives you an overview of the projects " +
       "I worked on." +
       '<ul class="list-disc ml-6">' +
       "<li>Maintenance and Development of internal validation systems for Privacy and Policy</li>" +
@@ -327,7 +328,17 @@ export const germanExperiences = [
     "Seit Januar 2022 bin ich in der Fachschaft Technik in einem " +
       "Kopr&auml;sidium aktiv. Die Studentenvereinigiung an der FHNW " +
       "repr&auml;sentiert die Studenten gegen&uuml;ber der Schule und organisiert " +
-      "Veranstaltungen f&uuml;r die Studenten w&auml;hrend dem Semester.",
+      "Veranstaltungen f&uuml;r die Studenten w&auml;hrend dem Semester. Die " +
+      "Liste bietet eine &Uuml;bersicht der verschiedenen Projekte an denen ich " +
+      "w&auml;hrend dieser Zeit gearbeitet habe." +
+      '<ul class="list-disc ml-6">' +
+      "<li>Veranstaltungsorganisation f&uuml;r 1000+ Personen</li>" +
+      "<li>Mitgliedssitzungen organisieren</li>" +
+      "<li>Vorstandssitzungen organisieren</li>" +
+      "<li>Protokoll f&uuml;r Sitzungen f&uuml;hren</li>" +
+      "<li>&Uuml;bersicht der studentischen Mitwirkung</li>" +
+      "<li>Leitung Fachschaft</li>" +
+      "</ul>",
     colorfulStudents
   ),
   new ExperienceItem(
@@ -335,10 +346,10 @@ export const germanExperiences = [
     "Jetzt",
     ExperienceType.WORK,
     "3D-Drucker Lab Manager",
-    "Als ich meinen BSc in Informatik an der FHNW gestartet habe bin ich " +
+    "Als ich meinen BSc in Informatik an der FHNW gestartet habe, bin ich " +
       "auch dem MakerStudio als Lab Manager beigetreten. Ich bin " +
-      "daf&uuml;verantwortlich Einf&uuml;hrungskurse zum Labor zu leiten und " +
-      "Kunden beim Drucken zu begleiten.",
+      "daf&uuml;r verantwortlich Einf&uuml;hrungskurse f&uuml;r die 3D-Drucker " +
+      "zu leiten und die Kunden beim Drucken zu unterst&uuml;tzen.",
     colorfulMakerstudio
   ),
   new ExperienceItem(
@@ -349,8 +360,7 @@ export const germanExperiences = [
     "Nach meiner Lehre ging ich " +
       "<a href='https://www.fhnw.ch/de/studium/technik/informatik'>Informatik an der FHNW</a> " +
       "(Fachhochschule Nordwestschweiz) studieren, weil ich meine praktische " +
-      "Erfahrung durch die entsprechende Theorie - mit einem Fokus auf die Anwendung davon - " +
-      "erg&auml;nzen m&ouml;chte.",
+      "Erfahrung durch die entsprechende Theorie erg&auml;nzen m&ouml;chte.",
     colorfulFhnw
   ),
   new ExperienceItem(
@@ -360,13 +370,13 @@ export const germanExperiences = [
     "Lehre Informatik Applikationsentwicklung",
     "Ich wollte urspr&uuml;nglich den typischen Ausbildungsweg der Schweiz " +
       "mit Gymnasium gehen, merkte aber sehr schnell, dass ich den rein " +
-      "theoretischen Weg - ohne jegliche praktische Anwendung - sehr langweilig " +
-      "finde. Also wechselte ich in stattdessen in die Sekundarstufe und begann " +
-      "anschliessend meine Lehre bei Google als ich 15 Jahre alt war. Die folgende " +
-      "Liste gibt eine &Uuml;bersicht der verschiedenen Projekte an denen ich " +
+      "theoretischen Weg sehr langweilig " +
+      "finde. Also wechselte ich stattdessen in die Sekundarstufe und begann " +
+      "anschliessend meine Lehre bei Google. Die folgende " +
+      "Liste bietet eine &Uuml;bersicht der verschiedenen Projekte an denen ich " +
       "w&auml;hrend dieser Zeit gearbeitet habe." +
       '<ul class="list-disc ml-6">' +
-      "<li>Wartung und Ausbauung interner Pr&uuml;fsysteme im Privatsph&auml;renbereich</li>" +
+      "<li>Wartung und Erweiterung interner Pr&uuml;fsysteme im Privatsph&auml;renbereich</li>" +
       '<li>Migration eines internen Reviewsystems im <a href="https://shopping.google.com/" class="d-link d-link-primary">Google Shopping</a> Internal Tools and Automation Team</li>' +
       '<li>Unterst&uuml;tzung bei der Migration auf ein neues Framework im <a href="https://www.google.com/intl/de/calendar/about/" class="d-link d-link-primary">Android Calendar</a> Team</li>' +
       "<li>Interner technischer Support</li>" +
@@ -381,16 +391,18 @@ export const germanExperiences = [
     "Aug 2021",
     ExperienceType.EDUCATION,
     "Berufsmaturit&auml;tsschule Z&uuml;rich<br>Technische Berufsschule Z&uuml;rich",
-    "Jede Lehre umfasst einen Arbeitsteil und einen Schulteil " +
+    "Jede Lehre umfasst einen Arbeitsteil und einen Schulteil. " +
       "In meinem Fall habe ich die " +
       "<a href='https://www.berufsberatung.ch/dyn/show/3309' class='d-link d-link-primary'>BMS</a> " +
-      "f&uuml;r meine Allgemeinbildung besucht und f&uuml;r meine technische " +
-      "Ausbildung  die TBZ, welche f&uuml;r mein abschliessendes " +
+      "f&uuml;r meine Allgemeinbildung und die TBZ f&uuml;r meine technische " +
+      "Ausbildung besucht, welche f&uuml;r mein abschliessendes " +
       "<a href='https://www.berufsberatung.ch/dyn/show/1922' class='d-link d-link-primary'>EFZ</a> " +
-      "Diplom, welches mir die Lehre gibt, erforderlich ist." +
+      "Diplom erforderlich ist." +
       "<ul class='list-disc ml-6'>" +
-      "<li>Abschlussnote BMS: 5.2</li>" +
-      "<li>Abschlussnote TBZ: 5.5</li>" +
+      "<li>Abschlussnote BMS: " +
+    "<span data-tooltip='bestanden: 4, gut: 5, ausgezeichnet: 6'>5.2</span></li>" +
+      "<li>Abschlussnote TBZ: " +
+    "<span data-tooltip='bestanden: 4, gut: 5, ausgezeichnet: 6'>5.5</span></li>" +
       "</ul>"
   )
 ];
