@@ -37,7 +37,7 @@ const colorfulGoogle =
 
 const colorfulFhnw =
   "<span class='font-semibold'>FH&shy;" +
-  "<span class='text-[#FDE70E] bg-black px-1 pb-0.5'>NW</span></span>";
+  "<span class='text-black bg-[#FDE70E] pl-0.5 pr-1 pb-0.5'>NW</span></span>";
 
 const colorfulMakerstudio =
   "<span class='font-semibold text-green-700'>Ma&shy;ker&shy;Stu&shy;di&shy;o</span> ";
