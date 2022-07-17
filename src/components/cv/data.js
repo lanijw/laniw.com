@@ -27,6 +27,9 @@ export const germanEduChip = "Ausbildung";
 export const englishContactTitle = "Shoot me a Message!";
 export const germanContactTitle = "Schick mir doch 'ne Nachricht!";
 
+export const englishCopyInstruction = "Copy email address";
+export const germanCopyInstruction = "E-Mail Adresse kopieren";
+
 const colorfulGoogle =
   "<span class='font-semibold'><span class='text-[#4285F4]'>G</span>" +
   "<span class='text-[#DB4437]'>o</span>" +

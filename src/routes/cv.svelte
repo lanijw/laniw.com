@@ -7,12 +7,14 @@
   import Icon from "../components/icons/Icon.svelte";
   import {
     englishContactTitle,
+    englishCopyInstruction,
     englishExperiences,
     englishExperienceTitle,
     englishHeroText,
     englishSkills,
     englishSkillsTitle,
     germanContactTitle,
+    germanCopyInstruction,
     germanExperiences,
     germanExperienceTitle,
     germanHeroText,
@@ -34,7 +36,8 @@
     allSkills = englishSkills,
     experienceTitle = englishExperienceTitle,
     experiences = englishExperiences,
-    contactTitle = englishContactTitle;
+    contactTitle = englishContactTitle,
+    copyInstruction = englishCopyInstruction;
   onMount(() => {
     const paramLang = getUrlParams().get("lang");
     lang = paramLang ? paramLang : "en";
@@ -45,6 +48,7 @@
       experienceTitle = germanExperienceTitle;
       experiences = germanExperiences;
       contactTitle = germanContactTitle;
+      copyInstruction = germanCopyInstruction;
     }
   });
 
@@ -207,7 +211,7 @@
       <div
         class="w-fit mx-auto cursor-pointer flex items-center justify-center mt-4 after:hover:mb-12"
         on:click={copyEmailToClipboard}>
-        <span class="mr-2">Copy email address</span>
+        <span class="mr-2">{@html copyInstruction}</span>
         <Icon
           icon={clipboardIcon}
           class="h-12 w-12 transition-all duration-200 lg:hover:scale-125 active:scale-75" />
