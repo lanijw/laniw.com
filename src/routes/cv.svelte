@@ -128,7 +128,7 @@
         </ModalTrigger>
       {/each}
     </div>
-    <div class="hidden lg:grid grid-cols-8">
+    <div class="hidden lg:grid grid-cols-10">
       <div class="text-center col-span-2"
         ><span
           class="bg-info text-info-content font-bold px-2 pb-0.5 rounded-full"
@@ -149,10 +149,15 @@
           class="bg-info text-info-content font-bold px-2 pb-0.5 rounded-full"
           >2022</span
         ></div>
-      <div class="col-span-8 grid grid-cols-8 gap-2">
+      <div class="text-center col-span-2">
+        <span class="bg-info text-info-content font-bold px-2 pb-0.5 rounded-full">
+          2023
+        </span>
+      </div>
+      <div class="col-span-10 grid grid-cols-10 gap-2">
         <LgExperiencesTimelineItem
           leadSpan="col-span-6"
-          span="col-span-1"
+          span="col-span-3"
           followSpan="col-span-1"
           experience={experiences[0]}
           modalTriggerId="experience-0"
@@ -166,10 +171,10 @@
           {lang} />
         <LgExperiencesTimelineItem
           leadSpan="hidden"
-          span="col-span-2"
+          span="col-span-4"
           followSpan="col-span-1"
-          experience={experiences[1]}
-          modalTriggerId="experience-1"
+          experience={experiences[2]}
+          modalTriggerId="experience-2"
           {lang} />
         <LgExperiencesTimelineItem
           leadSpan="col-span-1"
@@ -181,9 +186,9 @@
         <LgExperiencesTimelineItem
           leadSpan="hidden"
           span="col-span-2"
-          followSpan="col-span-1"
-          experience={experiences[2]}
-          modalTriggerId="experience-2"
+          followSpan="col-span-3"
+          experience={experiences[1]}
+          modalTriggerId="experience-1"
           {lang} />
       </div>
     </div>

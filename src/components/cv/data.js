@@ -164,7 +164,7 @@ export const englishExperiences = [
   ),
   new ExperienceItem(
     "Sep 2021",
-    "Now",
+    "Jul 2022",
     ExperienceType.WORK,
     "3D-Printer Lab Manager",
     "I joined the MakerStudio as a Lab Manager when I started my BSc in " +
@@ -251,7 +251,7 @@ export const germanExperiences = [
   ),
   new ExperienceItem(
     "Sep 2021",
-    "Jetzt",
+    "Jul 2022",
     ExperienceType.WORK,
     "3D-Drucker Lab Manager",
     "Als ich meinen BSc in Informatik an der FHNW gestartet habe, bin ich " +
