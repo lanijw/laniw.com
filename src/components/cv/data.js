@@ -49,163 +49,68 @@ const colorfulStudents =
   "<span class='font-semibold'><span class='text-[#B10932]'>stu&shy;dents&shy;.&shy;</span>&shy;" +
   "<span class='text-[#FEED01]'>fhnw</span></span>";
 
-const englishLanguageSkills = [
-  {
-    skill: "English",
-    completion: 1
-  },
-  {
-    skill: "German",
-    completion: 1
-  },
-  {
-    skill: "French",
-    completion: 0.8
+class Skill {
+  constructor(skill, completion) {
+    this.skill = skill;
+    this.completion = completion;
   }
+}
+
+const englishLanguageSkills = [
+  new Skill("English", 1),
+  new Skill("German", 1),
+  new Skill("French", 0.8)
 ];
 
 const germanLanguageSkills = [
-  {
-    skill: "Deutsch",
-    completion: 1
-  },
-  {
-    skill: "Englisch",
-    completion: 1
-  },
-  {
-    skill: "Franz&ouml;sisch",
-    completion: 0.8
-  }
+  new Skill("Deutsch", 1),
+  new Skill("Englisch", 1),
+  new Skill("Franz&ouml;sisch", 0.8)
 ];
 
-const mainCodingSkills = [
-  {
-    skill: "Java",
-    completion: 1
-  },
-  {
-    skill: "HTML",
-    completion: 1
-  },
-  {
-    skill: "CSS",
-    completion: 0.9
-  },
-  {
-    skill: "JavaScript",
-    completion: 1
-  },
-  {
-    skill: "TypeScript",
-    completion: 0.7
-  },
-  {
-    skill: "Svelte/SvelteKit",
-    completion: 0.9
-  }
-];
-
-const secondaryCodingSkills = [
-  {
-    skill: "LaTeX",
-    completion: 1
-  },
-  {
-    skill: "Python",
-    completion: 0.8
-  },
-  {
-    skill: "PHP",
-    completion: 0.7
-  },
-  {
-    skill: "MySQL",
-    completion: 0.85
-  }
+const devSkills = [
+  new Skill("Frontend", 1),
+  new Skill("Backend", 1),
+  new Skill("DB", 0.8)
 ];
 
 const englishOtherSkills = [
-  {
-    skill: "Web Development",
-    completion: 0.8
-  },
-  {
-    skill: "Project Management",
-    completion: 0.6
-  },
-  {
-    skill: "Event Organisation",
-    completion: 0.7
-  },
-  {
-    skill: "Tutoring",
-    completion: 0.8
-  }
+  new Skill("Web Development", 1),
+  new Skill("Project Management", 0.6),
+  new Skill("Event Organisation", 0.7),
+  new Skill("Tutoring", 0.8)
 ];
 
 const germanOtherSkills = [
-  {
-    skill: "Webentwicklung",
-    completion: 0.8
-  },
-  {
-    skill: "Projektleitung",
-    completion: 0.6
-  },
-  {
-    skill: "Veranstaltungsorganisation",
-    completion: 0.7
-  },
-  {
-    skill: "Nachhilfeunterricht",
-    completion: 0.8
-  }
+  new Skill("Webentwicklung", 1),
+  new Skill("Projektleitung", 0.6),
+  new Skill("Veranstaltungsorganisation", 0.7),
+  new Skill("Nachhilfeunterricht", 0.8)
 ];
 
 export const SkillType = {
   LANGUAGE: 1,
-  MAIN_CODING: 2,
-  SECONDARY_CODING: 3,
+  DEV: 2,
   OTHER: 4
 };
 
-export const englishSkills = [
-  {
-    skills: englishLanguageSkills,
-    category: SkillType.LANGUAGE
-  },
-  {
-    skills: mainCodingSkills,
-    category: SkillType.MAIN_CODING
-  },
-  {
-    skills: secondaryCodingSkills,
-    category: SkillType.SECONDARY_CODING
-  },
-  {
-    skills: englishOtherSkills,
-    category: SkillType.OTHER
+class SkillCategory {
+  constructor(skills, category) {
+    this.skills = skills;
+    this.category = category;
   }
+}
+
+export const englishSkills = [
+  new SkillCategory(englishLanguageSkills, SkillType.LANGUAGE),
+  new SkillCategory(devSkills, SkillType.DEV),
+  new SkillCategory(englishOtherSkills, SkillType.OTHER)
 ];
 
 export const germanSkills = [
-  {
-    skills: germanLanguageSkills,
-    category: SkillType.LANGUAGE
-  },
-  {
-    skills: mainCodingSkills,
-    category: SkillType.MAIN_CODING
-  },
-  {
-    skills: secondaryCodingSkills,
-    category: SkillType.SECONDARY_CODING
-  },
-  {
-    skills: germanOtherSkills,
-    category: SkillType.OTHER
-  }
+  new SkillCategory(germanLanguageSkills, SkillType.LANGUAGE),
+  new SkillCategory(devSkills, SkillType.DEV),
+  new SkillCategory(germanOtherSkills, SkillType.OTHER)
 ];
 
 export const ExperienceType = {

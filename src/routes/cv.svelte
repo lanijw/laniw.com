@@ -74,8 +74,7 @@
   function mapCategoryToProgressColor(skillType) {
     const SkillTypeMap = new Map([
       [SkillType.LANGUAGE, "bg-sky-600"],
-      [SkillType.MAIN_CODING, "bg-amber-500"],
-      [SkillType.SECONDARY_CODING, "bg-red-500"],
+      [SkillType.DEV, "bg-amber-500"],
       [SkillType.OTHER, "bg-teal-500"]
     ]);
     return SkillTypeMap.get(skillType);
@@ -101,23 +100,10 @@
       {#each allSkills as skills}
         {#each skills.skills as s}
           <div
-            class:col-span-3={skills.category === SkillType.SECONDARY_CODING}
-            class:col-span-4={skills.category === SkillType.LANGUAGE}
-            class:col-span-6={skills.category === SkillType.MAIN_CODING ||
-              skills.category === SkillType.OTHER}
-            class:lg:col-span-1={skills.category === SkillType.MAIN_CODING ||
-              skills.category === SkillType.SECONDARY_CODING ||
-              s.skill === "French" ||
-              s.skill === "Franz&ouml;sisch"}
-            class:lg:col-span-2={(skills.category === SkillType.LANGUAGE &&
-              s.skill !== "French" &&
-              s.skill !== "Franz&ouml;sisch") ||
-              skills.category === SkillType.OTHER ||
-              s.skill === "Svelte/SvelteKit"}
-            class:lg:order-1={skills.category === SkillType.MAIN_CODING}
-            class:lg:order-2={skills.category === SkillType.LANGUAGE}
-            class:lg:order-3={skills.category === SkillType.SECONDARY_CODING ||
-              skills.category === SkillType.OTHER}
+            class:col-span-4={skills.category === SkillType.LANGUAGE || skills.category === SkillType.DEV}
+            class:col-span-6={skills.category === SkillType.OTHER}
+            class:lg:col-span-2={skills.category === SkillType.LANGUAGE || skills.category === SkillType.DEV}
+            class:lg:col-span-3={skills.category === SkillType.OTHER}
             data-tooltip={s.skill}>
             <div
               class="text-lg w-full h-full -mb-1.5 overflow-hidden whitespace-nowrap text-ellipsis">
