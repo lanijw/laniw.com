@@ -26,7 +26,5 @@ node ./build/index.js
 Linux:
 
 ```bash
-npm run build
-PATH = 5000
-node ./build/index.js
+npm run build && PATH=5000 && node ./build/index.js
 ```
