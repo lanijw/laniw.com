@@ -1,5 +1,5 @@
 const setupLaniwIcon = () => {
-  const template = document.createElement('template');
+  const template = document.createElement("template");
   template.innerHTML = `
   <svg
     width="100%"
@@ -47,11 +47,12 @@ const setupLaniwIcon = () => {
     constructor() {
       super();
 
-      const shadow = this.attachShadow({mode: 'closed'});
+      const shadow = this.attachShadow({mode: "closed"});
       shadow.append(template.content.cloneNode(true));
     }
   }
-  customElements.define('c-laniw-icon', LaniwIcon);
-}
+
+  customElements.define("c-laniw-icon", LaniwIcon);
+};
 
 export default setupLaniwIcon;
