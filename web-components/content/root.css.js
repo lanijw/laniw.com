@@ -1,13 +1,20 @@
 const css = `
 <style>
+
 .main-container {
-  width: clamp(22rem, 50%, 64rem);
-  margin: 0 auto;
+  width: clamp(var(--min-width), 50%, 64rem);
+  margin: 4rem auto 0;
 }
 
 .logo-container {
-  width: 20rem;
+  width: var(--min-width);
   margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
+  gap: 1rem;
 }
 </style>
 `;
