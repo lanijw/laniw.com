@@ -26,7 +26,7 @@ const Home = (rootEl, context) => {
             p(`Find all of my repos, including the repo for this website on my
                 GitHub page.`),
             a("GitHub", "https://github.com/lanijw/laniw.com"),
-        ])
+        ], { usesArticleTag: true })
     );
 }
 

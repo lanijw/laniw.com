@@ -12,3 +12,12 @@ body {
 .page-title {
     text-align: center;
 }
+
+.card {
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 4px 4px 8px #ddd;
+}
+.card > :first-child {
+    margin-top: 0;
+}

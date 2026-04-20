@@ -8,8 +8,7 @@ import { article, div } from "../domManip.js";
  * @returns {HTMLElement|HTMLDivElement}
  */
 const Card = (children, { usesArticleTag = false } = {}) => {
-    const classes = [".card"];
-    const el = usesArticleTag ? article(classes) : div(classes);
+    const el = (usesArticleTag ? article : div)({classes: ["card"]});
     children.forEach(c => el.appendChild(c));
     return el;
 }
