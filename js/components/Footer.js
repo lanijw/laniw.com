@@ -1,7 +1,12 @@
-import Implement from "./ToBeImplemented.js";
+// Claude - footer containing copyright info and an Impressum link.
+import { a, footer, p } from "../domManip.js";
+import { routePaths, routes } from "../routes.js";
 
 const Footer = () => {
-    return Implement();
+    return footer([
+        p(`© ${new Date().getFullYear()} laniw.com`),
+        a("Impressum", routePaths.get(routes.IMPRESSUM)),
+    ], { classes: ["footer"] });
 }
 
 export default Footer;

@@ -101,7 +101,7 @@ export const div = (children, options) => {
 }
 
 /**
- * Creates an article element. 
+ * Creates an article element.
  * @param {HTMLElement[]} children
  * @param {Object}   [options={}]
  * @param {string[]} [options.classes=[]]
@@ -112,4 +112,19 @@ export const article = (children, options) => {
     const a = create("article", options);
     a.append(...children);
     return a;
+}
+
+// Claude - footer helper mirroring the div/article helpers so components can build semantic <footer> elements.
+/**
+ * Creates a footer element.
+ * @param {HTMLElement[]} children
+ * @param {Object}   [options={}]
+ * @param {string[]} [options.classes=[]]
+ * @param {Object}   [options.attributes={}]
+ * @returns {HTMLElement}
+ */
+export const footer = (children, options) => {
+    const f = create("footer", options);
+    f.append(...children);
+    return f;
 }
