@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.content {
+    --content-width: 1000px;
+    margin: 10em max(1em, calc((100vw - var(--content-width)) / 2));
+    max-width: var(--content-width);
+}
+
+.page-title {
+    text-align: center;
+}
