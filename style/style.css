@@ -3,6 +3,23 @@ body {
     font-family: sans-serif;
 }
 
+/* Claude - top navbar: full-width band with the logo pinned to the left (BEM: navbar block). */
+.navbar {
+    padding: 0.75em;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+.navbar__logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
 .content {
     --content-width: 1000px;
     padding: 2em max(1em, calc((100vw - var(--content-width)) / 2));

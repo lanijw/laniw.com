@@ -31,7 +31,7 @@ export const title = (text) => {
  * @returns {HTMLLinkElement}
  */
 export const link = (href, rel) => {
-    return create("link", {attributes: {href, rel}});
+    return create("link", { attributes: { href, rel } });
 }
 
 /**
@@ -76,13 +76,13 @@ export const p = (text) => {
 
 /**
  * Creates an anchor element.
- * @param {string} text - Displayed text
+ * @param {string|HTMLElement} content - Displayed text or child element(s)
  * @param {string} href - Link to redirect to
  * @returns {HTMLAnchorElement}
  */
-export const a = (text, href) => {
-    const a = create("a", {attributes: {href}})
-    a.innerText = text;
+export const a = (content, href) => {
+    const a = create("a", { attributes: { href }, });
+    a.append(content);
     return a;
 }
 
@@ -127,4 +127,32 @@ export const footer = (children, options) => {
     const f = create("footer", options);
     f.append(...children);
     return f;
+}
+
+// Claude - nav helper for constructing the semantic <nav> landmark used as the top navbar.
+/**
+ * Creates a nav element.
+ * @param {HTMLElement[]} children
+ * @param {Object}   [options={}]
+ * @param {string[]} [options.classes=[]]
+ * @param {Object}   [options.attributes={}]
+ * @returns {HTMLElement}
+ */
+export const nav = (children, options) => {
+    const n = create("nav", options);
+    n.append(...children);
+    return n;
+}
+
+/**
+ * Creates an img element.
+ * @param {string}   src - Image source URL
+ * @param {string}   alt - Alternative text
+ * @param {Object}   [options={}]
+ * @param {string[]} [options.classes=[]]
+ * @param {Object}   [options.attributes={}]
+ * @returns {HTMLImageElement}
+ */
+export const img = (src, alt, options = {}) => {
+    return create("img", { ...options, attributes: { ...(options.attributes ?? {}), src, alt }});
 }
