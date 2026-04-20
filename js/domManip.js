@@ -88,18 +88,28 @@ export const a = (text, href) => {
 
 /**
  * Creates a div element. 
- * @param {string[]} classes - Classes for the element
+ * @param {HTMLElement[]} children
+ * @param {Object}   [options={}]
+ * @param {string[]} [options.classes=[]]
+ * @param {Object}   [options.attributes={}]
  * @returns {HTMLDivElement}
  */
-export const div = (options) => {
-    return create("div", options);
+export const div = (children, options) => {
+    const d = create("div", options);
+    d.append(...children);
+    return d;
 }
 
 /**
  * Creates an article element. 
- * @param {string[]} classes - Classes for the element
+ * @param {HTMLElement[]} children
+ * @param {Object}   [options={}]
+ * @param {string[]} [options.classes=[]]
+ * @param {Object}   [options.attributes={}]
  * @returns {HTMLElement}
  */
-export const article = (options) => {
-    return create("article", options);
+export const article = (children, options) => {
+    const a = create("article", options);
+    a.append(...children);
+    return a;
 }
