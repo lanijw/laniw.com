@@ -23,8 +23,8 @@ body {
 
 .content {
     --content-width: 1000px;
+    /* Claude - removed max-width; the padding formula already caps content at --content-width, so max-width was shrinking the content area at wide viewports. */
     padding: 2em max(1em, calc((100vw - var(--content-width)) / 2));
-    max-width: var(--content-width);
     /* Claude - guarantees the main content spans at least one full viewport so the footer is always reached by scrolling. */
     min-height: 100vh;
     box-sizing: border-box;
