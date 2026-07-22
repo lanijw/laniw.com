@@ -1,7 +1,6 @@
 // Claude - top navbar: site logo sits on the left and links back to the home page.
 import { a, img, nav, button, span, div } from "../domManip.js";
 import { routePaths, routes } from "../routes.js";
-import { isLoggedIn, getUsername, logout } from "../auth.js";
 
 const Header = () => {
     const logo = img({
