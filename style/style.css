@@ -11,6 +11,7 @@ body {
     border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     width: 100%;
@@ -22,20 +23,14 @@ body {
 }
 
 .content {
-    --content-width: 1000px;
-    /* Claude - removed max-width; the padding formula already caps content at --content-width, so max-width was shrinking the content area at wide viewports. */
-    padding: 2em max(1em, calc((100vw - var(--content-width)) / 2));
-    /* Claude - guarantees the main content spans at least one full viewport so the footer is always reached by scrolling. */
     min-height: 100vh;
     box-sizing: border-box;
 }
 
 /* Claude - footer styling: full-width band that sits below the 100vh content area, visible only after scrolling. */
 .footer {
-    --content-width: 1000px;
     background-color: #222;
     color: #eee;
-    padding: 2em max(1em, calc((100vw - var(--content-width)) / 2));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,6 +39,11 @@ body {
 }
 .footer a {
     color: #9cf;
+}
+
+.content, .footer {
+    --content-width: 1000px;
+    padding: 2em max(1em, calc((100vw - var(--content-width)) / 2));
 }
 
 .page-title {

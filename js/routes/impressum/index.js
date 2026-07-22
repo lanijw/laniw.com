@@ -7,7 +7,7 @@ import _route from "../_route.js";
  * Minimum contact disclosure for a non-commercial Swiss website.
  * @param {HTMLBodyElement} rootEl
  */
-const Impressum = (rootEl, context) => {
+const Impressum = (rootEl) => {
     // Claude - reuse the shared route scaffolding to set the tab title and mount header/footer.
     const outlet = _route("Impressum - laniw.com", rootEl);
 

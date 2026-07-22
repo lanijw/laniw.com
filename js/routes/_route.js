@@ -16,9 +16,8 @@ const _route = (titleText, rootEl, displayHeader = true, displayFooter = true) =
     const head = document.getElementsByTagName("head")[0]
 
     head.appendChild(title("laniw.com"));
-    head.appendChild(link("/style/style.css", "stylesheet"));
-    // Claude - link the per-route stylesheet mirroring the routes/ folder structure.
-    head.appendChild(link(`/style${location.pathname}index.css`, "stylesheet"));
+    head.appendChild(link({ attributes: { href: "/style/style.css", rel: "stylesheet" } }));
+    head.appendChild(link({ attributes: { href: `/style${location.pathname}index.css`, rel: "stylesheet" } }));
 
     if (displayHeader) rootEl.appendChild(Header());
     const outlet = main({classes: ["content"]});

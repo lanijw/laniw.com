@@ -1,15 +1,46 @@
 /**
+ * @typedef {'button'|'checkbox'|'color'|'date'|'datetime-local'|'email'|'file'|'hidden'|'image'|'month'|'number'|'password'|'radio'|'range'|'reset'|'search'|'submit'|'tel'|'text'|'time'|'url'|'week'} ElType
+ */
+
+/**
+ * @typedef {Object} ElOptions_Attributes
+ * @property {string}  [href]        - Hyperlink reference
+ * @property {string}  [rel]         - Relationship type
+ * @property {ElType}  [type]        - Type declaration for input elements
+ * @property {string}  [placeholder] - Placeholder for input elements
+ * @property {boolean} [required]    - Required declaration for input elements
+ */
+
+/**
+ * Supported events to listen to. Listeners for non-supported will be registered
+ * anyway, but may not behave as expected.
+ * @typedef {Object} ElOptions_Listeners
+ * @property {Array<Function(Event): undefined} [change] - Listeners triggered on change event
+ */
+
+/**
+ * The complete options object that can be set for any HTML element.
+ * @typedef {Object} ElOptions
+ * @property {Array<string>} [classes]
+ * @property {ElOptions_Attributes} [attributes]
+ * @property {ElOptions_Listeners} [listeners]
+ */
+
+/**
  * Creates an HTML element.
  * @param {string}   el - Tag of the element
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} [options={}]
  * @returns {HTMLElement}
  */
-const create = (el, { classes = [], attributes = {} } = {}) => {
+const create = (el, { classes = [], attributes = {}, listeners = {} } = {}) => {
     const e = document.createElement(el);
     classes.forEach(c => e.classList.add(c));
     Object.entries(attributes).forEach(([k, v]) => e.setAttribute(k, v));
+    Object.entries(listeners).forEach(
+        ([event, ls]) => {
+            ls.forEach(l => e.addEventListener(event, l));
+        }
+    );
     return e;
 }
 
@@ -26,22 +57,19 @@ export const title = (text) => {
 
 /**
  * Creates a link element.
- * @param {string} href - path to resource
- * @param {string} rel - type of the relationship
+ * @param {ElOptions} options - type of the relationship
  * @returns {HTMLLinkElement}
  */
-export const link = (href, rel) => {
-    return create("link", { attributes: { href, rel } });
+export const link = options => {
+    return create("link", options);
 }
 
 /**
  * Creates a main element.
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} [options={}]
  * @returns {HTMLElement}
  */
-export const main = (options) => {
+export const main = options => {
     return create("main", options);
 }
 
@@ -53,12 +81,14 @@ const h = n => (text, options) => {
 /**
  * Creates an h1 element.
  * @param {string} text - Heading text
+ * @param {ElOptions} options
  * @returns {HTMLHeadingElement}
  */
 export const h1 = h(1);
 /**
  * Creates an h2 element.
  * @param {string} text - Heading text
+ * @param {ElOptions} options
  * @returns {HTMLHeadingElement}
  */
 export const h2 = h(2);
@@ -68,7 +98,7 @@ export const h2 = h(2);
  * @param {string} text - Paragraph text
  * @returns {HTMLParagraphElement}
  */
-export const p = (text) => {
+export const p = text => {
     const p = create("p");
     p.innerHTML = text;
     return p;
@@ -77,11 +107,11 @@ export const p = (text) => {
 /**
  * Creates an anchor element.
  * @param {string|HTMLElement} content - Displayed text or child element(s)
- * @param {string} href - Link to redirect to
+ * @param {ElOptions} options
  * @returns {HTMLAnchorElement}
  */
-export const a = (content, href) => {
-    const a = create("a", { attributes: { href }, });
+export const a = (content, options) => {
+    const a = create("a", options);
     a.append(content);
     return a;
 }
@@ -89,9 +119,7 @@ export const a = (content, href) => {
 /**
  * Creates a div element. 
  * @param {HTMLElement[]} children
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} options
  * @returns {HTMLDivElement}
  */
 export const div = (children, options) => {
@@ -103,9 +131,7 @@ export const div = (children, options) => {
 /**
  * Creates an article element.
  * @param {HTMLElement[]} children
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} options
  * @returns {HTMLElement}
  */
 export const article = (children, options) => {
@@ -118,9 +144,7 @@ export const article = (children, options) => {
 /**
  * Creates a footer element.
  * @param {HTMLElement[]} children
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} options
  * @returns {HTMLElement}
  */
 export const footer = (children, options) => {
@@ -133,9 +157,7 @@ export const footer = (children, options) => {
 /**
  * Creates a nav element.
  * @param {HTMLElement[]} children
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} options
  * @returns {HTMLElement}
  */
 export const nav = (children, options) => {
@@ -146,13 +168,48 @@ export const nav = (children, options) => {
 
 /**
  * Creates an img element.
- * @param {string}   src - Image source URL
- * @param {string}   alt - Alternative text
- * @param {Object}   [options={}]
- * @param {string[]} [options.classes=[]]
- * @param {Object}   [options.attributes={}]
+ * @param {ElOptions} options
  * @returns {HTMLImageElement}
  */
-export const img = (src, alt, options = {}) => {
-    return create("img", { ...options, attributes: { ...(options.attributes ?? {}), src, alt }});
+export const img = options => {
+    return create("img", options);
+}
+
+/**
+ * Creates an input element.
+ * @param {ElOptions} options 
+ * @returns {InputElement}
+ */
+export const input = options => {
+    return create("input", options);
+}
+
+const contentful = el => (content, options = {}) => {
+    const e = create(el, options);
+    if (typeof content === "string") {
+        e.innerText = content;
+    } else {
+        e.append(content);
+    }
+    return e;
+}
+
+/**
+ * Creates a button element.
+ * @param {string|HTMLElement} content - Button text or child element(s)
+ * @param {ElOptions} [options]
+ * @returns {HTMLButtonElement}
+ */
+export const button = (content, options = {}) => {
+    return contentful("button");
+}
+
+/**
+ * Creates a span element.
+ * @param {string|HTMLElement} content - Span text or child element(s)
+ * @param {ElOptions} [options]
+ * @returns {HTMLSpanElement}
+ */
+export const span = (content, options = {}) => {
+    return contentful("span");
 }

@@ -1,17 +1,23 @@
 // Claude - top navbar: site logo sits on the left and links back to the home page.
-import { a, img, nav } from "../domManip.js";
+import { a, img, nav, button, span, div } from "../domManip.js";
 import { routePaths, routes } from "../routes.js";
+import { isLoggedIn, getUsername, logout } from "../auth.js";
 
 const Header = () => {
-    const logo = img(
-        "/assets/img/logo/laniw_logo-tight.svg",
-        "laniw.com logo",
-        { classes: ["navbar__logo-img"] },
-    );
+    const logo = img({
+        attributes: {
+            src: "/assets/img/logo/laniw_logo-tight.svg",
+            alt: "laniw.com logo"
+        }, classes: ["navbar__logo-img"]
+    });
 
     return nav([
-        a(logo, routePaths.get(routes.HOME), { classes: ["navbar__logo"] }),
-    ], { classes: ["navbar"] });
+        a(logo, {
+            classes: ["navbar__logo"],
+            attributes: { href: routePaths.get(routes.HOME) },
+        }),
+        authContainer,
+    ], { classes: ["navbar"], });
 }
 
 export default Header;

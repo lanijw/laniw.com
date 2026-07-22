@@ -5,7 +5,7 @@ import { routePaths, routes } from "../routes.js";
 const Footer = () => {
     return footer([
         p(`© ${new Date().getFullYear()} laniw.com`),
-        a("Impressum", routePaths.get(routes.IMPRESSUM)),
+        a("Impressum", { attributes: { href: routePaths.get(routes.IMPRESSUM) }}),
     ], { classes: ["footer"] });
 }
 
