@@ -17,14 +17,6 @@ const Home = rootEl => {
             should become my portfolio soon.`),
         div([
             Card([
-                h2("Expense Conscience"),
-                p(`Track your expenses and set monthly goals per category to track
-                where your money goes to stay in control of your finances.`),
-                a("Track expenses", {
-                    attributes: { href: routePaths.get(routes.EXPENSES) },
-                }),
-            ], { usesArticleTag: true }),
-            Card([
                 h2("GitHub"),
                 p(`Find all of my repos, including the repo for this website on my
                 GitHub page.`),
